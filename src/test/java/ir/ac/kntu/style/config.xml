@@ -67,7 +67,7 @@
 
         <module name="MethodLength">
             <property name="tokens" value="METHOD_DEF"/>
-            <property name="max" value="30"/>
+            <property name="max" value="50"/>
         </module>
 
         <module name="StringLiteralEquality"/>
@@ -86,7 +86,7 @@
 
         <!-- <module name="AvoidNestedBlocks"/> -->
         <module name="ArrayTypeStyle"/>
-        <!-- <module name="VisibilityModifier"/> -->
+        <module name="VisibilityModifier"/>
 
         <!-- <module name="OneStatementPerLine"/> -->
         <module name="MissingSwitchDefault"/>
