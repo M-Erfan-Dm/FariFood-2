@@ -73,22 +73,22 @@
         <module name="StringLiteralEquality"/>
 
         <module name="EmptyLineSeparator">
-            <property name="tokens" value="METHOD_DEF"/>
+          <property name="tokens" value="METHOD_DEF"/>
         </module>
         <module name="MethodParamPad"/>
         <module name="NoWhitespaceBefore"/>
 
         <!-- <module name="MethodLength"/> -->
-        <!-- <module name="ParameterNumber"> -->
-            <!-- <property name="max" value="7"/> -->
-            <!-- <property name="tokens" value="METHOD_DEF"/> -->
-        <!-- </module> -->
+        <module name="ParameterNumber">
+            <property name="max" value="4"/>
+            <property name="tokens" value="METHOD_DEF"/>
+        </module>
 
         <!-- <module name="AvoidNestedBlocks"/> -->
         <module name="ArrayTypeStyle"/>
         <module name="VisibilityModifier"/>
 
-        <!-- <module name="OneStatementPerLine"/> -->
+        <module name="OneStatementPerLine"/>
         <module name="MissingSwitchDefault"/>
     </module>
 
