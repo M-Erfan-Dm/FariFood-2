@@ -3,6 +3,7 @@ package ir.ac.kntu.menu;
 import ir.ac.kntu.models.*;
 import ir.ac.kntu.utils.ScannerWrapper;
 
+import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -61,7 +62,7 @@ public abstract class Menu {
         return price;
     }
 
-    public Time getTime() {
+    public LocalTime getTime() {
         System.out.print("Enter hour : ");
         int hour = Integer.parseInt(ScannerWrapper.nextLine());
         if (hour < 0 || hour > 23) {
@@ -74,7 +75,7 @@ public abstract class Menu {
             System.out.println("Wrong minute!");
             return null;
         }
-        return new Time(hour, minute);
+        return LocalTime.of(hour,minute);
     }
 
     public Set<Day> getDays() {
@@ -99,12 +100,12 @@ public abstract class Menu {
 
     public Schedule getSchedule() {
         System.out.println("Enter start time : ");
-        Time startTime = getTime();
+        LocalTime startTime = getTime();
         if (startTime == null) {
             return null;
         }
         System.out.println("Enter end time : ");
-        Time endTime = getTime();
+        LocalTime endTime = getTime();
         if (endTime == null) {
             return null;
         }

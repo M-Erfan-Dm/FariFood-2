@@ -1,5 +1,6 @@
 package ir.ac.kntu.models;
 
+import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Objects;
@@ -95,7 +96,7 @@ public class Courier {
         Calendar calendar = Calendar.getInstance();
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
-        return jobInfo.getSchedule().isTimeInInterval(new Time(hour, minute));
+        return jobInfo.getSchedule().isTimeInInterval(LocalTime.of(hour,minute));
     }
 
     @Override

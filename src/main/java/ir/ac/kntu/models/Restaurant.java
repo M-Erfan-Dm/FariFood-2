@@ -2,6 +2,7 @@ package ir.ac.kntu.models;
 
 import ir.ac.kntu.db.CouriersDB;
 
+import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
@@ -138,7 +139,7 @@ public class Restaurant {
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
         Day day = Day.values()[calendar.get(Calendar.DAY_OF_WEEK) - 1];
-        return schedule.getDays().contains(day) && schedule.isTimeInInterval(new Time(hour, minute));
+        return schedule.getDays().contains(day) && schedule.isTimeInInterval(LocalTime.of(hour,minute));
     }
 
     public boolean hireCourier(Courier courier, CourierJobInfo courierJobInfo) {

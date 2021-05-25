@@ -1,35 +1,36 @@
 package ir.ac.kntu.models;
 
+import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 public class Schedule {
-    private Time startTime;
+    private LocalTime startTime;
 
-    private Time endTime;
+    private LocalTime endTime;
 
     private Set<Day> days;
 
-    public Schedule(Time startTime, Time endTime, Set<Day> days) {
+    public Schedule(LocalTime startTime, LocalTime endTime, Set<Day> days) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.days = new HashSet<>(days);
     }
 
-    public Time getStartTime() {
+    public LocalTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Time startTime) {
+    public void setStartTime(LocalTime startTime) {
         this.startTime = startTime;
     }
 
-    public Time getEndTime() {
+    public LocalTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Time endTime) {
+    public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
     }
 
@@ -41,7 +42,7 @@ public class Schedule {
         this.days = new HashSet<>(days);
     }
 
-    public boolean isTimeInInterval(Time time) {
+    public boolean isTimeInInterval(LocalTime time) {
         return time.isAfter(startTime) && endTime.isAfter(time);
     }
 
