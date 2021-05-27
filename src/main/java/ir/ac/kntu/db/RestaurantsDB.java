@@ -20,10 +20,9 @@ public class RestaurantsDB {
         if (containsRestaurant(restaurant.getName(), restaurant.getAddress())) {
             return false;
         }
-        Restaurant newRestaurant = new Restaurant(IdGenerator.generateNewId(), restaurant.getName(),
-                restaurant.getAddress(), restaurant.getFoodMenu(),
-                restaurant.getSchedule(), restaurant.getPriceType(), restaurant.getHiredCouriers(), restaurant.getOrdersService());
-
+        Restaurant newRestaurant = new Restaurant(IdGenerator.generateNewId(),restaurant.getName(),
+                restaurant.getAddress(),restaurant.getSchedule(),restaurant.getHiredCouriers(),restaurant.getOrdersService(),
+                restaurant.getFoodMenu(),restaurant.getPriceType());
         restaurants.add(newRestaurant);
         return true;
     }
