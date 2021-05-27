@@ -3,35 +3,35 @@ package ir.ac.kntu.models;
 import ir.ac.kntu.utils.IdGenerator;
 
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
-public class OrdersService {
-    private Set<Order> orders;
+public class OrdersService<T extends Order> {
+    private Set<T> orders;
 
-    public OrdersService(Set<Order> orders) {
+    public OrdersService(Set<T> orders) {
         this.orders = orders;
     }
 
-    public Set<Order> getOrders() {
+    public Set<T> getOrders() {
         return new HashSet<>(orders);
     }
 
-    public void setOrders(Set<Order> orders) {
+    public void setOrders(Set<T> orders) {
         this.orders = orders;
     }
 
-    public void addOrder(Order order) {
-        Order newOrder = new Order(IdGenerator.generateNewId(), order.getFoods(), order.getFeedback(),
-                order.getCustomer(), order.getCourier(), order.getOrderState());
-        orders.add(newOrder);
+    public void addOrder(T order) {
+        order.setId(IdGenerator.generateNewId());
+        orders.add(order);
     }
 
-    public boolean removeOrder(Order order) {
+    public boolean removeOrder(T order) {
         return orders.remove(order);
     }
 
-    public Order getOrderById(int orderId) {
-        for (Order order : orders) {
+    public T getOrderById(int orderId) {
+        for (T order : orders) {
             if (order.getId() == orderId) {
                 return order;
             }
@@ -39,9 +39,9 @@ public class OrdersService {
         return null;
     }
 
-    public Set<Order> getOrdersByCustomer(Customer customer) {
-        Set<Order> foundOrders = new HashSet<>();
-        for (Order order : orders) {
+    public Set<T> getOrdersByCustomer(Customer customer) {
+        Set<T> foundOrders = new HashSet<>();
+        for (T order : orders) {
             if (order.getCustomer().equals(customer)) {
                 foundOrders.add(order);
             }
@@ -49,9 +49,9 @@ public class OrdersService {
         return foundOrders;
     }
 
-    public Set<Order> getOrdersByCourier(Courier courier) {
-        Set<Order> foundOrders = new HashSet<>();
-        for (Order order : orders) {
+    public Set<T> getOrdersByCourier(Courier courier) {
+        Set<T> foundOrders = new HashSet<>();
+        for (T order : orders) {
             if (order.getCourier().equals(courier)) {
                 foundOrders.add(order);
             }
@@ -59,9 +59,9 @@ public class OrdersService {
         return foundOrders;
     }
 
-    public Set<Order> getOrdersByFood(Food food) {
-        Set<Order> foundOrders = new HashSet<>();
-        for (Order order : orders) {
+    public Set<T> getOrdersByFood(Food food) {
+        Set<T> foundOrders = new HashSet<>();
+        for (T order : orders) {
             if (order.getFoods().containsKey(food)) {
                 foundOrders.add(order);
             }
@@ -69,9 +69,9 @@ public class OrdersService {
         return foundOrders;
     }
 
-    public Set<Order> getOrdersByState(OrderState orderState) {
-        Set<Order> foundOrders = new HashSet<>();
-        for (Order order : orders) {
+    public Set<T> getOrdersByState(OrderState orderState) {
+        Set<T> foundOrders = new HashSet<>();
+        for (T order : orders) {
             if (order.getOrderState() == orderState) {
                 foundOrders.add(order);
             }
@@ -81,7 +81,7 @@ public class OrdersService {
 
     public List<Feedback> getAllFeedbacks() {
         List<Feedback> feedbacks = new ArrayList<>();
-        for (Order order : orders) {
+        for (T order : orders) {
             Feedback feedback = order.getFeedback();
             if (feedback != null) {
                 feedbacks.add(feedback);
@@ -91,19 +91,12 @@ public class OrdersService {
     }
 
     public int getCountOfAllFeedbacks() {
-        int count = 0;
-        for (Order order : orders) {
-            Feedback feedback = order.getFeedback();
-            if (feedback != null) {
-                count++;
-            }
-        }
-        return count;
+        return getAllFeedbacks().size();
     }
 
     public List<Feedback> getFeedbacksOfFood(Food food) {
         List<Feedback> feedbacks = new ArrayList<>();
-        for (Order order : orders) {
+        for (T order : orders) {
             if (order.getFoods().containsKey(food) && order.getFeedback() != null) {
                 feedbacks.add(order.getFeedback());
             }
@@ -112,14 +105,17 @@ public class OrdersService {
     }
 
     public List<Food> getBestFoods(int count) {
-        List<Order> allOrders = new ArrayList<>(getOrdersByState(OrderState.DELIVERED));
+        List<T> allOrders = new ArrayList<>(getOrdersByState(OrderState.DELIVERED));
         allOrders.sort((o1, o2) -> o2.getFeedback().getRating().getValue() - o1.getFeedback().getRating().getValue());
         if (allOrders.size() > count) {
             allOrders = allOrders.subList(0, count);
         }
         List<Food> bestFoods = new ArrayList<>();
-        for (Order order : allOrders) {
+        for (T order : allOrders) {
             bestFoods.addAll(order.getFoods().keySet());
+        }
+        if (bestFoods.size()>count){
+            bestFoods = bestFoods.subList(0,count);
         }
         return bestFoods;
     }
@@ -127,7 +123,7 @@ public class OrdersService {
     public double getRatingAverageOfFood(String foodName) {
         double sum = 0;
         int count = 0;
-        for (Order order : orders) {
+        for (T order : orders) {
             if (order.getFoods().containsKey(new Food(foodName)) && order.getFeedback() != null) {
                 sum += order.getFeedback().getRating().getValue();
                 count++;
@@ -144,7 +140,7 @@ public class OrdersService {
     }
 
     public boolean containsOrder(int id) {
-        for (Order order : orders) {
+        for (T order : orders) {
             if (order.getId() == id) {
                 return true;
             }
@@ -153,23 +149,24 @@ public class OrdersService {
     }
 
     public void printAllOrders() {
-        List<Order> ordersList = new ArrayList<>(orders);
+        List<T> ordersList = new ArrayList<>(orders);
         for (int i = 0; i < ordersList.size(); i++) {
-            Order order = ordersList.get(i);
+            T order = ordersList.get(i);
             System.out.println("No." + (i + 1) + " " + order);
         }
         System.out.println(ordersList.size() + " orders found");
     }
 
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
+        if (this == o){
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (o == null || getClass() != o.getClass()){
             return false;
         }
-        OrdersService that = (OrdersService) o;
+        OrdersService<?> that = (OrdersService<?>) o;
         return orders.equals(that.orders);
     }
 
