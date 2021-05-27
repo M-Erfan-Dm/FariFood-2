@@ -25,16 +25,16 @@ public class Order {
     }
 
     public Order(int id, Map<Food,Integer> foods, Feedback feedback, Customer customer, Courier courier, OrderState orderState) {
+        this(foods, feedback, customer, courier, orderState);
         this.id = id;
-        this.foods = foods;
-        this.feedback = feedback;
-        this.customer = customer;
-        this.courier = courier;
-        this.orderState = orderState;
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Map<Food,Integer> getFoods() {
