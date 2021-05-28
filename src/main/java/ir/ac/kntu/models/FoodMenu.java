@@ -1,6 +1,7 @@
 package ir.ac.kntu.models;
 
 import java.util.*;
+import java.util.function.Predicate;
 
 public class FoodMenu {
     private Set<Food> foods;
@@ -27,12 +28,8 @@ public class FoodMenu {
     }
 
     public Food getFoodByName(String name) {
-        for (Food food : foods) {
-            if (food.getName().equals(name)) {
-                return food;
-            }
-        }
-        return null;
+        return foods.stream().filter(food -> food.getName().equals(name)).
+                findFirst().orElse(null);
     }
 
     public boolean containsFood(Food food) {
