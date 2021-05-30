@@ -7,7 +7,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
-public class Shop<T extends OrdersService<? extends Order>> {
+public abstract class Shop<O extends Order, T extends OrdersService<O>> {
     private int id;
 
     private String name;
@@ -22,20 +22,24 @@ public class Shop<T extends OrdersService<? extends Order>> {
 
     private T ordersService;
 
+    private int deliveryPrice;
+
     public Shop(int id, String name, String address, Schedule schedule,
-                CouriersDB hiredCouriers, T ordersService) {
+                CouriersDB hiredCouriers, T ordersService, int deliveryPrice) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.schedule = schedule;
         this.hiredCouriers = hiredCouriers;
         this.ordersService = ordersService;
+        this.deliveryPrice = deliveryPrice;
     }
 
-    public Shop(String name, String address, Schedule schedule) {
+    public Shop(String name, String address, Schedule schedule, int deliveryPrice) {
         this.name = name;
         this.address = address;
         this.schedule = schedule;
+        this.deliveryPrice = deliveryPrice;
     }
 
     public int getId() {
@@ -86,6 +90,13 @@ public class Shop<T extends OrdersService<? extends Order>> {
         this.ordersService = ordersService;
     }
 
+    public int getDeliveryPrice() {
+        return deliveryPrice;
+    }
+
+    public void setDeliveryPrice(int deliveryPrice) {
+        this.deliveryPrice = deliveryPrice;
+    }
 
     public double updateRating() {
         List<Feedback> feedbacks = ordersService.getAllFeedbacks();
@@ -126,6 +137,9 @@ public class Shop<T extends OrdersService<? extends Order>> {
         return 2 * rating + ordersService.getCount();
     }
 
+    abstract public int getAdditionalPrices(O order);
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -134,7 +148,7 @@ public class Shop<T extends OrdersService<? extends Order>> {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Shop<?> shop = (Shop<?>) o;
+        Shop<?,?> shop = (Shop<?,?>) o;
         return id == shop.id;
     }
 
