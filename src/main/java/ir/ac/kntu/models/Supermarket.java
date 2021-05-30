@@ -8,10 +8,10 @@ import ir.ac.kntu.service.SupermarketPeriodsService;
 
 import java.util.List;
 
-public class Supermarket extends Shop<PeriodicalOrder,PeriodicalOrdersService> implements PeriodsServiceImpl {
+public class Supermarket extends Shop<PeriodicalOrder,PeriodicalOrdersService> {
 
 
-    private final PeriodsService periodsService;
+    private final SupermarketPeriodsService periodsService;
 
     private PremiumCustomersService premiumCustomersService;
 
@@ -28,34 +28,16 @@ public class Supermarket extends Shop<PeriodicalOrder,PeriodicalOrdersService> i
         periodsService = new SupermarketPeriodsService(this, periodBasePrice);
     }
 
-    public int getPeriodBasePrice() {
-        return periodsService.getPeriodBasePrice();
-    }
-
-    public void setPeriodBasePrice(int periodBasePrice) {
-        periodsService.setPeriodBasePrice(periodBasePrice);
+    public SupermarketPeriodsService getPeriodsService() {
+        return periodsService;
     }
 
     @Override
     public int getAdditionalPrices(PeriodicalOrder order) {
         if (premiumCustomersService.containsCustomer(order.getCustomer())){
-            return getPriceOfPeriod(order.getTimePeriod());
+            return periodsService.getPriceOfPeriod(order.getTimePeriod());
         }
-        return getDeliveryPrice() + getPriceOfPeriod(order.getTimePeriod());
+        return getDeliveryPrice() + periodsService.getPriceOfPeriod(order.getTimePeriod());
     }
 
-    @Override
-    public List<TimePeriod> getActivePeriods() {
-        return periodsService.getActivePeriods();
-    }
-
-    @Override
-    public int getPriceOfPeriod(TimePeriod timePeriod) {
-        return periodsService.getPriceOfPeriod(timePeriod);
-    }
-
-    @Override
-    public int getPeriodCapacity(TimePeriod timePeriod) {
-        return periodsService.getPeriodCapacity(timePeriod);
-    }
 }
