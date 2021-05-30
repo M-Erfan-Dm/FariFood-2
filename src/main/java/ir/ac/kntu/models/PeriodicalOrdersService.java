@@ -11,13 +11,13 @@ public class PeriodicalOrdersService extends OrdersService<PeriodicalOrder> {
         super(orders);
     }
 
-    public List<PeriodicalOrder> getListOfOrdersByTimePeriod(TimePeriod timePeriod) {
+    public List<PeriodicalOrder> getOrdersByTimePeriod(TimePeriod timePeriod) {
         return getOrders().stream().filter(periodicalOrder -> periodicalOrder.getTimePeriod().equals(
                 timePeriod)).collect(Collectors.toList());
     }
 
     public List<PeriodicalOrder> getActiveOrders(TimePeriod timePeriod){
-        return getListOfOrdersByTimePeriod(timePeriod).stream().filter(
+        return getOrdersByTimePeriod(timePeriod).stream().filter(
                 periodicalOrder -> periodicalOrder.getOrderState()!=OrderState.DELIVERED)
                 .collect(Collectors.toList());
     }
