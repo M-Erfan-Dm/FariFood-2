@@ -86,6 +86,10 @@ public class Order {
         return null;
     }
 
+    public int getCountOfFoods(){
+        return foods.values().stream().reduce(0,Integer::sum);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
