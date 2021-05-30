@@ -3,8 +3,6 @@ package ir.ac.kntu.models;
 import ir.ac.kntu.utils.IdGenerator;
 
 import java.util.*;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 
 public class OrdersService<T extends Order> {
     private Set<T> orders;
@@ -28,6 +26,14 @@ public class OrdersService<T extends Order> {
 
     public boolean removeOrder(T order) {
         return orders.remove(order);
+    }
+
+    public int getTotalPriceForOrder(T order, Shop<T,? extends OrdersService<T>> shop) {
+        int sum = 0;
+        for (Map.Entry<Food,Integer> food : order.getFoods().entrySet()){
+            sum += food.getKey().getPrice() * food.getValue();
+        }
+        return sum + shop.getAdditionalPrices(order);
     }
 
     public T getOrderById(int orderId) {
@@ -114,8 +120,8 @@ public class OrdersService<T extends Order> {
         for (T order : allOrders) {
             bestFoods.addAll(order.getFoods().keySet());
         }
-        if (bestFoods.size()>count){
-            bestFoods = bestFoods.subList(0,count);
+        if (bestFoods.size() > count) {
+            bestFoods = bestFoods.subList(0, count);
         }
         return bestFoods;
     }
@@ -160,10 +166,10 @@ public class OrdersService<T extends Order> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o){
+        if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()){
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
         OrdersService<?> that = (OrdersService<?>) o;
