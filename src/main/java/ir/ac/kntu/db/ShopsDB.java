@@ -48,6 +48,10 @@ public class ShopsDB<T extends Shop<O, ? extends OrdersService<O>>, O extends Or
         return shops.stream().filter(shop -> shop.getName().equals(name)).collect(Collectors.toSet());
     }
 
+    public Set<T> getShopsByOwner(Owner owner){
+        return shops.stream().filter(shop->shop.getOwner().equals(owner)).collect(Collectors.toSet());
+    }
+
     public Set<T> getActiveShops() {
         return shops.stream().filter(shop -> shop.isActive()).collect(Collectors.toSet());
     }
