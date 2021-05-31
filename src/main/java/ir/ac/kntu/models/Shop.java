@@ -1,11 +1,10 @@
 package ir.ac.kntu.models;
 
 import ir.ac.kntu.db.CouriersDB;
+import ir.ac.kntu.db.ShopsDB;
 
 import java.time.LocalTime;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public abstract class Shop<O extends Order, T extends OrdersService<O>> {
     private int id;
@@ -44,6 +43,10 @@ public abstract class Shop<O extends Order, T extends OrdersService<O>> {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
