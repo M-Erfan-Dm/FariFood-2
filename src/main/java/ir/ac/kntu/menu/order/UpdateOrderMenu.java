@@ -19,7 +19,7 @@ public class UpdateOrderMenu extends Menu {
     @Override
     public void show() {
         int id = getId();
-        Restaurant restaurant = restaurantsDB.getRestaurantByOrderId(id);
+        Restaurant restaurant = restaurantsDB.getShopByOrderId(id);
         if (restaurant == null) {
             System.out.println("Order not found");
             return;

@@ -69,7 +69,7 @@ public class OrdersMenu extends Menu {
 
     private void cancelOrder() {
         int id = getId();
-        Restaurant restaurant = restaurantsDB.getRestaurantByOrderId(id);
+        Restaurant restaurant = restaurantsDB.getShopByOrderId(id);
         if (restaurant == null) {
             System.out.println("Order not found");
             return;

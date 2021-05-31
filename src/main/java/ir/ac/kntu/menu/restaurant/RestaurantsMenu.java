@@ -83,7 +83,7 @@ public class RestaurantsMenu extends Menu {
 
     private void updateRestaurant() {
         int id = getId();
-        Restaurant restaurant = restaurantsDB.getRestaurantById(id);
+        Restaurant restaurant = restaurantsDB.getShopById(id);
         if (restaurant == null) {
             System.out.println("Restaurant not found!");
             return;
@@ -101,7 +101,7 @@ public class RestaurantsMenu extends Menu {
 
     private void findById() {
         int id = getId();
-        Restaurant restaurant = restaurantsDB.getRestaurantById(id);
+        Restaurant restaurant = restaurantsDB.getShopById(id);
         if (restaurant == null) {
             System.out.println("Restaurant not found");
             return;
@@ -157,8 +157,8 @@ public class RestaurantsMenu extends Menu {
 
     private void removeRestaurant() {
         int id = getId();
-        Restaurant restaurant = restaurantsDB.getRestaurantById(id);
-        boolean isRemoved = restaurantsDB.removeRestaurant(restaurant);
+        Restaurant restaurant = restaurantsDB.getShopById(id);
+        boolean isRemoved = restaurantsDB.remove(restaurant);
         if (isRemoved) {
             System.out.println("Restaurant is removed");
         } else {
