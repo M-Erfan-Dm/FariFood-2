@@ -1,11 +1,13 @@
 package ir.ac.kntu.menu;
 
+import ir.ac.kntu.menu.admin.AdminOption;
 import ir.ac.kntu.models.*;
 import ir.ac.kntu.utils.ScannerWrapper;
 
 import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 public abstract class Menu {
@@ -75,7 +77,7 @@ public abstract class Menu {
             System.out.println("Wrong minute!");
             return null;
         }
-        return LocalTime.of(hour,minute);
+        return LocalTime.of(hour, minute);
     }
 
     public Set<Day> getDays() {
@@ -140,12 +142,28 @@ public abstract class Menu {
         return new Feedback(rating, comment);
     }
 
-    public Integer getCount(int min){
+    public Integer getCount(int min) {
         System.out.println("Enter count :");
         int count = Integer.parseInt(ScannerWrapper.nextLine());
-        if (count>= min) {
+        if (count >= min) {
             return count;
         }
         return null;
+    }
+
+    public <T extends Enum<T>> T printMenuOptions(String title, Class<T> tEnum) {
+        System.out.println("----------" + title + "----------");
+        printEnumOptions(tEnum);
+        System.out.print("Enter your choice : ");
+        return getOption(tEnum);
+    }
+
+    private <T extends Enum<T>> void printEnumOptions(Class<T> tEnum) {
+        T[] constants = tEnum.getEnumConstants();
+        for (int i = 0; i < constants.length; i++) {
+            String constant = constants[i].name();
+            String capitalizedConstant = constant.substring(0,1).toUpperCase() + constant.substring(1).toLowerCase();
+            System.out.println((i+1)+  "." + capitalizedConstant);
+        }
     }
 }
