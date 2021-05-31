@@ -4,17 +4,18 @@ import ir.ac.kntu.models.*;
 import ir.ac.kntu.utils.IdGenerator;
 import ir.ac.kntu.utils.ListSorting;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ShopsDB<T extends Shop<O, ? extends OrdersService<O>>, O extends Order> {
-    protected Set<T> shops;
+    private Set<T> shops;
 
     public ShopsDB(Set<T> shops) {
         this.shops = shops;
+    }
+
+    public Set<T> getShops() {
+        return new HashSet<>(shops);
     }
 
     public void setShops(Set<T> shops) {
@@ -43,20 +44,20 @@ public class ShopsDB<T extends Shop<O, ? extends OrdersService<O>>, O extends Or
                 && shop.getAddress().equals(address));
     }
 
-    public List<T> getShopsByName(String name) {
-        return shops.stream().filter(shop -> shop.getName().equals(name)).collect(Collectors.toList());
+    public Set<T> getShopsByName(String name) {
+        return shops.stream().filter(shop -> shop.getName().equals(name)).collect(Collectors.toSet());
     }
 
-    public List<T> getActiveShops() {
-        return shops.stream().filter(shop -> shop.isActive()).collect(Collectors.toList());
+    public Set<T> getActiveShops() {
+        return shops.stream().filter(shop -> shop.isActive()).collect(Collectors.toSet());
     }
 
     public T getShopById(int id) {
         return shops.stream().filter(shop -> shop.getId() == id).findFirst().orElse(null);
     }
 
-    public List<O> getAllOrders() {
-        List<O> orders = new ArrayList<>();
+    public Set<O> getAllOrders() {
+        Set<O> orders = new HashSet<>();
         shops.forEach(shop -> orders.addAll(shop.getOrdersService().getOrders()));
         return orders;
     }

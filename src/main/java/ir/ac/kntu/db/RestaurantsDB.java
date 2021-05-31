@@ -13,11 +13,11 @@ public class RestaurantsDB extends ShopsDB<Restaurant,Order>{
     }
 
     public Set<Restaurant> getRestaurantsByPriceType(RestaurantPriceType priceType) {
-        return shops.stream().filter(shop->shop.getPriceType().equals(priceType)).collect(Collectors.toSet());
+        return getShops().stream().filter(shop->shop.getPriceType().equals(priceType)).collect(Collectors.toSet());
     }
 
     public List<Restaurant> getRestaurantsByFood(Food food) {
-        return shops.stream().filter(shop->shop.getFoodMenu().containsFood(food)).collect(Collectors.toList());
+        return getShops().stream().filter(shop->shop.getFoodMenu().containsFood(food)).collect(Collectors.toList());
     }
 
     public List<Restaurant> getBestRestaurantsByFood(Food food, int count) {
