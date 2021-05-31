@@ -11,10 +11,10 @@ public class FruitShop extends Shop<PeriodicalOrder,PeriodicalOrdersService> {
 
     private final FruitShopPeriodsService periodsService;
 
-    public FruitShop(int id, String name, String address, Schedule schedule,
+    public FruitShop(int id, Owner owner,String name, String address, Schedule schedule,
                      CouriersDB hiredCouriers, PeriodicalOrdersService ordersService,
                      int deliveryPrice, int periodBasePrice, int fruitKGLimit) {
-        super(id, name, address, schedule, hiredCouriers, ordersService, deliveryPrice);
+        super(id, owner, name, address, schedule, hiredCouriers, ordersService, deliveryPrice);
         periodsService = new FruitShopPeriodsService(this,periodBasePrice,fruitKGLimit);
     }
 

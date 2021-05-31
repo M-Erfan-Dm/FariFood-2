@@ -9,6 +9,8 @@ import java.util.*;
 public abstract class Shop<O extends Order, T extends OrdersService<O>> {
     private int id;
 
+    private Owner owner;
+
     private String name;
 
     private String address;
@@ -23,9 +25,10 @@ public abstract class Shop<O extends Order, T extends OrdersService<O>> {
 
     private int deliveryPrice;
 
-    public Shop(int id, String name, String address, Schedule schedule,
+    public Shop(int id, Owner owner,String name, String address, Schedule schedule,
                 CouriersDB hiredCouriers, T ordersService, int deliveryPrice) {
         this.id = id;
+        this.owner = owner;
         this.name = name;
         this.address = address;
         this.schedule = schedule;
@@ -47,6 +50,14 @@ public abstract class Shop<O extends Order, T extends OrdersService<O>> {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 
     public String getName() {

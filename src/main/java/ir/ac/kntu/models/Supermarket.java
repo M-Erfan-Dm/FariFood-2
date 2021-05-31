@@ -15,10 +15,10 @@ public class Supermarket extends Shop<PeriodicalOrder,PeriodicalOrdersService> {
 
     private PremiumCustomersService premiumCustomersService;
 
-    public Supermarket(int id, String name, String address, Schedule schedule,
+    public Supermarket(int id, Owner owner, String name, String address, Schedule schedule,
                        CouriersDB hiredCouriers, PeriodicalOrdersService ordersService,
                        int deliveryPrice, int periodBasePrice, PremiumCustomersService premiumCustomersService) {
-        super(id, name, address, schedule, hiredCouriers, ordersService, deliveryPrice);
+        super(id, owner,name, address, schedule, hiredCouriers, ordersService, deliveryPrice);
         periodsService = new SupermarketPeriodsService(this, periodBasePrice);
         this.premiumCustomersService = premiumCustomersService;
     }

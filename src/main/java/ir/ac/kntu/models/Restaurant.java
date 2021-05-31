@@ -2,22 +2,22 @@ package ir.ac.kntu.models;
 
 import ir.ac.kntu.db.CouriersDB;
 
-public class Restaurant extends Shop<Order,OrdersService<Order>> {
+public class Restaurant extends Shop<Order, OrdersService<Order>> {
 
     private FoodMenu foodMenu;
 
     private RestaurantPriceType priceType;
 
-    public Restaurant(int id, String name, String address, Schedule schedule,
+    public Restaurant(int id, Owner owner, String name, String address, Schedule schedule,
                       CouriersDB hiredCouriers, OrdersService<Order> ordersService, int deliveryPrice,
                       FoodMenu foodMenu, RestaurantPriceType priceType) {
-        super(id, name, address, schedule, hiredCouriers, ordersService,deliveryPrice);
+        super(id, owner, name, address, schedule, hiredCouriers, ordersService, deliveryPrice);
         this.foodMenu = foodMenu;
         this.priceType = priceType;
     }
 
     public Restaurant(String name, String address, Schedule schedule, RestaurantPriceType priceType, int deliveryPrice) {
-        super(name, address, schedule,deliveryPrice);
+        super(name, address, schedule, deliveryPrice);
         this.priceType = priceType;
     }
 
@@ -48,5 +48,6 @@ public class Restaurant extends Shop<Order,OrdersService<Order>> {
         String parentString = super.toString().substring(0, super.toString().lastIndexOf("}"));
         return parentString +
                 ", priceType=" + priceType +
-                '}';    }
+                '}';
+    }
 }
