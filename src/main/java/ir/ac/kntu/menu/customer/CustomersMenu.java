@@ -112,7 +112,7 @@ public class CustomersMenu extends Menu {
 
     private void removeCustomer() {
         String phoneNumber = getPhoneNumber();
-        Customer customer = new Customer(phoneNumber, "");
+        Customer customer = new Customer(phoneNumber, "","");
         boolean isRemoved = customersDB.removeCustomer(customer);
         if (isRemoved) {
             System.out.println("Customer is removed");
@@ -142,7 +142,8 @@ public class CustomersMenu extends Menu {
 
     private Customer getCustomerInfo() {
         String phoneNumber = getPhoneNumber();
+        String password = getPassword();
         String address = getAddress();
-        return new Customer(phoneNumber, address);
+        return new Customer(phoneNumber,password,address);
     }
 }

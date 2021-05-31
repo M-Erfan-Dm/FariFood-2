@@ -5,10 +5,13 @@ import java.util.Objects;
 public class Customer {
     private String phoneNumber;
 
+    private String password;
+
     private String address;
 
-    public Customer(String phoneNumber, String address) {
+    public Customer(String phoneNumber, String password, String address) {
         this.phoneNumber = phoneNumber;
+        this.password = password;
         this.address = address;
     }
 
@@ -26,6 +29,14 @@ public class Customer {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
