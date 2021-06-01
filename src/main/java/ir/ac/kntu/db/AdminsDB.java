@@ -30,13 +30,8 @@ public class AdminsDB {
     }
 
     public boolean isAdminValid(Admin admin) {
-        for (Admin existingAdmin : admins) {
-            if (existingAdmin.getUsername().equals(admin.getUsername()) &&
-                    existingAdmin.getPassword().equals(admin.getPassword())) {
-                return true;
-            }
-        }
-        return false;
+        return admins.stream().anyMatch(existingAdmin -> existingAdmin.getPhoneNumber()
+                .equals(admin.getPhoneNumber()) && existingAdmin.getPassword().equals(admin.getPassword()));
     }
 
     @Override

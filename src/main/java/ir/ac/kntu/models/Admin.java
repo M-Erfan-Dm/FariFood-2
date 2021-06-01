@@ -3,21 +3,21 @@ package ir.ac.kntu.models;
 import java.util.Objects;
 
 public class Admin {
-    private String username;
+    private String phoneNumber;
 
     private String password;
 
-    public Admin(String username, String password) {
-        this.username = username;
+    public Admin(String phoneNumber, String password) {
+        this.phoneNumber = phoneNumber;
         this.password = password;
     }
 
-    public String getUsername() {
-        return username;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getPassword() {
@@ -37,17 +37,17 @@ public class Admin {
             return false;
         }
         Admin admin = (Admin) o;
-        return username.equals(admin.username);
+        return phoneNumber.equals(admin.phoneNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username);
+        return Objects.hash(phoneNumber);
     }
 
     @Override
     public String toString() {
-        return "{username='" + username + '\'' +
+        return "{username='" + phoneNumber + '\'' +
                 ", password='" + password + '\'' + "}";
     }
 }
