@@ -34,6 +34,11 @@ public class CustomersDB {
         return customers.contains(customer);
     }
 
+    public boolean isCustomerValid(String phoneNumber , String password){
+        return customers.stream().anyMatch(existingCustomer->existingCustomer.getPhoneNumber().equals(phoneNumber) &&
+                existingCustomer.getPassword().equals(password));
+    }
+
     public Customer getCustomerByPhoneNumber(String phoneNumber) {
         for (Customer customer : customers) {
             if (customer.getPhoneNumber().equals(phoneNumber)) {

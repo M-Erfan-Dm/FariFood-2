@@ -25,10 +25,9 @@ public class OwnersDB {
         return owners.remove(owner);
     }
 
-    public boolean isOwnerValid(Owner owner) {
-        return owners.stream().anyMatch(existingOwner -> existingOwner.getPhoneNumber().
-                equals(owner.getPhoneNumber()) &&
-                existingOwner.getPassword().equals(owner.getPassword()));
+    public boolean isOwnerValid(String phoneNumber, String password) {
+        return owners.stream().anyMatch(existingOwner -> existingOwner.getPhoneNumber().equals(phoneNumber)
+                && existingOwner.getPassword().equals(password));
     }
 
     @Override

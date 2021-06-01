@@ -29,9 +29,9 @@ public class AdminsDB {
         return admins.contains(new Admin(username, ""));
     }
 
-    public boolean isAdminValid(Admin admin) {
-        return admins.stream().anyMatch(existingAdmin -> existingAdmin.getPhoneNumber()
-                .equals(admin.getPhoneNumber()) && existingAdmin.getPassword().equals(admin.getPassword()));
+    public boolean isAdminValid(String phoneNumber, String password) {
+        return admins.stream().anyMatch(admin -> admin.getPhoneNumber()
+                .equals(phoneNumber) && admin.getPassword().equals(password));
     }
 
     @Override
