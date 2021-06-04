@@ -3,18 +3,18 @@ package ir.ac.kntu.models;
 import java.util.Objects;
 
 public class Settings {
-    private RestaurantsFilteringStrategy restaurantsFilteringStrategy;
+    private ShopsFilteringStrategy shopsFilteringStrategy;
 
-    public Settings(RestaurantsFilteringStrategy restaurantsFilteringStrategy) {
-        this.restaurantsFilteringStrategy = restaurantsFilteringStrategy;
+    public Settings(ShopsFilteringStrategy shopsFilteringStrategy) {
+        this.shopsFilteringStrategy = shopsFilteringStrategy;
     }
 
-    public RestaurantsFilteringStrategy getRestaurantsFilteringStrategy() {
-        return restaurantsFilteringStrategy;
+    public ShopsFilteringStrategy getRestaurantsFilteringStrategy() {
+        return shopsFilteringStrategy;
     }
 
-    public void setRestaurantsFilteringStrategy(RestaurantsFilteringStrategy restaurantsFilteringStrategy) {
-        this.restaurantsFilteringStrategy = restaurantsFilteringStrategy;
+    public void setRestaurantsFilteringStrategy(ShopsFilteringStrategy shopsFilteringStrategy) {
+        this.shopsFilteringStrategy = shopsFilteringStrategy;
     }
 
     @Override
@@ -26,16 +26,16 @@ public class Settings {
             return false;
         }
         Settings settings = (Settings) o;
-        return restaurantsFilteringStrategy == settings.restaurantsFilteringStrategy;
+        return shopsFilteringStrategy == settings.shopsFilteringStrategy;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(restaurantsFilteringStrategy);
+        return Objects.hash(shopsFilteringStrategy);
     }
 
     @Override
     public String toString() {
-        return "{restaurants listing strategy = " + restaurantsFilteringStrategy + "}";
+        return "{restaurants listing strategy = " + shopsFilteringStrategy + "}";
     }
 }

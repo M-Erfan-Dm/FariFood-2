@@ -1,7 +1,7 @@
 package ir.ac.kntu.menu.settings;
 
 import ir.ac.kntu.menu.Menu;
-import ir.ac.kntu.models.RestaurantsFilteringStrategy;
+import ir.ac.kntu.models.ShopsFilteringStrategy;
 import ir.ac.kntu.models.Settings;
 
 public class SettingsMenu extends Menu {
@@ -34,13 +34,13 @@ public class SettingsMenu extends Menu {
 
 
     private void filterRestaurants() {
-        RestaurantsFilteringStrategy.printOptions();
+        printEnumOptions(ShopsFilteringStrategy.class);
         System.out.println("Enter your choice of filtering restaurants :");
-        RestaurantsFilteringStrategy restaurantsFilteringStrategy = getOption(RestaurantsFilteringStrategy.class);
-        if (restaurantsFilteringStrategy == null) {
+        ShopsFilteringStrategy shopsFilteringStrategy = getOption(ShopsFilteringStrategy.class);
+        if (shopsFilteringStrategy == null) {
             return;
         }
-        settings.setRestaurantsFilteringStrategy(restaurantsFilteringStrategy);
+        settings.setRestaurantsFilteringStrategy(shopsFilteringStrategy);
     }
 
     private void showSettings() {
