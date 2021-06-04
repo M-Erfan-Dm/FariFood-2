@@ -158,7 +158,7 @@ public abstract class Menu {
         return getOption(tEnum);
     }
 
-    private <T extends Enum<T>> void printEnumOptions(Class<T> tEnum) {
+    public  <T extends Enum<T>> void printEnumOptions(Class<T> tEnum) {
         T[] constants = tEnum.getEnumConstants();
         for (int i = 0; i < constants.length; i++) {
             String constant = constants[i].name();
