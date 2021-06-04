@@ -14,8 +14,9 @@ public class SettingsMenu extends Menu {
 
     @Override
     public void show() {
-        SettingsOption settingsOption = printMenuOptions();
-        while (settingsOption != SettingsOption.BACK) {
+        SettingsOption settingsOption ;
+        while ((settingsOption= printMenuOptions("Settings Menu",SettingsOption.class))
+                != SettingsOption.BACK) {
             if (settingsOption != null) {
                 switch (settingsOption) {
                     case RESTAURANTS_FILTERING:
@@ -28,17 +29,9 @@ public class SettingsMenu extends Menu {
                         break;
                 }
             }
-            settingsOption = printMenuOptions();
         }
     }
 
-
-    private SettingsOption printMenuOptions() {
-        System.out.println("----------Settings Menu----------");
-        SettingsOption.printOptions();
-        System.out.print("Enter your choice : ");
-        return getOption(SettingsOption.class);
-    }
 
     private void filterRestaurants() {
         RestaurantsFilteringStrategy.printOptions();
