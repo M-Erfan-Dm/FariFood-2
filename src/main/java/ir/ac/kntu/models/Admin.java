@@ -7,9 +7,12 @@ public class Admin {
 
     private String password;
 
-    public Admin(String phoneNumber, String password) {
+    private Settings settings;
+
+    public Admin(String phoneNumber, String password, Settings settings) {
         this.phoneNumber = phoneNumber;
         this.password = password;
+        this.settings = settings;
     }
 
     public String getPhoneNumber() {
@@ -26,6 +29,14 @@ public class Admin {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Settings getSettings() {
+        return settings;
+    }
+
+    public void setSettings(Settings settings) {
+        this.settings = settings;
     }
 
     @Override
