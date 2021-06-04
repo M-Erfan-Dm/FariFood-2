@@ -18,6 +18,7 @@ public class AdminsDB {
     }
 
     public boolean addAdmin(Admin admin) {
+        removeAdmin(admin);
         return admins.add(admin);
     }
 
@@ -25,8 +26,8 @@ public class AdminsDB {
         return admins.remove(admin);
     }
 
-    public boolean containsUsername(String username) {
-        return admins.contains(new Admin(username, ""));
+    public boolean containsAdmin(Admin admin) {
+        return admins.contains(admin);
     }
 
     public boolean isAdminValid(String phoneNumber, String password) {
