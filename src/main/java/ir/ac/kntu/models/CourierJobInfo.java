@@ -3,24 +3,25 @@ package ir.ac.kntu.models;
 import java.util.Objects;
 
 public class CourierJobInfo {
-    private Restaurant restaurant;
+    private Shop<? extends Order,? extends OrdersService<? extends Order>> shop;
 
     private Schedule schedule;
 
     private Salary salary;
 
-    public CourierJobInfo(Restaurant restaurant, Schedule schedule, Salary salary) {
-        this.restaurant = restaurant;
+    public CourierJobInfo(Shop<? extends Order, ? extends OrdersService<? extends Order>> shop,
+                          Schedule schedule, Salary salary) {
+        this.shop = shop;
         this.schedule = schedule;
         this.salary = salary;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
+    public Shop<? extends Order, ? extends OrdersService<? extends Order>> getShop() {
+        return shop;
     }
 
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
+    public void setShop(Shop<? extends Order, ? extends OrdersService<? extends Order>> shop) {
+        this.shop = shop;
     }
 
     public Schedule getSchedule() {
@@ -41,26 +42,25 @@ public class CourierJobInfo {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
+        if (this == o){
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (o == null || getClass() != o.getClass()){
             return false;
         }
         CourierJobInfo that = (CourierJobInfo) o;
-        return restaurant.equals(that.restaurant) && schedule.equals(that.schedule) && salary.equals(that.salary);
+        return shop.equals(that.shop) && schedule.equals(that.schedule) && salary.equals(that.salary);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(restaurant, schedule, salary);
+        return Objects.hash(shop, schedule, salary);
     }
 
     @Override
     public String toString() {
-        return "{restaurant=" + restaurant +
+        return "{shop=" + shop +
                 ", schedule=" + schedule +
                 ", salary=" + salary + "}";
-
     }
 }
