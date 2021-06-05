@@ -3,6 +3,7 @@ package ir.ac.kntu.db;
 import ir.ac.kntu.models.Courier;
 import ir.ac.kntu.models.Order;
 import ir.ac.kntu.models.OrdersService;
+import ir.ac.kntu.models.ShopsDBReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,10 +40,10 @@ public class CouriersDB {
         return null;
     }
 
-    public Set<Order> getOrdersOfCourier(String courierPhoneNumber, RestaurantsDB restaurantsDB) {
+    public Set<Order> getOrdersOfCourier(String courierPhoneNumber, ShopsDBReference shopsDBReference) {
         Courier courier = getCourierByPhoneNumber(courierPhoneNumber);
         if (courier != null) {
-            OrdersService ordersService = new OrdersService(restaurantsDB.getAllOrders());
+            OrdersService<Order> ordersService = new OrdersService<>(shopsDBReference.getAllOrders());
             return ordersService.getOrdersByCourier(courier);
         }
         return null;
