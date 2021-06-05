@@ -1,6 +1,7 @@
 package ir.ac.kntu.menu.auth;
 
 import ir.ac.kntu.db.AdminsDB;
+import ir.ac.kntu.db.CouriersDB;
 import ir.ac.kntu.db.CustomersDB;
 import ir.ac.kntu.db.OwnersDB;
 import ir.ac.kntu.menu.Menu;
@@ -17,12 +18,16 @@ public class AuthenticationMenu extends Menu {
 
     private final CustomersDB customersDB;
 
+    private final CouriersDB couriersDB;
+
     private final ShopsDBReference shopsDBReference;
 
-    public AuthenticationMenu(AdminsDB adminsDB, OwnersDB ownersDB, CustomersDB customersDB, ShopsDBReference shopsDBReference) {
+    public AuthenticationMenu(AdminsDB adminsDB, OwnersDB ownersDB, CustomersDB customersDB,
+                              CouriersDB couriersDB, ShopsDBReference shopsDBReference) {
         this.adminsDB = adminsDB;
         this.ownersDB = ownersDB;
         this.customersDB = customersDB;
+        this.couriersDB = couriersDB;
         this.shopsDBReference = shopsDBReference;
     }
 
@@ -100,7 +105,7 @@ public class AuthenticationMenu extends Menu {
         boolean isAdminValid = adminsDB.isAdminValid(phoneNumber, password);
         if (isAdminValid) {
             Admin admin = adminsDB.getAdminByPhoneNumber(phoneNumber);
-            AdminMenu adminMenu = new AdminMenu(admin,shopsDBReference);
+            AdminMenu adminMenu = new AdminMenu(admin,shopsDBReference, couriersDB);
             adminMenu.show();
         }else {
             System.out.println("Admin not found");
@@ -130,7 +135,7 @@ public class AuthenticationMenu extends Menu {
     }
 
     private void registerAdmin(String phoneNumber, String password) {
-        Admin admin = new Admin(phoneNumber, password);
+        Admin admin = new Admin(phoneNumber, password, new Settings());
         if (adminsDB.containsAdmin(admin)) {
             System.out.println("Admin already exists");
             return;
