@@ -1,12 +1,8 @@
 package ir.ac.kntu.models;
 
 import ir.ac.kntu.db.CouriersDB;
-import ir.ac.kntu.service.PeriodsService;
-import ir.ac.kntu.service.PeriodsServiceImpl;
 import ir.ac.kntu.service.PremiumCustomersService;
 import ir.ac.kntu.service.SupermarketPeriodsService;
-
-import java.util.List;
 
 public class Supermarket extends Shop<PeriodicalOrder,PeriodicalOrdersService> {
 
@@ -17,14 +13,14 @@ public class Supermarket extends Shop<PeriodicalOrder,PeriodicalOrdersService> {
 
     public Supermarket(int id, Owner owner, String name, String address, Schedule schedule,
                        CouriersDB hiredCouriers, PeriodicalOrdersService ordersService,
-                       int deliveryPrice, int periodBasePrice, PremiumCustomersService premiumCustomersService) {
-        super(id, owner,name, address, schedule, hiredCouriers, ordersService, deliveryPrice);
+                       int deliveryPrice, int periodBasePrice, PremiumCustomersService premiumCustomersService,ShopPriceType priceType) {
+        super(id, owner,name, address, schedule, hiredCouriers, ordersService, deliveryPrice, priceType);
         periodsService = new SupermarketPeriodsService(this, periodBasePrice);
         this.premiumCustomersService = premiumCustomersService;
     }
 
-    public Supermarket(String name, String address, Schedule schedule, int deliveryPrice, int periodBasePrice) {
-        super(name, address, schedule, deliveryPrice);
+    public Supermarket(String name, String address, Schedule schedule, int deliveryPrice, int periodBasePrice,ShopPriceType priceType) {
+        super(name, address, schedule, deliveryPrice, priceType);
         periodsService = new SupermarketPeriodsService(this, periodBasePrice);
     }
 

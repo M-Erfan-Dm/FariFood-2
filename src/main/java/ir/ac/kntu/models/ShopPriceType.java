@@ -1,6 +1,6 @@
 package ir.ac.kntu.models;
 
-public enum RestaurantPriceType {
+public enum ShopPriceType {
     ECONOMICAL,
     MIDDLE,
     LUXURIOUS;
