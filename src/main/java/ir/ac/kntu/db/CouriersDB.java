@@ -64,15 +64,6 @@ public class CouriersDB {
         return foundCouriers;
     }
 
-    public void printAllCouriers() {
-        List<Courier> courierList = new ArrayList<>(couriers);
-        for (int i = 0; i < courierList.size(); i++) {
-            Courier courier = courierList.get(i);
-            System.out.println("No." + (i + 1) + " " + courier);
-        }
-        System.out.println(courierList.size() + " couriers found");
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {

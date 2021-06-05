@@ -116,7 +116,7 @@ public class CouriersMenu extends Menu {
 
 
     private void showAll() {
-        couriersDB.printAllCouriers();
+        printList(new ArrayList<>(couriersDB.getCouriers()),"couriers");
     }
 
     private void removeCourier() {
