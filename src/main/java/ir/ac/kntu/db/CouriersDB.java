@@ -5,16 +5,17 @@ import ir.ac.kntu.models.Order;
 import ir.ac.kntu.models.OrdersService;
 import ir.ac.kntu.models.ShopsDBReference;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class CouriersDB {
     private Set<Courier> couriers;
 
     public CouriersDB(Set<Courier> couriers) {
         this.couriers = couriers;
+    }
+
+    public Set<Courier> getCouriers() {
+        return new HashSet<>(couriers);
     }
 
     public void setCouriers(Set<Courier> couriers) {
