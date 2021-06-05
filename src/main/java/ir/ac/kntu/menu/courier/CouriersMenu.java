@@ -7,17 +7,18 @@ import ir.ac.kntu.models.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class CouriersMenu extends Menu {
 
 
     private final CouriersDB couriersDB;
 
-    private final RestaurantsDB restaurantsDB;
+    private final ShopsDBReference shopsDBReference;
 
-    public CouriersMenu(CouriersDB couriersDB, RestaurantsDB restaurantsDB) {
+    public CouriersMenu(CouriersDB couriersDB, ShopsDBReference shopsDBReference) {
         this.couriersDB = couriersDB;
-        this.restaurantsDB = restaurantsDB;
+        this.shopsDBReference = shopsDBReference;
     }
 
     @Override
@@ -151,20 +152,14 @@ public class CouriersMenu extends Menu {
     }
 
     private void showFeedbacksOfCourier(Courier courier) {
-        List<Order> orders = new ArrayList<>(couriersDB.getOrdersOfCourier(courier.getPhoneNumber(), restaurantsDB));
-        int count = 0;
-        for (int i = 0; i < orders.size(); i++) {
-            Feedback feedback = orders.get(i).getFeedback();
-            if (feedback != null) {
-                count++;
-                System.out.println("No." + (i + 1) + " " + feedback);
-            }
-        }
-        System.out.println(count + " feedbacks found");
+        OrdersService<Order> ordersService = new OrdersService<>(couriersDB.
+                getOrdersOfCourier(courier.getPhoneNumber(), shopsDBReference));
+        List<Feedback> feedbacks = ordersService.getAllFeedbacks();
+        printList(feedbacks,"feedbacks");
     }
 
     private void showOrdersHistoryOfCourier(Courier courier) {
-        OrdersService ordersService = new OrdersService(couriersDB.getOrdersOfCourier(courier.getPhoneNumber(), restaurantsDB));
-        ordersService.printAllOrders();
+        List<Order> orders = new ArrayList<>(couriersDB.getOrdersOfCourier(courier.getPhoneNumber(), shopsDBReference));
+        printList(orders,"orders");
     }
 }
