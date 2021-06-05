@@ -12,9 +12,6 @@ public class RestaurantsDB extends ShopsDB<Restaurant,Order>{
         super(restaurants);
     }
 
-    public Set<Restaurant> getRestaurantsByPriceType(RestaurantPriceType priceType) {
-        return getShops().stream().filter(shop->shop.getPriceType().equals(priceType)).collect(Collectors.toSet());
-    }
 
     public List<Restaurant> getRestaurantsByFood(Food food) {
         return getShops().stream().filter(shop->shop.getFoodMenu().containsFood(food)).collect(Collectors.toList());

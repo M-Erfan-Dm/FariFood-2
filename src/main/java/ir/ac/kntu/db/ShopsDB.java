@@ -72,6 +72,10 @@ public class ShopsDB<T extends Shop<O, ? extends OrdersService<O>>, O extends Or
         return feedbacks;
     }
 
+    public Set<T> getShopsByPriceType(ShopPriceType priceType) {
+        return getShops().stream().filter(shop->shop.getPriceType().equals(priceType)).collect(Collectors.toSet());
+    }
+
     public List<T> getBestShops(int count) {
         return ListSorting.sortList(new ArrayList<>(shops), count, false,
                 shop -> shop.getRating());
