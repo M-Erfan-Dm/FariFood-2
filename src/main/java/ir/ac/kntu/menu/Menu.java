@@ -1,13 +1,12 @@
 package ir.ac.kntu.menu;
 
-import ir.ac.kntu.menu.admin.AdminOption;
 import ir.ac.kntu.models.*;
 import ir.ac.kntu.utils.ScannerWrapper;
 
 import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Locale;
+import java.util.List;
 import java.util.Set;
 
 public abstract class Menu {
@@ -165,5 +164,13 @@ public abstract class Menu {
             String capitalizedConstant = constant.substring(0,1).toUpperCase() + constant.substring(1).toLowerCase();
             System.out.println((i+1)+  "." + capitalizedConstant);
         }
+    }
+
+    public <T> void printList(List<T> list, String objectsName){
+        for (int i = 0; i < list.size(); i++) {
+            T t = list.get(i);
+            System.out.println("No." + (i + 1) + " " + t);
+        }
+        System.out.println(list.size() + " " + objectsName + " found");
     }
 }
