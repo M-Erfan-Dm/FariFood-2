@@ -1,5 +1,6 @@
 package ir.ac.kntu.menu;
 
+import ir.ac.kntu.db.OwnersDB;
 import ir.ac.kntu.models.*;
 import ir.ac.kntu.utils.ScannerWrapper;
 
@@ -123,10 +124,21 @@ public abstract class Menu {
         return new Schedule(startTime, endTime, days);
     }
 
-    public RestaurantPriceType getRestaurantPriceType() {
-        RestaurantPriceType.printOptions();
+    public ShopPriceType getRestaurantPriceType() {
+        ShopPriceType.printOptions();
         System.out.println("Enter restaurant price type : ");
-        return getOption(RestaurantPriceType.class);
+        return getOption(ShopPriceType.class);
+    }
+
+    public Owner getOwner(OwnersDB ownersDB){
+        System.out.println("Owner :");
+        String phoneNumber= getPhoneNumber();
+        Owner owner = ownersDB.getOwnerByPhoneNumber(phoneNumber);
+        if (owner==null){
+            System.out.println("Owner not found");
+            return null;
+        }
+        return owner;
     }
 
     public Feedback getFeedback() {

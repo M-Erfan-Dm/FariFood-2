@@ -1,7 +1,6 @@
 package ir.ac.kntu.models;
 
 import ir.ac.kntu.db.CouriersDB;
-import ir.ac.kntu.db.ShopsDB;
 
 import java.time.LocalTime;
 import java.util.*;
@@ -25,8 +24,11 @@ public abstract class Shop<O extends Order, T extends OrdersService<O>> {
 
     private int deliveryPrice;
 
-    public Shop(int id, Owner owner,String name, String address, Schedule schedule,
-                CouriersDB hiredCouriers, T ordersService, int deliveryPrice) {
+    private ShopPriceType priceType;
+
+
+    public Shop(int id, Owner owner, String name, String address, Schedule schedule,
+                CouriersDB hiredCouriers, T ordersService, int deliveryPrice, ShopPriceType priceType) {
         this.id = id;
         this.owner = owner;
         this.name = name;
@@ -35,13 +37,16 @@ public abstract class Shop<O extends Order, T extends OrdersService<O>> {
         this.hiredCouriers = hiredCouriers;
         this.ordersService = ordersService;
         this.deliveryPrice = deliveryPrice;
+        this.priceType = priceType;
     }
 
-    public Shop(String name, String address, Schedule schedule, int deliveryPrice) {
+    public Shop(Owner owner,String name, String address, Schedule schedule, int deliveryPrice, ShopPriceType priceType) {
+        this.owner = owner;
         this.name = name;
         this.address = address;
         this.schedule = schedule;
         this.deliveryPrice = deliveryPrice;
+        this.priceType = priceType;
     }
 
     public int getId() {
@@ -110,6 +115,14 @@ public abstract class Shop<O extends Order, T extends OrdersService<O>> {
 
     public void setDeliveryPrice(int deliveryPrice) {
         this.deliveryPrice = deliveryPrice;
+    }
+
+    public ShopPriceType getPriceType() {
+        return priceType;
+    }
+
+    public void setPriceType(ShopPriceType priceType) {
+        this.priceType = priceType;
     }
 
     public double updateRating() {
@@ -185,6 +198,7 @@ public abstract class Shop<O extends Order, T extends OrdersService<O>> {
                 ", address='" + address + '\'' +
                 ", schedule=" + schedule +
                 ", rating=" + rating +
+                ", price type = " + priceType +
                 ", alpha score=" + getAlphaScore() +
                 ", is active=" + isActive +
                 '}';

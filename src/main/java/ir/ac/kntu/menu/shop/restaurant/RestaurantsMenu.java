@@ -1,9 +1,11 @@
 package ir.ac.kntu.menu.shop.restaurant;
 
 import ir.ac.kntu.db.CouriersDB;
+import ir.ac.kntu.db.OwnersDB;
 import ir.ac.kntu.db.RestaurantsDB;
 import ir.ac.kntu.menu.Menu;
 import ir.ac.kntu.menu.shop.ShopCourierMenu;
+import ir.ac.kntu.menu.shop.ShopsOption;
 import ir.ac.kntu.models.*;
 
 import java.util.ArrayList;
@@ -18,17 +20,20 @@ public class RestaurantsMenu extends Menu {
 
     private final CouriersDB couriersDB;
 
-    public RestaurantsMenu(RestaurantsDB restaurantsDB, Settings settings, CouriersDB couriersDB) {
+    private final OwnersDB ownersDB;
+
+    public RestaurantsMenu(RestaurantsDB restaurantsDB, Settings settings, CouriersDB couriersDB, OwnersDB ownersDB) {
         this.restaurantsDB = restaurantsDB;
         this.settings = settings;
         this.couriersDB = couriersDB;
+        this.ownersDB = ownersDB;
     }
 
     @Override
     public void show() {
-        RestaurantsOption option;
-        while ((option = printMenuOptions("Restaurants Menu",RestaurantsOption.class))
-                != RestaurantsOption.BACK) {
+        ShopsOption option;
+        while ((option = printMenuOptions("Restaurants Menu",ShopsOption.class))
+                != ShopsOption.BACK) {
             if (option != null) {
                 switch (option) {
                     case ADD:
@@ -86,10 +91,12 @@ public class RestaurantsMenu extends Menu {
         if (newRestaurantInfo == null) {
             return;
         }
+        restaurant.setOwner(newRestaurantInfo.getOwner());
         restaurant.setName(newRestaurantInfo.getName());
         restaurant.setAddress(newRestaurantInfo.getAddress());
         restaurant.setSchedule(newRestaurantInfo.getSchedule());
         restaurant.setPriceType(newRestaurantInfo.getPriceType());
+        restaurant.setDeliveryPrice(newRestaurantInfo.getDeliveryPrice());
         System.out.println("Restaurant is updated");
     }
 
@@ -161,6 +168,10 @@ public class RestaurantsMenu extends Menu {
     }
 
     private Restaurant getRestaurantGeneralInfo() {
+        Owner owner = getOwner(ownersDB);
+        if (owner==null){
+            return null;
+        }
         String name = getName();
         String address = getAddress();
         Schedule schedule = getSchedule();
@@ -176,7 +187,7 @@ public class RestaurantsMenu extends Menu {
         if (deliveryPrice==null){
             return null;
         }
-        return new Restaurant(name, address, schedule, restaurantPriceType,deliveryPrice);
+        return new Restaurant(owner,name, address, schedule, restaurantPriceType,deliveryPrice);
     }
 
     private void showRestaurantGeneralInfo(Restaurant restaurant) {
