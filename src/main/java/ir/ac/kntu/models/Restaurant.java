@@ -2,7 +2,7 @@ package ir.ac.kntu.models;
 
 import ir.ac.kntu.db.CouriersDB;
 
-public class Restaurant extends Shop<Order, OrdersService<Order>> {
+public class Restaurant extends Shop<OrdersService<Order>> {
 
     private FoodMenu foodMenu;
 

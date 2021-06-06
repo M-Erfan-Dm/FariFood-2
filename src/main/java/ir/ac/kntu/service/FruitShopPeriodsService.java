@@ -12,7 +12,7 @@ public class FruitShopPeriodsService extends PeriodsService{
 
     private int fruitKGLimit;
 
-    public FruitShopPeriodsService(Shop<PeriodicalOrder, PeriodicalOrdersService> shop, int periodBasePrice, int fruitKGLimit) {
+    public FruitShopPeriodsService(Shop<PeriodicalOrdersService> shop, int periodBasePrice, int fruitKGLimit) {
         super(shop, periodBasePrice);
         this.fruitKGLimit = fruitKGLimit;
     }

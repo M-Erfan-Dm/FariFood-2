@@ -11,9 +11,9 @@ public class ShopCourierMenu extends Menu {
 
     private final CouriersDB couriersDB;
 
-    private final Shop<? extends Order,? extends OrdersService<? extends Order>> shop;
+    private final Shop<? extends OrdersService<? extends Order>> shop;
 
-    public <T extends Order> ShopCourierMenu(CouriersDB couriersDB, Shop<T, ? extends OrdersService<T>> shop) {
+    public ShopCourierMenu(CouriersDB couriersDB, Shop<? extends OrdersService<? extends Order>> shop) {
         this.couriersDB = couriersDB;
         this.shop = shop;
     }

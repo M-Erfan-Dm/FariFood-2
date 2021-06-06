@@ -28,7 +28,7 @@ public class OrdersService<T extends Order> {
         return orders.remove(order);
     }
 
-    public int getTotalPriceForOrder(T order, Shop<T,? extends OrdersService<T>> shop) {
+    public int getTotalPriceForOrder(T order, Shop<? extends OrdersService<T>> shop) {
         int sum = 0;
         for (Map.Entry<Food,Integer> food : order.getFoods().entrySet()){
             sum += food.getKey().getPrice() * food.getValue();

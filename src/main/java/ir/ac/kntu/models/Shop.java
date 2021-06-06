@@ -5,7 +5,7 @@ import ir.ac.kntu.db.CouriersDB;
 import java.time.LocalTime;
 import java.util.*;
 
-public abstract class Shop<O extends Order, T extends OrdersService<O>> {
+public abstract class Shop<T extends OrdersService<? extends Order>> {
     private int id;
 
     private Owner owner;
@@ -164,7 +164,7 @@ public abstract class Shop<O extends Order, T extends OrdersService<O>> {
         return 2 * rating + ordersService.getCount();
     }
 
-    abstract public int getAdditionalPrices(O order);
+    abstract public int getAdditionalPrices(Order order);
 
 
     @Override
@@ -175,7 +175,7 @@ public abstract class Shop<O extends Order, T extends OrdersService<O>> {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Shop<?,?> shop = (Shop<?,?>) o;
+        Shop<?> shop = (Shop<?>) o;
         return id == shop.id;
     }
 

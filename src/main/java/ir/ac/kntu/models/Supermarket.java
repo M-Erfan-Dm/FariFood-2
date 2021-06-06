@@ -4,7 +4,7 @@ import ir.ac.kntu.db.CouriersDB;
 import ir.ac.kntu.service.PremiumCustomersService;
 import ir.ac.kntu.service.SupermarketPeriodsService;
 
-public class Supermarket extends Shop<PeriodicalOrder,PeriodicalOrdersService> {
+public class Supermarket extends Shop<PeriodicalOrdersService> {
 
 
     private final SupermarketPeriodsService periodsService;
@@ -48,11 +48,13 @@ public class Supermarket extends Shop<PeriodicalOrder,PeriodicalOrdersService> {
     }
 
     @Override
-    public int getAdditionalPrices(PeriodicalOrder order) {
-        if (premiumCustomersService.containsCustomer(order.getCustomer())){
-            return periodsService.getPriceOfPeriod(order.getTimePeriod());
+    public int getAdditionalPrices(Order order) {
+        PeriodicalOrder periodicalOrder = (PeriodicalOrder) order;
+        if (premiumCustomersService.containsCustomer(periodicalOrder.getCustomer())){
+            return periodsService.getPriceOfPeriod(periodicalOrder.getTimePeriod());
         }
-        return getDeliveryPrice() + periodsService.getPriceOfPeriod(order.getTimePeriod());
+        return getDeliveryPrice() + periodsService.getPriceOfPeriod(periodicalOrder.getTimePeriod());
     }
+
 
 }

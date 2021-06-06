@@ -13,16 +13,16 @@ public abstract class PeriodsService implements PeriodsServiceImpl {
 
     private static final double HALF_USED_PERIOD_PRICE_COEFFICIENT = 1.5;
 
-    private final Shop<PeriodicalOrder, PeriodicalOrdersService> shop;
+    private final Shop<PeriodicalOrdersService> shop;
 
     private int periodBasePrice;
 
-    public PeriodsService(Shop<PeriodicalOrder, PeriodicalOrdersService> shop, int periodBasePrice) {
+    public PeriodsService(Shop<PeriodicalOrdersService> shop, int periodBasePrice) {
         this.shop = shop;
         this.periodBasePrice = periodBasePrice;
     }
 
-    public Shop<PeriodicalOrder, PeriodicalOrdersService> getShop() {
+    public Shop<PeriodicalOrdersService> getShop() {
         return shop;
     }
 

@@ -3,7 +3,7 @@ package ir.ac.kntu.models;
 import ir.ac.kntu.db.CouriersDB;
 import ir.ac.kntu.service.FruitShopPeriodsService;
 
-public class FruitShop extends Shop<PeriodicalOrder,PeriodicalOrdersService> {
+public class FruitShop extends Shop<PeriodicalOrdersService> {
 
     private final FruitShopPeriodsService periodsService;
 
@@ -17,9 +17,9 @@ public class FruitShop extends Shop<PeriodicalOrder,PeriodicalOrdersService> {
         periodsService = new FruitShopPeriodsService(this,periodBasePrice,fruitKGLimit);
     }
 
-    public FruitShop(String name, String address, Schedule schedule, int deliveryPrice
+    public FruitShop(Owner owner,String name, String address, Schedule schedule, int deliveryPrice
             , int periodBasePrice, int fruitKGLimit,ShopPriceType priceType) {
-        super(name, address, schedule, deliveryPrice, priceType);
+        super(owner,name, address, schedule, deliveryPrice, priceType);
         periodsService = new FruitShopPeriodsService(this,periodBasePrice,fruitKGLimit);
     }
 
@@ -36,8 +36,9 @@ public class FruitShop extends Shop<PeriodicalOrder,PeriodicalOrdersService> {
     }
 
     @Override
-    public int getAdditionalPrices(PeriodicalOrder order) {
-        return getDeliveryPrice() + periodsService.getPriceOfPeriod(order.getTimePeriod());
+    public int getAdditionalPrices(Order order) {
+        PeriodicalOrder periodicalOrder = (PeriodicalOrder) order;
+        return getDeliveryPrice() + periodsService.getPriceOfPeriod(periodicalOrder.getTimePeriod());
     }
 
 }

@@ -3,24 +3,24 @@ package ir.ac.kntu.models;
 import java.util.Objects;
 
 public class CourierJobInfo {
-    private Shop<? extends Order,? extends OrdersService<? extends Order>> shop;
+    private Shop<? extends OrdersService<? extends Order>> shop;
 
     private Schedule schedule;
 
     private Salary salary;
 
-    public CourierJobInfo(Shop<? extends Order, ? extends OrdersService<? extends Order>> shop,
+    public CourierJobInfo(Shop<? extends OrdersService<? extends Order>> shop,
                           Schedule schedule, Salary salary) {
         this.shop = shop;
         this.schedule = schedule;
         this.salary = salary;
     }
 
-    public Shop<? extends Order, ? extends OrdersService<? extends Order>> getShop() {
+    public Shop<? extends OrdersService<? extends Order>> getShop() {
         return shop;
     }
 
-    public void setShop(Shop<? extends Order, ? extends OrdersService<? extends Order>> shop) {
+    public void setShop(Shop<? extends OrdersService<? extends Order>> shop) {
         this.shop = shop;
     }
 

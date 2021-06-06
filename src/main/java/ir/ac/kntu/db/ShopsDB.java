@@ -7,7 +7,7 @@ import ir.ac.kntu.utils.ListSorting;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class ShopsDB<T extends Shop<O, ? extends OrdersService<O>>, O extends Order> {
+public class ShopsDB<T extends Shop<? extends OrdersService<O>>, O extends Order> {
     private Set<T> shops;
 
     public ShopsDB(Set<T> shops) {
