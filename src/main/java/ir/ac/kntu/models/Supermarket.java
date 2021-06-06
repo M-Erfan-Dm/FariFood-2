@@ -22,8 +22,8 @@ public class Supermarket extends Shop<PeriodicalOrder,PeriodicalOrdersService> {
         this.foodMenu = foodMenu;
     }
 
-    public Supermarket(String name, String address, Schedule schedule, int deliveryPrice, int periodBasePrice,ShopPriceType priceType) {
-        super(name, address, schedule, deliveryPrice, priceType);
+    public Supermarket(Owner owner,String name, String address, Schedule schedule, int deliveryPrice, int periodBasePrice,ShopPriceType priceType) {
+        super(owner, name, address, schedule, deliveryPrice, priceType);
         periodsService = new SupermarketPeriodsService(this, periodBasePrice);
     }
 
@@ -37,6 +37,14 @@ public class Supermarket extends Shop<PeriodicalOrder,PeriodicalOrdersService> {
 
     public void setFoodMenu(CountableFoodMenu foodMenu) {
         this.foodMenu = foodMenu;
+    }
+
+    public PremiumCustomersService getPremiumCustomersService() {
+        return premiumCustomersService;
+    }
+
+    public void setPremiumCustomersService(PremiumCustomersService premiumCustomersService) {
+        this.premiumCustomersService = premiumCustomersService;
     }
 
     @Override
