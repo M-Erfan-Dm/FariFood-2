@@ -154,15 +154,6 @@ public class OrdersService<T extends Order> {
         return false;
     }
 
-    public void printAllOrders() {
-        List<T> ordersList = new ArrayList<>(orders);
-        for (int i = 0; i < ordersList.size(); i++) {
-            T order = ordersList.get(i);
-            System.out.println("No." + (i + 1) + " " + order);
-        }
-        System.out.println(ordersList.size() + " orders found");
-    }
-
 
     @Override
     public boolean equals(Object o) {
