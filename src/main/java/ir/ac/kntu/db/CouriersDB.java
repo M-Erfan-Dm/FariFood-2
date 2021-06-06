@@ -64,6 +64,10 @@ public class CouriersDB {
         return foundCouriers;
     }
 
+    public int size(){
+        return couriers.size();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
