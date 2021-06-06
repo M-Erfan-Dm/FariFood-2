@@ -14,6 +14,10 @@ public class PremiumCustomersService {
         this.premiumCustomers = premiumCustomers;
     }
 
+    public Set<Customer> getPremiumCustomers() {
+        return new HashSet<>(premiumCustomers);
+    }
+
     public void setPremiumCustomers(Set<Customer> premiumCustomers) {
         this.premiumCustomers = premiumCustomers;
     }
@@ -28,13 +32,5 @@ public class PremiumCustomersService {
 
     public boolean containsCustomer(Customer customer){
         return premiumCustomers.contains(customer);
-    }
-
-    public void printPremiumCustomers(){
-        List<Customer> customers = new ArrayList<>(premiumCustomers);
-        for (int i = 0;i<customers.size();i++){
-            System.out.println("No." + (i+1) + " " +customers.get(i));
-        }
-        System.out.println(customers.size() + " customers found");
     }
 }
