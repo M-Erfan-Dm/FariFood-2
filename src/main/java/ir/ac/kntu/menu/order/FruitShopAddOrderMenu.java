@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FruitShopAddOrderMenu extends AddOrderMenu<FruitShop, FruitShopsDB>{
+public class FruitShopAddOrderMenu extends AddOrderMenu<FruitShop, FruitShopsDB> {
 
     public FruitShopAddOrderMenu(FruitShopsDB shopsDB, Settings settings) {
         super(shopsDB, settings);
@@ -44,6 +44,8 @@ public class FruitShopAddOrderMenu extends AddOrderMenu<FruitShop, FruitShopsDB>
                 null, OrderState.PROCESSING, timePeriod);
         fruitShop.getOrdersService().addOrder(order);
         System.out.println("Your order is in process");
+        int totalPrice = fruitShop.getOrdersService().getTotalPriceForOrder(order, fruitShop);
+        System.out.println("Total price : " + totalPrice);
     }
 
     @Override
@@ -118,16 +120,16 @@ public class FruitShopAddOrderMenu extends AddOrderMenu<FruitShop, FruitShopsDB>
 
     private TimePeriod showActivePeriods(FruitShop fruitShop, Order order) {
         List<TimePeriod> activePeriods = fruitShop.getPeriodsService().getActivePeriods(order);
-        return showPeriods(fruitShop,activePeriods);
+        return showPeriods(fruitShop, activePeriods);
     }
 
     private TimePeriod showBestPeriods(FruitShop fruitShop, Order order) {
         List<TimePeriod> bestPeriods = fruitShop.getPeriodsService().getBestActivePeriods(order);
-        return showPeriods(fruitShop,bestPeriods);
+        return showPeriods(fruitShop, bestPeriods);
     }
 
     private TimePeriod showPeriods(FruitShop fruitShop, List<TimePeriod> timePeriods) {
-        if (timePeriods.size()==0){
+        if (timePeriods.size() == 0) {
             System.out.println("No period is active now!");
             return null;
         }

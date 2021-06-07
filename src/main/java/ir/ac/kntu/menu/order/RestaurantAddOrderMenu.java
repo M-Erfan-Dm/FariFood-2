@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class RestaurantAddOrderMenu extends AddOrderMenu<Restaurant, RestaurantsDB>{
+public class RestaurantAddOrderMenu extends AddOrderMenu<Restaurant, RestaurantsDB> {
 
     public RestaurantAddOrderMenu(RestaurantsDB shopsDB, Settings settings) {
         super(shopsDB, settings);
@@ -38,6 +38,8 @@ public class RestaurantAddOrderMenu extends AddOrderMenu<Restaurant, Restaurants
         Order order = new Order(foods, null, getCustomer(), null, OrderState.PROCESSING);
         restaurant.getOrdersService().addOrder(order);
         System.out.println("Your order is in process");
+        int totalPrice = restaurant.getOrdersService().getTotalPriceForOrder(order, restaurant);
+        System.out.println("Total price : " + totalPrice);
     }
 
     @Override
@@ -56,10 +58,10 @@ public class RestaurantAddOrderMenu extends AddOrderMenu<Restaurant, Restaurants
                 System.out.println("Invalid count");
                 continue;
             }
-            if (foods.containsKey(food)){
-                foods.put(food,foods.get(food) + count);
-            }else {
-                foods.put(food,count);
+            if (foods.containsKey(food)) {
+                foods.put(food, foods.get(food) + count);
+            } else {
+                foods.put(food, count);
             }
             System.out.println("Food is added");
         }
@@ -69,18 +71,18 @@ public class RestaurantAddOrderMenu extends AddOrderMenu<Restaurant, Restaurants
     @Override
     public void showAllFoods(Restaurant shop) {
         List<Food> foods = new ArrayList<>(shop.getFoodMenu().getFoods());
-        printList(foods,"foods");
+        printList(foods, "foods");
     }
 
     @Override
     public void showThreeBestFoods(Restaurant shop) {
         List<Food> foods = shop.getOrdersService().getBestFoods(3);
-        printList(foods,"foods");
+        printList(foods, "foods");
     }
 
 
     @Override
     public List<Restaurant> getFiveBestShopsByFood(Food food) {
-        return getShopsDB().getBestRestaurantsByFood(food,5);
+        return getShopsDB().getBestRestaurantsByFood(food, 5);
     }
 }

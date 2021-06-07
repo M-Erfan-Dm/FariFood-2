@@ -44,6 +44,8 @@ public class SupermarketAddOrderMenu extends AddOrderMenu<Supermarket, Supermark
                 null, OrderState.PROCESSING, timePeriod);
         supermarket.getOrdersService().addOrder(order);
         System.out.println("Your order is in process");
+        int totalPrice = supermarket.getOrdersService().getTotalPriceForOrder(order, supermarket);
+        System.out.println("Total price : " + totalPrice);
     }
 
     @Override
@@ -118,16 +120,16 @@ public class SupermarketAddOrderMenu extends AddOrderMenu<Supermarket, Supermark
 
     private TimePeriod showActivePeriods(Supermarket supermarket, Order order) {
         List<TimePeriod> activePeriods = supermarket.getPeriodsService().getActivePeriods(order);
-        return showPeriods(supermarket,activePeriods);
+        return showPeriods(supermarket, activePeriods);
     }
 
     private TimePeriod showBestPeriods(Supermarket supermarket, Order order) {
         List<TimePeriod> bestPeriods = supermarket.getPeriodsService().getBestActivePeriods(order);
-        return showPeriods(supermarket,bestPeriods);
+        return showPeriods(supermarket, bestPeriods);
     }
 
     private TimePeriod showPeriods(Supermarket supermarket, List<TimePeriod> timePeriods) {
-        if (timePeriods.size()==0){
+        if (timePeriods.size() == 0) {
             System.out.println("No period is active now!");
             return null;
         }
