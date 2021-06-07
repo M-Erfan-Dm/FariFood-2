@@ -1,0 +1,9 @@
+package ir.ac.kntu.menu.order;
+
+public enum OrdersShopOption {
+    SHOW_ACTIVE_RESTAURANTS,
+    SHOW_THREE_BEST_RESTAURANTS,
+    SHOW_RESTAURANTS_BY_NAME,
+    SHOW_RESTAURANTS_BY_PRICE_TYPE,
+    SHOW_FIVE_BEST_RESTAURANTS_BY_FOOD
+}
