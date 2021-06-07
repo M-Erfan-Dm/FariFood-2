@@ -43,9 +43,9 @@ public class CountableFoodMenu {
     }
 
     public boolean updateFood(Food food) {
-        if (foods.containsKey(food)) {
-            int amount = foods.get(food);
-            foods.put(food, amount);
+        Food existingFood = getFoodByName(food.getName());
+        if (existingFood!=null){
+            existingFood.setPrice(food.getPrice());
             return true;
         }
         return false;

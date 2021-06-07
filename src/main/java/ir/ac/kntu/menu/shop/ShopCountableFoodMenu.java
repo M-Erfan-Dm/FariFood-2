@@ -93,6 +93,7 @@ public class ShopCountableFoodMenu extends Menu {
     }
 
     private Integer getAmount() {
+        System.out.println("Enter amount :");
         int amount = Integer.parseInt(ScannerWrapper.nextLine());
         if (amount < 1) {
             System.out.println("Invalid amount");
