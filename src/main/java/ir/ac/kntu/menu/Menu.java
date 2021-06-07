@@ -124,22 +124,13 @@ public abstract class Menu {
         return new Schedule(startTime, endTime, days);
     }
 
-    public ShopPriceType getRestaurantPriceType() {
+    public ShopPriceType getShopPriceType() {
         ShopPriceType.printOptions();
         System.out.println("Enter restaurant price type : ");
         return getOption(ShopPriceType.class);
     }
 
-    public Owner getOwner(OwnersDB ownersDB){
-        System.out.println("Owner :");
-        String phoneNumber= getPhoneNumber();
-        Owner owner = ownersDB.getOwnerByPhoneNumber(phoneNumber);
-        if (owner==null){
-            System.out.println("Owner not found");
-            return null;
-        }
-        return owner;
-    }
+
 
     public Feedback getFeedback() {
         System.out.println("Enter rating :");
@@ -174,6 +165,7 @@ public abstract class Menu {
         for (int i = 0; i < constants.length; i++) {
             String constant = constants[i].name();
             String capitalizedConstant = constant.substring(0,1).toUpperCase() + constant.substring(1).toLowerCase();
+            capitalizedConstant = capitalizedConstant.replace("_"," ");
             System.out.println((i+1)+  "." + capitalizedConstant);
         }
     }
