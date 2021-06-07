@@ -10,6 +10,10 @@ import java.util.Map;
 
 public class RestaurantAddOrderMenu extends AddOrderMenu<Restaurant, RestaurantsDB>{
 
+    public RestaurantAddOrderMenu(RestaurantsDB shopsDB, Settings settings) {
+        super(shopsDB, settings);
+    }
+
     public RestaurantAddOrderMenu(Customer customer, RestaurantsDB shopsDB, Settings settings) {
         super(customer, shopsDB, settings);
     }

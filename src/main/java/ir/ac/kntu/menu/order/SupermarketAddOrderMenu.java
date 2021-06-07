@@ -9,6 +9,11 @@ import java.util.List;
 import java.util.Map;
 
 public class SupermarketAddOrderMenu extends AddOrderMenu<Supermarket, SupermarketsDB> {
+
+    public SupermarketAddOrderMenu(SupermarketsDB shopsDB, Settings settings) {
+        super(shopsDB, settings);
+    }
+
     public SupermarketAddOrderMenu(Customer customer, SupermarketsDB shopsDB, Settings settings) {
         super(customer, shopsDB, settings);
     }

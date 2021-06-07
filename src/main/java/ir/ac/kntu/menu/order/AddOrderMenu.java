@@ -10,11 +10,16 @@ import java.util.*;
 public abstract class AddOrderMenu<T extends Shop<? extends OrdersService<? extends Order>>,
         D extends ShopsDB<T>> extends Menu {
 
-    private final Customer customer;
+    private Customer customer;
 
     private final D shopsDB;
 
     private final Settings settings;
+
+    public AddOrderMenu(D shopsDB, Settings settings) {
+        this.shopsDB = shopsDB;
+        this.settings = settings;
+    }
 
     public AddOrderMenu(Customer customer, D shopsDB, Settings settings) {
         this.customer = customer;
@@ -24,6 +29,10 @@ public abstract class AddOrderMenu<T extends Shop<? extends OrdersService<? exte
 
     public Customer getCustomer() {
         return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public D getShopsDB() {

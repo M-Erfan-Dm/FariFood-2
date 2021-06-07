@@ -9,6 +9,11 @@ import java.util.List;
 import java.util.Map;
 
 public class FruitShopAddOrderMenu extends AddOrderMenu<FruitShop, FruitShopsDB>{
+
+    public FruitShopAddOrderMenu(FruitShopsDB shopsDB, Settings settings) {
+        super(shopsDB, settings);
+    }
+
     public FruitShopAddOrderMenu(Customer customer, FruitShopsDB shopsDB, Settings settings) {
         super(customer, shopsDB, settings);
     }
