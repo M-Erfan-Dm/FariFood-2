@@ -9,7 +9,7 @@ import ir.ac.kntu.models.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ShopInfo<T extends Shop<? extends OrdersService<? extends Order>>> extends Menu {
+public abstract class ShopInfoMenu<T extends Shop<? extends OrdersService<? extends Order>>> extends Menu {
 
     private T shop;
 
@@ -17,7 +17,7 @@ public abstract class ShopInfo<T extends Shop<? extends OrdersService<? extends 
 
     private OwnersDB ownersDB;
 
-    public ShopInfo(T shop, CouriersDB couriersDB, OwnersDB ownersDB) {
+    public ShopInfoMenu(T shop, CouriersDB couriersDB, OwnersDB ownersDB) {
         this.shop = shop;
         this.couriersDB = couriersDB;
         this.ownersDB = ownersDB;

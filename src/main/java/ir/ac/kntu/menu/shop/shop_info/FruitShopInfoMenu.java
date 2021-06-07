@@ -5,16 +5,16 @@ import ir.ac.kntu.db.OwnersDB;
 import ir.ac.kntu.menu.shop.ShopCountableFoodMenu;
 import ir.ac.kntu.models.FruitShop;
 
-public class FruitShopInfo extends ShopInfo<FruitShop> {
-    public FruitShopInfo(FruitShop shop, CouriersDB couriersDB, OwnersDB ownersDB) {
+public class FruitShopInfoMenu extends ShopInfoMenu<FruitShop> {
+    public FruitShopInfoMenu(FruitShop shop, CouriersDB couriersDB, OwnersDB ownersDB) {
         super(shop, couriersDB, ownersDB);
     }
 
     @Override
     public void show() {
-        FruitShopInfoOption option;
-        while ((option = printMenuOptions("Fruit Shop Info", FruitShopInfoOption.class))
-                != FruitShopInfoOption.BACK) {
+        FruitShopInfoMenuOption option;
+        while ((option = printMenuOptions("Fruit Shop Info", FruitShopInfoMenuOption.class))
+                != FruitShopInfoMenuOption.BACK) {
             if (option != null) {
                 switch (option) {
                     case UPDATE:

@@ -5,17 +5,17 @@ import ir.ac.kntu.db.OwnersDB;
 import ir.ac.kntu.menu.shop.restaurant.RestaurantFoodMenu;
 import ir.ac.kntu.models.Restaurant;
 
-public class RestaurantInfo extends ShopInfo<Restaurant> {
+public class RestaurantInfoMenu extends ShopInfoMenu<Restaurant> {
 
-    public RestaurantInfo(Restaurant shop, CouriersDB couriersDB, OwnersDB ownersDB) {
+    public RestaurantInfoMenu(Restaurant shop, CouriersDB couriersDB, OwnersDB ownersDB) {
         super(shop, couriersDB, ownersDB);
     }
 
     @Override
     public void show() {
-        RestaurantInfoOption option;
-        while ((option = printMenuOptions("Restaurant Info", RestaurantInfoOption.class))
-                != RestaurantInfoOption.BACK) {
+        RestaurantInfoMenuOption option;
+        while ((option = printMenuOptions("Restaurant Info", RestaurantInfoMenuOption.class))
+                != RestaurantInfoMenuOption.BACK) {
             if (option != null) {
                 switch (option) {
                     case UPDATE:

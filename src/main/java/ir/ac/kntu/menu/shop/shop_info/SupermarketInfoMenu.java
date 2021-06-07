@@ -7,20 +7,20 @@ import ir.ac.kntu.menu.shop.ShopCountableFoodMenu;
 import ir.ac.kntu.menu.shop.premium_customers.PremiumCustomersMenu;
 import ir.ac.kntu.models.Supermarket;
 
-public class SupermarketInfo extends ShopInfo<Supermarket>{
+public class SupermarketInfoMenu extends ShopInfoMenu<Supermarket> {
 
     private final CustomersDB customersDB;
 
-    public SupermarketInfo(Supermarket shop, CouriersDB couriersDB, OwnersDB ownersDB, CustomersDB customersDB) {
+    public SupermarketInfoMenu(Supermarket shop, CouriersDB couriersDB, OwnersDB ownersDB, CustomersDB customersDB) {
         super(shop, couriersDB, ownersDB);
         this.customersDB = customersDB;
     }
 
     @Override
     public void show() {
-        SupermarketInfoOption option;
-        while ((option = printMenuOptions("Supermarket Info",SupermarketInfoOption.class))
-                != SupermarketInfoOption.BACK) {
+        SupermarketInfoMenuOption option;
+        while ((option = printMenuOptions("Supermarket Info", SupermarketInfoMenuOption.class))
+                != SupermarketInfoMenuOption.BACK) {
             if (option != null) {
                 switch (option) {
                     case UPDATE:
