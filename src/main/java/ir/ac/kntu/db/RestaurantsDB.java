@@ -6,7 +6,7 @@ import ir.ac.kntu.utils.ListSorting;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class RestaurantsDB extends ShopsDB<Restaurant,Order>{
+public class RestaurantsDB extends ShopsDB<Restaurant>{
 
     public RestaurantsDB(Set<Restaurant> restaurants) {
         super(restaurants);
@@ -14,7 +14,8 @@ public class RestaurantsDB extends ShopsDB<Restaurant,Order>{
 
 
     public List<Restaurant> getRestaurantsByFood(Food food) {
-        return getShops().stream().filter(shop->shop.getFoodMenu().containsFood(food)).collect(Collectors.toList());
+        return getShops().stream().filter(shop->shop.getFoodMenu().containsFood(food))
+                .collect(Collectors.toList());
     }
 
     public List<Restaurant> getBestRestaurantsByFood(Food food, int count) {
