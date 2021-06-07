@@ -46,17 +46,17 @@ public class CustomersDB {
         return null;
     }
 
-    public Set<Order> getOrdersOfCustomer(String customerPhoneNumber, ShopsDB<? extends Shop<? extends OrdersService<Order>>> shopsDB) {
+    public Set<Order> getOrdersOfCustomer(String customerPhoneNumber, Set<Order> allOrders) {
         Customer customer = getCustomerByPhoneNumber(customerPhoneNumber);
         if (customer != null) {
-            return new OrdersService<>(shopsDB.getAllOrders()).getOrdersByCustomer(customer);
+            return new OrdersService<>(allOrders).getOrdersByCustomer(customer);
         }
         return null;
     }
 
-    public List<Feedback> getFeedbacksOfCustomer(String customerPhoneNumber, ShopsDB<? extends Shop<? extends OrdersService<Order>>> shopsDB) {
+    public List<Feedback> getFeedbacksOfCustomer(String customerPhoneNumber, Set<Order> allOrders) {
         List<Feedback> feedbacks = new ArrayList<>();
-        Set<Order> orders = getOrdersOfCustomer(customerPhoneNumber, shopsDB);
+        Set<Order> orders = getOrdersOfCustomer(customerPhoneNumber, allOrders);
         for (Order order : orders) {
             Feedback feedback = order.getFeedback();
             if (feedback != null) {
