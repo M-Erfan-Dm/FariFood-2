@@ -1,6 +1,6 @@
 package ir.ac.kntu.menu.order;
 
-import ir.ac.kntu.db.SupermarketsDB;
+import ir.ac.kntu.db.FruitShopsDB;
 import ir.ac.kntu.models.*;
 import ir.ac.kntu.utils.ScannerWrapper;
 
@@ -8,41 +8,41 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SupermarketAddOrderMenu extends AddOrderMenu<Supermarket, SupermarketsDB> {
-    public SupermarketAddOrderMenu(Customer customer, SupermarketsDB shopsDB, Settings settings) {
+public class FruitShopAddOrderMenu extends AddOrderMenu<FruitShop, FruitShopsDB>{
+    public FruitShopAddOrderMenu(Customer customer, FruitShopsDB shopsDB, Settings settings) {
         super(customer, shopsDB, settings);
     }
 
     @Override
     public void show() {
-        System.out.println("Supermarket :");
-        Supermarket supermarket = chooseShop();
-        if (supermarket == null) {
+        System.out.println("Fruit shop :");
+        FruitShop fruitShop = chooseShop();
+        if (fruitShop == null) {
             return;
         }
         System.out.println("Food :");
-        boolean continueSubmittingFoods = showFoods(supermarket);
+        boolean continueSubmittingFoods = showFoods(fruitShop);
         if (!continueSubmittingFoods) {
             return;
         }
-        Map<Food, Integer> foods = chooseFoods(supermarket);
+        Map<Food, Integer> foods = chooseFoods(fruitShop);
         if (foods.size() == 0) {
             System.out.println("No food was added");
             return;
         }
-        TimePeriod timePeriod = choosePeriod(supermarket,
+        TimePeriod timePeriod = choosePeriod(fruitShop,
                 new Order(foods, null, getCustomer(), null, OrderState.PROCESSING));
         if (timePeriod == null) {
             return;
         }
         PeriodicalOrder order = new PeriodicalOrder(foods, null, getCustomer(),
                 null, OrderState.PROCESSING, timePeriod);
-        supermarket.getOrdersService().addOrder(order);
+        fruitShop.getOrdersService().addOrder(order);
         System.out.println("Your order is in process");
     }
 
     @Override
-    public Map<Food, Integer> chooseFoods(Supermarket shop) {
+    public Map<Food, Integer> chooseFoods(FruitShop shop) {
         Map<Food, Integer> foods = new HashMap<>();
         System.out.println("Enter foods you want (or blank to stop adding)");
         String name;
@@ -73,7 +73,7 @@ public class SupermarketAddOrderMenu extends AddOrderMenu<Supermarket, Supermark
     }
 
     @Override
-    public void showAllFoods(Supermarket shop) {
+    public void showAllFoods(FruitShop shop) {
         Map<Food, Integer> foods = shop.getFoodMenu().getFoods();
         for (Map.Entry<Food, Integer> food : foods.entrySet()) {
             System.out.println(food.getKey() + " , " + food.getValue() + " in stock");
@@ -81,7 +81,7 @@ public class SupermarketAddOrderMenu extends AddOrderMenu<Supermarket, Supermark
     }
 
     @Override
-    public void showThreeBestFoods(Supermarket shop) {
+    public void showThreeBestFoods(FruitShop shop) {
         List<Food> foods = shop.getOrdersService().getBestFoods(3);
         for (Food food : foods) {
             int amount = shop.getFoodMenu().getAmountOfFood(food);
@@ -90,20 +90,20 @@ public class SupermarketAddOrderMenu extends AddOrderMenu<Supermarket, Supermark
     }
 
     @Override
-    public List<Supermarket> getFiveBestShopsByFood(Food food) {
-        return getShopsDB().getBestSupermarketsByFood(food, 5);
+    public List<FruitShop> getFiveBestShopsByFood(Food food) {
+        return getShopsDB().getBestFruitShopsByFood(food, 5);
     }
 
-    private TimePeriod choosePeriod(Supermarket supermarket, Order order) {
+    private TimePeriod choosePeriod(FruitShop fruitShop, Order order) {
         printEnumOptions(OrdersPeriodOption.class);
         System.out.println("Choose your option :");
         OrdersPeriodOption option = getOption(OrdersPeriodOption.class);
         if (option != null) {
             switch (option) {
                 case SHOW_ACTIVE_PERIODS:
-                    return showActivePeriods(supermarket, order);
+                    return showActivePeriods(fruitShop, order);
                 case SHOW_BEST_ACTIVE_PERIODS:
-                    return showBestPeriods(supermarket, order);
+                    return showBestPeriods(fruitShop, order);
                 default:
                     break;
             }
@@ -111,24 +111,24 @@ public class SupermarketAddOrderMenu extends AddOrderMenu<Supermarket, Supermark
         return null;
     }
 
-    private TimePeriod showActivePeriods(Supermarket supermarket, Order order) {
-        List<TimePeriod> activePeriods = supermarket.getPeriodsService().getActivePeriods(order);
-        return showPeriods(supermarket,activePeriods);
+    private TimePeriod showActivePeriods(FruitShop fruitShop, Order order) {
+        List<TimePeriod> activePeriods = fruitShop.getPeriodsService().getActivePeriods(order);
+        return showPeriods(fruitShop,activePeriods);
     }
 
-    private TimePeriod showBestPeriods(Supermarket supermarket, Order order) {
-        List<TimePeriod> bestPeriods = supermarket.getPeriodsService().getBestActivePeriods(order);
-        return showPeriods(supermarket,bestPeriods);
+    private TimePeriod showBestPeriods(FruitShop fruitShop, Order order) {
+        List<TimePeriod> bestPeriods = fruitShop.getPeriodsService().getBestActivePeriods(order);
+        return showPeriods(fruitShop,bestPeriods);
     }
 
-    private TimePeriod showPeriods(Supermarket supermarket, List<TimePeriod> timePeriods) {
+    private TimePeriod showPeriods(FruitShop fruitShop, List<TimePeriod> timePeriods) {
         if (timePeriods.size()==0){
             System.out.println("No period is active now!");
             return null;
         }
         for (int i = 0; i < timePeriods.size(); i++) {
             TimePeriod timePeriod = timePeriods.get(i);
-            int price = supermarket.getPeriodsService().getPriceOfPeriod(timePeriod);
+            int price = fruitShop.getPeriodsService().getPriceOfPeriod(timePeriod);
             System.out.println("No." + (i + 1) + " " + timePeriod + " ,period price : " + price);
         }
         System.out.println("Choose period : ");
