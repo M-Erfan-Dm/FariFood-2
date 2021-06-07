@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ShopsMenu  <T extends Shop<? extends OrdersService<? extends Order>>,
-        D extends ShopsDB<T, ? extends Order>> extends Menu {
+        D extends ShopsDB<T>> extends Menu {
 
     private final D shopsDB;
 

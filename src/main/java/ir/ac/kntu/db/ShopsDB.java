@@ -7,7 +7,7 @@ import ir.ac.kntu.utils.ListSorting;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class ShopsDB<T extends Shop<? extends OrdersService<O>>, O extends Order> {
+public class ShopsDB<T extends Shop<? extends OrdersService< ? extends Order>>> {
     private Set<T> shops;
 
     public ShopsDB(Set<T> shops) {
@@ -60,8 +60,8 @@ public class ShopsDB<T extends Shop<? extends OrdersService<O>>, O extends Order
         return shops.stream().filter(shop -> shop.getId() == id).findFirst().orElse(null);
     }
 
-    public Set<O> getAllOrders() {
-        Set<O> orders = new HashSet<>();
+    public Set<Order> getAllOrders() {
+        Set<Order> orders = new HashSet<>();
         shops.forEach(shop -> orders.addAll(shop.getOrdersService().getOrders()));
         return orders;
     }
@@ -127,7 +127,7 @@ public class ShopsDB<T extends Shop<? extends OrdersService<O>>, O extends Order
         if (o == null || getClass() != o.getClass()){
             return false;
         }
-        ShopsDB<?, ?> shopsDB = (ShopsDB<?, ?>) o;
+        ShopsDB<?> shopsDB = (ShopsDB<?>) o;
         return shops.equals(shopsDB.shops);
     }
 
