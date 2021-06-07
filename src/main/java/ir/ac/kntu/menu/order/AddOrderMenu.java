@@ -1,82 +1,53 @@
 package ir.ac.kntu.menu.order;
 
-import ir.ac.kntu.db.CustomersDB;
-import ir.ac.kntu.db.RestaurantsDB;
+import ir.ac.kntu.db.ShopsDB;
 import ir.ac.kntu.menu.Menu;
 import ir.ac.kntu.models.*;
 import ir.ac.kntu.utils.ScannerWrapper;
 
 import java.util.*;
 
-public class AddOrderMenu extends Menu {
+public abstract class AddOrderMenu<T extends Shop<? extends OrdersService<? extends Order>>,
+        D extends ShopsDB<T>> extends Menu {
 
-    private final CustomersDB customersDB;
+    private final Customer customer;
 
-    private final RestaurantsDB restaurantsDB;
+    private final D shopsDB;
 
     private final Settings settings;
 
-    public AddOrderMenu(CustomersDB customersDB, RestaurantsDB restaurantsDB, Settings settings) {
-        this.customersDB = customersDB;
-        this.restaurantsDB = restaurantsDB;
+    public AddOrderMenu(Customer customer, D shopsDB, Settings settings) {
+        this.customer = customer;
+        this.shopsDB = shopsDB;
         this.settings = settings;
     }
 
-    @Override
-    public void show() {
-        System.out.println("Customer :");
-        Customer customer = getCustomer();
-        if (customer == null) {
-            return;
-        }
-        System.out.println("Restaurant :");
-        Restaurant restaurant = chooseRestaurant();
-        if (restaurant == null) {
-            return;
-        }
-        System.out.println("Food :");
-        boolean continueSubmittingFoods = showFoods(restaurant);
-        if (!continueSubmittingFoods) {
-            return;
-        }
-        Map<Food, Integer> foods = chooseFoods(restaurant);
-        if (foods.size() == 0) {
-            System.out.println("No food was added");
-            return;
-        }
-        Order order = new Order(foods, null, customer, null, OrderState.PROCESSING);
-        restaurant.getOrdersService().addOrder(order);
-        System.out.println("Your order is in process");
-    }
-
-    private Customer getCustomer() {
-        String phoneNumber = getPhoneNumber();
-        Customer customer = customersDB.getCustomerByPhoneNumber(phoneNumber);
-        if (customer == null) {
-            System.out.println("Customer not found");
-            return null;
-        }
+    public Customer getCustomer() {
         return customer;
     }
 
-    private Restaurant chooseRestaurant() {
-        OrdersRestaurantOption.printOptions();
+    public D getShopsDB() {
+        return shopsDB;
+    }
+
+    public T chooseShop() {
+        printEnumOptions(OrdersShopOption.class);
         System.out.println("Enter your choice :");
-        OrdersRestaurantOption ordersRestaurantOption = getOption(OrdersRestaurantOption.class);
-        if (ordersRestaurantOption == null) {
+        OrdersShopOption option = getOption(OrdersShopOption.class);
+        if (option == null) {
             return null;
         }
-        switch (ordersRestaurantOption) {
+        switch (option) {
             case SHOW_ACTIVE_RESTAURANTS:
                 return showActiveRestaurants();
             case SHOW_THREE_BEST_RESTAURANTS:
-                return showThreeBestRestaurants();
+                return showThreeBestShops();
             case SHOW_RESTAURANTS_BY_NAME:
-                return showRestaurantsByName();
+                return showShopsByName();
             case SHOW_RESTAURANTS_BY_PRICE_TYPE:
-                return showRestaurantsByPriceType();
+                return showShopsByPriceType();
             case SHOW_FIVE_BEST_RESTAURANTS_BY_FOOD:
-                return showFiveBestRestaurantsByFood();
+                return showFiveBestShopsByFood();
             default:
                 break;
         }
@@ -84,22 +55,23 @@ public class AddOrderMenu extends Menu {
     }
 
     private OrdersFoodOption printOrderFoodOptions() {
-        OrdersFoodOption.printOptions();
+        printEnumOptions(OrdersFoodOption.class);
         System.out.println("Enter your choice :");
         return getOption(OrdersFoodOption.class);
     }
 
-    private boolean showFoods(Restaurant restaurant) {
-        OrdersFoodOption ordersFoodOption = printOrderFoodOptions();
-        while (ordersFoodOption != OrdersFoodOption.BACK) {
-            if (ordersFoodOption != null) {
+    public boolean showFoods(T shop) {
+        OrdersFoodOption option;
+        while ((option = printOrderFoodOptions())
+        != OrdersFoodOption.BACK) {
+            if (option != null) {
                 boolean shouldContinueSubmittingFoods = false;
-                switch (ordersFoodOption) {
+                switch (option) {
                     case SHOW_ALL:
-                        shouldContinueSubmittingFoods = showAllFoods(restaurant);
+                        shouldContinueSubmittingFoods = showAllFoods(shop);
                         break;
                     case SHOW_THREE_BEST:
-                        shouldContinueSubmittingFoods = showThreeBestFoods(restaurant);
+                        shouldContinueSubmittingFoods = showThreeBestFoods(shop);
                         break;
                     default:
                         break;
@@ -108,91 +80,89 @@ public class AddOrderMenu extends Menu {
                     return true;
                 }
             }
-            ordersFoodOption = printOrderFoodOptions();
         }
         return false;
     }
 
 
-    private Restaurant showActiveRestaurants() {
-        List<Restaurant> restaurants = new RestaurantsDB(restaurantsDB.getActiveRestaurants()).getOrderedListOfRestaurants(settings);
-        restaurantsDB.printRestaurants(restaurants);
-        if (restaurants.size() == 0) {
+    private T showActiveRestaurants() {
+        List<T> shops = new ShopsDB<>(shopsDB.getActiveShops()).getOrderedListOfShops(settings);
+        printList(shops,"shops");
+        if (shops.size() == 0) {
             return null;
         }
-        return getRestaurantById();
+        return getShopById();
     }
 
-    private Restaurant showThreeBestRestaurants() {
-        List<Restaurant> restaurants = restaurantsDB.getBestRestaurants(3);
-        restaurantsDB.printRestaurants(restaurants);
-        if (restaurants.size() == 0) {
+    private T showThreeBestShops() {
+        List<T> shops = shopsDB.getBestShops(3);
+        printList(shops,"shops");
+        if (shops.size() == 0) {
             return null;
         }
-        return getRestaurantById();
+        return getShopById();
     }
 
-    private Restaurant showRestaurantsByName() {
+    private T showShopsByName() {
         String name = getName();
-        List<Restaurant> foundRestaurantsByName = new RestaurantsDB(restaurantsDB.getRestaurantsByName(name)).getOrderedListOfRestaurants(settings);
-        restaurantsDB.printRestaurants(foundRestaurantsByName);
-        if (foundRestaurantsByName.size() == 0) {
+        List<T> foundShopsByName = new ShopsDB<>(shopsDB.getShopsByName(name)).getOrderedListOfShops(settings);
+        printList(foundShopsByName,"shops");
+        if (foundShopsByName.size() == 0) {
             return null;
         }
-        return getRestaurantById();
+        return getShopById();
     }
 
-    private Restaurant showRestaurantsByPriceType() {
-        RestaurantPriceType restaurantPriceType = getRestaurantPriceType();
-        if (restaurantPriceType == null) {
+    private T showShopsByPriceType() {
+        ShopPriceType shopPriceType = getShopPriceType();
+        if (shopPriceType == null) {
             return null;
         }
-        List<Restaurant> foundRestaurantsByPriceType = new RestaurantsDB(restaurantsDB.
-                getRestaurantsByPriceType(restaurantPriceType)).getOrderedListOfRestaurants(settings);
-        restaurantsDB.printRestaurants(foundRestaurantsByPriceType);
-        if (foundRestaurantsByPriceType.size() == 0) {
+        List<T> foundShopsByPriceType = new ShopsDB<>(shopsDB.
+                getShopsByPriceType(shopPriceType)).getOrderedListOfShops(settings);
+        printList(foundShopsByPriceType,"shops");
+        if (foundShopsByPriceType.size() == 0) {
             return null;
         }
-        return getRestaurantById();
+        return getShopById();
     }
 
-    private Restaurant showFiveBestRestaurantsByFood() {
+    private T showFiveBestShopsByFood() {
         String foodName = getName();
-        List<Restaurant> restaurants = restaurantsDB.getBestRestaurantsByFood(foodName, 5);
-        restaurantsDB.printRestaurants(restaurants);
-        if (restaurants.size() == 0) {
+        List<T> shops = getFiveBestShopsByFood(new Food(foodName));
+        printList(shops,"shops");
+        if (shops.size() == 0) {
             return null;
         }
-        return getRestaurantById();
+        return getShopById();
     }
 
-    private Restaurant getRestaurantById() {
+    private T getShopById() {
         int id = getId();
-        Restaurant restaurant = restaurantsDB.getRestaurantById(id);
-        if (restaurant == null) {
-            System.out.println("Restaurant not found");
+        T shop = shopsDB.getShopById(id);
+        if (shop == null) {
+            System.out.println("Shop not found");
             return null;
         }
-        if (!restaurant.isActive()) {
-            System.out.println("Restaurant is closed!");
+        if (!shop.isActive()) {
+            System.out.println("Shop is closed!");
             return null;
         }
-        return restaurant;
+        return shop;
     }
 
-    private boolean showAllFoods(Restaurant restaurant) {
-        FoodMenu foodMenu = restaurant.getFoodMenu();
-        Set<Food> foods = foodMenu.getFoods();
-        foodMenu.printAllFoods();
+    private boolean showAllFoods(T shop) {
+        List<Food> foods = getAllFoods(shop);
+        printList(foods,"foods");
         if (foods.size() == 0) {
             return false;
         }
         return continueSubmittingFood();
     }
 
-    private boolean showThreeBestFoods(Restaurant restaurant) {
-        List<Food> foods = restaurant.getOrdersService().getBestFoods(3);
-        new FoodMenu(new HashSet<>(foods)).printAllFoods();
+    private boolean showThreeBestFoods(T shop) {
+        List<Food> foods = getThreeBestFoods(shop);
+        printList(foods,"foods");
         if (foods.size() == 0) {
             return false;
         }
@@ -205,12 +175,12 @@ public class AddOrderMenu extends Menu {
         return choice == 0;
     }
 
-    private Map<Food, Integer> chooseFoods(Restaurant restaurant) {
+    public Map<Food, Integer> chooseFoods(T shop) {
         Map<Food, Integer> foods = new HashMap<>();
         System.out.println("Enter foods you want (or blank to stop adding)");
         String name;
         while (!(name = getName()).isBlank()) {
-            Food food = restaurant.getFoodMenu().getFoodByName(name);
+            Food food = getFoodByName(shop,name);
             if (food == null) {
                 System.out.println("Food not found");
                 continue;
@@ -229,4 +199,12 @@ public class AddOrderMenu extends Menu {
         }
         return foods;
     }
+
+    abstract public List<Food> getAllFoods(T shop);
+
+    abstract public List<Food> getThreeBestFoods(T shop);
+
+    abstract public Food getFoodByName(T shop,String name);
+
+    abstract public List<T> getFiveBestShopsByFood(Food food);
 }
