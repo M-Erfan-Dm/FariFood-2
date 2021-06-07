@@ -3,7 +3,6 @@ package ir.ac.kntu.menu.shop.shop_info;
 import ir.ac.kntu.db.CouriersDB;
 import ir.ac.kntu.db.OwnersDB;
 import ir.ac.kntu.menu.shop.restaurant.RestaurantFoodMenu;
-import ir.ac.kntu.menu.shop.restaurant.RestaurantInfoOption;
 import ir.ac.kntu.models.Restaurant;
 
 public class RestaurantInfo extends ShopInfo<Restaurant> {

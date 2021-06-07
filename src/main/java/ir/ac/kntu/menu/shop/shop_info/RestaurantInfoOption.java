@@ -1,7 +1,8 @@
-package ir.ac.kntu.menu.shop.restaurant;
+package ir.ac.kntu.menu.shop.shop_info;
 
 public enum RestaurantInfoOption {
-    GENERAL,
+    UPDATE,
+    GENERAL_INFO,
     FOOD,
     COURIER,
     ORDER,

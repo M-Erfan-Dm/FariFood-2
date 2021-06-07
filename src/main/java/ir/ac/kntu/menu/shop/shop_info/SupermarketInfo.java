@@ -5,10 +5,6 @@ import ir.ac.kntu.db.CustomersDB;
 import ir.ac.kntu.db.OwnersDB;
 import ir.ac.kntu.menu.shop.ShopCountableFoodMenu;
 import ir.ac.kntu.menu.shop.premium_customers.PremiumCustomersMenu;
-import ir.ac.kntu.menu.shop.supermarket.SupermarketInfoOption;
-import ir.ac.kntu.models.Owner;
-import ir.ac.kntu.models.Schedule;
-import ir.ac.kntu.models.ShopPriceType;
 import ir.ac.kntu.models.Supermarket;
 
 public class SupermarketInfo extends ShopInfo<Supermarket>{
@@ -30,7 +26,7 @@ public class SupermarketInfo extends ShopInfo<Supermarket>{
                     case UPDATE:
                         updateShop();
                         break;
-                    case GENERAL:
+                    case GENERAL_INFO:
                         showShopGeneralInfo();
                         break;
                     case FOOD:
