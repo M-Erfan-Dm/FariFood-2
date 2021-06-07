@@ -1,8 +1,7 @@
-package ir.ac.kntu.menu.shop.restaurant;
+package ir.ac.kntu.menu.shop;
 
-public enum RestaurantsOption {
+public enum ShopsOption {
     ADD,
-    UPDATE,
     FIND_BY_ID,
     FIND_BY_NAME,
     FIND_BY_PRICE_TYPE,
