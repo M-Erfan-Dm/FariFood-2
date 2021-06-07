@@ -153,6 +153,110 @@ public abstract class Menu {
         return null;
     }
 
+    private Owner getOwner(OwnersDB ownersDB){
+        System.out.println("Owner :");
+        String phoneNumber= getPhoneNumber();
+        Owner owner = ownersDB.getOwnerByPhoneNumber(phoneNumber);
+        if (owner==null){
+            System.out.println("Owner not found");
+            return null;
+        }
+        return owner;
+    }
+
+    public Restaurant getRestaurantGeneralInfo(OwnersDB ownersDB) {
+        Owner owner = getOwner(ownersDB);
+        if (owner==null){
+            return null;
+        }
+        String name = getName();
+        String address = getAddress();
+        Schedule schedule = getSchedule();
+        if (schedule == null) {
+            return null;
+        }
+        ShopPriceType restaurantPriceType = getShopPriceType();
+        if (restaurantPriceType == null) {
+            return null;
+        }
+        System.out.println("Delivery price :");
+        Integer deliveryPrice=  getPrice();
+        if (deliveryPrice==null){
+            return null;
+        }
+        return new Restaurant(owner,name, address, schedule, restaurantPriceType,deliveryPrice);
+    }
+
+    public Supermarket getSupermarketGeneralInfo(OwnersDB ownersDB) {
+        Owner owner = getOwner(ownersDB);
+        if (owner == null) {
+            return null;
+        }
+        String name = getName();
+        String address = getAddress();
+        Schedule schedule = getSchedule();
+        if (schedule == null) {
+            return null;
+        }
+        ShopPriceType priceType = getShopPriceType();
+        if (priceType == null) {
+            return null;
+        }
+        System.out.println("Delivery price :");
+        Integer deliveryPrice = getPrice();
+        if (deliveryPrice == null) {
+            return null;
+        }
+        System.out.println("Period base price :");
+        Integer periodBasePrice = getPrice();
+        if (periodBasePrice == null) {
+            return null;
+        }
+        return new Supermarket(owner, name, address, schedule, deliveryPrice, periodBasePrice, priceType);
+    }
+
+    public FruitShop getFruitShopGeneralInfo(OwnersDB ownersDB) {
+        Owner owner = getOwner(ownersDB);
+        if (owner == null) {
+            return null;
+        }
+        String name = getName();
+        String address = getAddress();
+        Schedule schedule = getSchedule();
+        if (schedule == null) {
+            return null;
+        }
+        ShopPriceType priceType = getShopPriceType();
+        if (priceType == null) {
+            return null;
+        }
+        System.out.println("Delivery price :");
+        Integer deliveryPrice = getPrice();
+        if (deliveryPrice == null) {
+            return null;
+        }
+        System.out.println("Period base price :");
+        Integer periodBasePrice = getPrice();
+        if (periodBasePrice == null) {
+            return null;
+        }
+        System.out.println("Fruit KG limit :");
+        Integer fruitLimit = getFruitKGLimit();
+        if (fruitLimit == null) {
+            return null;
+        }
+        return new FruitShop(owner, name, address, schedule, deliveryPrice, periodBasePrice, fruitLimit, priceType);
+    }
+
+    private Integer getFruitKGLimit() {
+        int limit = Integer.parseInt(ScannerWrapper.nextLine());
+        if (limit <= 0) {
+            System.out.println("Invalid limit");
+            return null;
+        }
+        return limit;
+    }
+
     public <T extends Enum<T>> T printMenuOptions(String title, Class<T> tEnum) {
         System.out.println("----------" + title + "----------");
         printEnumOptions(tEnum);
