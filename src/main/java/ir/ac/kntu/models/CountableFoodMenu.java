@@ -60,6 +60,10 @@ public class CountableFoodMenu {
         return entry.getKey();
     }
 
+    public Integer getAmountOfFood(Food food){
+        return foods.get(food);
+    }
+
     public boolean containsFood(Food food) {
         return foods.containsKey(food) && foods.get(food) > 0;
     }
