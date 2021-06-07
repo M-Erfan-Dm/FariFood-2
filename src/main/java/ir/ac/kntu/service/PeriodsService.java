@@ -68,8 +68,8 @@ public abstract class PeriodsService implements PeriodsServiceImpl {
     }
 
     @Override
-    public List<TimePeriod> getBestPeriods() {
-        List<TimePeriod> timePeriods = getTotalPeriods();
+    public List<TimePeriod> getBestActivePeriods(Order order) {
+        List<TimePeriod> timePeriods = getActivePeriods(order);
         return ListSorting.sortList(timePeriods,timePeriods.size(),false
                 ,timePeriod -> Double.valueOf(getShop().getOrdersService().
                         getOrdersByTimePeriod(timePeriod).size()));
