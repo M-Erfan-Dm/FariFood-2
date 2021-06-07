@@ -16,13 +16,13 @@ public class Supermarket extends Shop<PeriodicalOrdersService> {
     public Supermarket(int id, Owner owner, String name, String address, Schedule schedule,
                        CouriersDB hiredCouriers, PeriodicalOrdersService ordersService,
                        int deliveryPrice, int periodBasePrice, PremiumCustomersService premiumCustomersService, ShopPriceType priceType, CountableFoodMenu foodMenu) {
-        super(id, owner,name, address, schedule, hiredCouriers, ordersService, deliveryPrice, priceType);
+        super(id, owner, name, address, schedule, hiredCouriers, ordersService, deliveryPrice, priceType);
         periodsService = new SupermarketPeriodsService(this, periodBasePrice);
         this.premiumCustomersService = premiumCustomersService;
         this.foodMenu = foodMenu;
     }
 
-    public Supermarket(Owner owner,String name, String address, Schedule schedule, int deliveryPrice, int periodBasePrice,ShopPriceType priceType) {
+    public Supermarket(Owner owner, String name, String address, Schedule schedule, int deliveryPrice, int periodBasePrice, ShopPriceType priceType) {
         super(owner, name, address, schedule, deliveryPrice, priceType);
         periodsService = new SupermarketPeriodsService(this, periodBasePrice);
     }
@@ -50,7 +50,7 @@ public class Supermarket extends Shop<PeriodicalOrdersService> {
     @Override
     public int getAdditionalPrices(Order order) {
         PeriodicalOrder periodicalOrder = (PeriodicalOrder) order;
-        if (premiumCustomersService.containsCustomer(periodicalOrder.getCustomer())){
+        if (premiumCustomersService.containsCustomer(periodicalOrder.getCustomer())) {
             return periodsService.getPriceOfPeriod(periodicalOrder.getTimePeriod());
         }
         return getDeliveryPrice() + periodsService.getPriceOfPeriod(periodicalOrder.getTimePeriod());

@@ -3,7 +3,9 @@ package ir.ac.kntu.models;
 import ir.ac.kntu.db.CouriersDB;
 
 import java.time.LocalTime;
-import java.util.*;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Objects;
 
 public abstract class Shop<T extends OrdersService<? extends Order>> {
     private int id;
@@ -40,7 +42,7 @@ public abstract class Shop<T extends OrdersService<? extends Order>> {
         this.priceType = priceType;
     }
 
-    public Shop(Owner owner,String name, String address, Schedule schedule, int deliveryPrice, ShopPriceType priceType) {
+    public Shop(Owner owner, String name, String address, Schedule schedule, int deliveryPrice, ShopPriceType priceType) {
         this.owner = owner;
         this.name = name;
         this.address = address;

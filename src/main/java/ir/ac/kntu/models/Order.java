@@ -1,11 +1,13 @@
 package ir.ac.kntu.models;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class Order {
     private int id;
 
-    private Map<Food,Integer> foods;
+    private Map<Food, Integer> foods;
 
     private Feedback feedback;
 
@@ -15,7 +17,7 @@ public class Order {
 
     private OrderState orderState;
 
-    public Order(Map<Food,Integer> foods, Feedback feedback, Customer customer,
+    public Order(Map<Food, Integer> foods, Feedback feedback, Customer customer,
                  Courier courier, OrderState orderState) {
         this.foods = foods;
         this.feedback = feedback;
@@ -24,7 +26,7 @@ public class Order {
         this.orderState = orderState;
     }
 
-    public Order(int id, Map<Food,Integer> foods, Feedback feedback, Customer customer, Courier courier, OrderState orderState) {
+    public Order(int id, Map<Food, Integer> foods, Feedback feedback, Customer customer, Courier courier, OrderState orderState) {
         this(foods, feedback, customer, courier, orderState);
         this.id = id;
     }
@@ -37,11 +39,11 @@ public class Order {
         this.id = id;
     }
 
-    public Map<Food,Integer> getFoods() {
+    public Map<Food, Integer> getFoods() {
         return new HashMap<>(foods);
     }
 
-    public void setFoods(Map<Food,Integer> foods) {
+    public void setFoods(Map<Food, Integer> foods) {
         this.foods = foods;
     }
 
@@ -86,8 +88,8 @@ public class Order {
         return null;
     }
 
-    public int getCountOfFoods(){
-        return foods.values().stream().reduce(0,Integer::sum);
+    public int getCountOfFoods() {
+        return foods.values().stream().reduce(0, Integer::sum);
     }
 
     @Override

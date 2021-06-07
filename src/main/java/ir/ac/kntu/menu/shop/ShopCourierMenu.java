@@ -21,7 +21,7 @@ public class ShopCourierMenu extends Menu {
     @Override
     public void show() {
         ShopCourierOption option;
-        while ((option = printMenuOptions("Shop Courier Menu",ShopCourierOption.class))
+        while ((option = printMenuOptions("Shop Courier Menu", ShopCourierOption.class))
                 != ShopCourierOption.BACK) {
             if (option != null) {
                 switch (option) {
@@ -115,7 +115,7 @@ public class ShopCourierMenu extends Menu {
     }
 
     private void showAll() {
-        printList(new ArrayList<>(shop.getHiredCouriers().getCouriers()),"couriers");
+        printList(new ArrayList<>(shop.getHiredCouriers().getCouriers()), "couriers");
     }
 
     private CourierJobInfo getCourierJobInfo() {

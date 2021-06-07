@@ -51,7 +51,7 @@ public class FruitShopInfoMenu extends ShopInfoMenu<FruitShop> {
     @Override
     public void updateShop() {
         FruitShop newFruitShop = getFruitShopGeneralInfo(getOwnersDB());
-        if (newFruitShop==null){
+        if (newFruitShop == null) {
             return;
         }
         getShop().setOwner(newFruitShop.getOwner());

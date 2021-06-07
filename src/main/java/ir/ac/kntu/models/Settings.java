@@ -5,7 +5,8 @@ import java.util.Objects;
 public class Settings {
     private ShopsFilteringStrategy shopsFilteringStrategy = ShopsFilteringStrategy.BY_RATING_DESCENDING;
 
-    public Settings(){}
+    public Settings() {
+    }
 
     public Settings(ShopsFilteringStrategy shopsFilteringStrategy) {
         this.shopsFilteringStrategy = shopsFilteringStrategy;

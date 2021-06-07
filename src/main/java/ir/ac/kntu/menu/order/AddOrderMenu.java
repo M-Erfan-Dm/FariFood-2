@@ -5,7 +5,8 @@ import ir.ac.kntu.menu.Menu;
 import ir.ac.kntu.models.*;
 import ir.ac.kntu.utils.ScannerWrapper;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
 
 public abstract class AddOrderMenu<T extends Shop<? extends OrdersService<? extends Order>>,
         D extends ShopsDB<T>> extends Menu {
@@ -72,7 +73,7 @@ public abstract class AddOrderMenu<T extends Shop<? extends OrdersService<? exte
     public boolean showFoods(T shop) {
         OrdersFoodOption option;
         while ((option = printOrderFoodOptions())
-        != OrdersFoodOption.BACK) {
+                != OrdersFoodOption.BACK) {
             if (option != null) {
                 boolean shouldContinueSubmittingFoods = false;
                 switch (option) {
@@ -98,7 +99,7 @@ public abstract class AddOrderMenu<T extends Shop<? extends OrdersService<? exte
 
     private T showActiveRestaurants() {
         List<T> shops = new ShopsDB<>(shopsDB.getActiveShops()).getOrderedListOfShops(settings);
-        printList(shops,"shops");
+        printList(shops, "shops");
         if (shops.size() == 0) {
             return null;
         }
@@ -107,7 +108,7 @@ public abstract class AddOrderMenu<T extends Shop<? extends OrdersService<? exte
 
     private T showThreeBestShops() {
         List<T> shops = shopsDB.getBestShops(3);
-        printList(shops,"shops");
+        printList(shops, "shops");
         if (shops.size() == 0) {
             return null;
         }
@@ -117,7 +118,7 @@ public abstract class AddOrderMenu<T extends Shop<? extends OrdersService<? exte
     private T showShopsByName() {
         String name = getName();
         List<T> foundShopsByName = new ShopsDB<>(shopsDB.getShopsByName(name)).getOrderedListOfShops(settings);
-        printList(foundShopsByName,"shops");
+        printList(foundShopsByName, "shops");
         if (foundShopsByName.size() == 0) {
             return null;
         }
@@ -131,7 +132,7 @@ public abstract class AddOrderMenu<T extends Shop<? extends OrdersService<? exte
         }
         List<T> foundShopsByPriceType = new ShopsDB<>(shopsDB.
                 getShopsByPriceType(shopPriceType)).getOrderedListOfShops(settings);
-        printList(foundShopsByPriceType,"shops");
+        printList(foundShopsByPriceType, "shops");
         if (foundShopsByPriceType.size() == 0) {
             return null;
         }
@@ -141,7 +142,7 @@ public abstract class AddOrderMenu<T extends Shop<? extends OrdersService<? exte
     private T showFiveBestShopsByFood() {
         String foodName = getName();
         List<T> shops = getFiveBestShopsByFood(new Food(foodName));
-        printList(shops,"shops");
+        printList(shops, "shops");
         if (shops.size() == 0) {
             return null;
         }
@@ -168,9 +169,9 @@ public abstract class AddOrderMenu<T extends Shop<? extends OrdersService<? exte
         return choice == 0;
     }
 
-    abstract public Map<Food, Integer> chooseFoods(T shop) ;
+    abstract public Map<Food, Integer> chooseFoods(T shop);
 
-    abstract public void showAllFoods(T shop) ;
+    abstract public void showAllFoods(T shop);
 
     abstract public void showThreeBestFoods(T shop);
 

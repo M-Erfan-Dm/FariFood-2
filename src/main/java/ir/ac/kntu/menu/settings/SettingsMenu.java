@@ -1,8 +1,8 @@
 package ir.ac.kntu.menu.settings;
 
 import ir.ac.kntu.menu.Menu;
-import ir.ac.kntu.models.ShopsFilteringStrategy;
 import ir.ac.kntu.models.Settings;
+import ir.ac.kntu.models.ShopsFilteringStrategy;
 
 public class SettingsMenu extends Menu {
 
@@ -14,8 +14,8 @@ public class SettingsMenu extends Menu {
 
     @Override
     public void show() {
-        SettingsOption settingsOption ;
-        while ((settingsOption= printMenuOptions("Settings Menu",SettingsOption.class))
+        SettingsOption settingsOption;
+        while ((settingsOption = printMenuOptions("Settings Menu", SettingsOption.class))
                 != SettingsOption.BACK) {
             if (settingsOption != null) {
                 switch (settingsOption) {

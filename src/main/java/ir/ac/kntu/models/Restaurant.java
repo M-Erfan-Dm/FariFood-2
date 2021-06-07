@@ -13,8 +13,8 @@ public class Restaurant extends Shop<OrdersService<Order>> {
         this.foodMenu = foodMenu;
     }
 
-    public Restaurant(Owner owner,String name, String address, Schedule schedule, ShopPriceType priceType, int deliveryPrice) {
-        super(owner,name, address, schedule, deliveryPrice, priceType);
+    public Restaurant(Owner owner, String name, String address, Schedule schedule, ShopPriceType priceType, int deliveryPrice) {
+        super(owner, name, address, schedule, deliveryPrice, priceType);
     }
 
     public FoodMenu getFoodMenu() {

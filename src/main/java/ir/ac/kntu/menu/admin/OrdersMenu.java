@@ -8,11 +8,11 @@ import ir.ac.kntu.models.*;
 
 import java.util.List;
 
-public class OrdersMenu<T extends Shop<? extends OrdersService<? extends Order>>,D extends ShopsDB<T>> extends Menu {
+public class OrdersMenu<T extends Shop<? extends OrdersService<? extends Order>>, D extends ShopsDB<T>> extends Menu {
 
     private final D shopsDB;
 
-    private final AddOrderMenu<T,D> addOrderMenu;
+    private final AddOrderMenu<T, D> addOrderMenu;
 
     private final CustomersDB customersDB;
 
@@ -24,8 +24,8 @@ public class OrdersMenu<T extends Shop<? extends OrdersService<? extends Order>>
 
     @Override
     public void show() {
-        OrdersOption ordersOption ;
-        while ((ordersOption = printMenuOptions("Orders Menu",OrdersOption.class))
+        OrdersOption ordersOption;
+        while ((ordersOption = printMenuOptions("Orders Menu", OrdersOption.class))
                 != OrdersOption.BACK) {
             if (ordersOption != null) {
                 switch (ordersOption) {
@@ -53,7 +53,7 @@ public class OrdersMenu<T extends Shop<? extends OrdersService<? extends Order>>
         System.out.println("Customer :");
         String phoneNumber = getPhoneNumber();
         Customer customer = customersDB.getCustomerByPhoneNumber(phoneNumber);
-        if (customer==null){
+        if (customer == null) {
             System.out.println("Customer not found");
             return;
         }
@@ -76,7 +76,7 @@ public class OrdersMenu<T extends Shop<? extends OrdersService<? extends Order>>
         System.out.println("Food name : ");
         String foodName = getName();
         List<Feedback> feedbacks = shopsDB.getAllFeedbacksOfFood(new Food(foodName));
-        printList(feedbacks,"feedbacks");
+        printList(feedbacks, "feedbacks");
     }
 
 }

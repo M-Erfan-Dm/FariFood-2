@@ -64,7 +64,7 @@ public class CouriersDB {
         return foundCouriers;
     }
 
-    public int size(){
+    public int size() {
         return couriers.size();
     }
 

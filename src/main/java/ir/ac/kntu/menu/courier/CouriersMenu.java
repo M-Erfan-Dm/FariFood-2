@@ -1,13 +1,11 @@
 package ir.ac.kntu.menu.courier;
 
 import ir.ac.kntu.db.CouriersDB;
-import ir.ac.kntu.db.RestaurantsDB;
 import ir.ac.kntu.menu.Menu;
 import ir.ac.kntu.models.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class CouriersMenu extends Menu {
 
@@ -116,7 +114,7 @@ public class CouriersMenu extends Menu {
 
 
     private void showAll() {
-        printList(new ArrayList<>(couriersDB.getCouriers()),"couriers");
+        printList(new ArrayList<>(couriersDB.getCouriers()), "couriers");
     }
 
     private void removeCourier() {
@@ -155,11 +153,11 @@ public class CouriersMenu extends Menu {
         OrdersService<Order> ordersService = new OrdersService<>(couriersDB.
                 getOrdersOfCourier(courier.getPhoneNumber(), shopsDBReference));
         List<Feedback> feedbacks = ordersService.getAllFeedbacks();
-        printList(feedbacks,"feedbacks");
+        printList(feedbacks, "feedbacks");
     }
 
     private void showOrdersHistoryOfCourier(Courier courier) {
         List<Order> orders = new ArrayList<>(couriersDB.getOrdersOfCourier(courier.getPhoneNumber(), shopsDBReference));
-        printList(orders,"orders");
+        printList(orders, "orders");
     }
 }

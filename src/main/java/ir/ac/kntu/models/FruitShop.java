@@ -14,13 +14,13 @@ public class FruitShop extends Shop<PeriodicalOrdersService> {
                      int deliveryPrice, int periodBasePrice, int fruitKGLimit, ShopPriceType priceType, CountableFoodMenu foodMenu) {
         super(id, owner, name, address, schedule, hiredCouriers, ordersService, deliveryPrice, priceType);
         this.foodMenu = foodMenu;
-        periodsService = new FruitShopPeriodsService(this,periodBasePrice,fruitKGLimit);
+        periodsService = new FruitShopPeriodsService(this, periodBasePrice, fruitKGLimit);
     }
 
-    public FruitShop(Owner owner,String name, String address, Schedule schedule, int deliveryPrice
-            , int periodBasePrice, int fruitKGLimit,ShopPriceType priceType) {
-        super(owner,name, address, schedule, deliveryPrice, priceType);
-        periodsService = new FruitShopPeriodsService(this,periodBasePrice,fruitKGLimit);
+    public FruitShop(Owner owner, String name, String address, Schedule schedule, int deliveryPrice,
+                     int periodBasePrice, int fruitKGLimit, ShopPriceType priceType) {
+        super(owner, name, address, schedule, deliveryPrice, priceType);
+        periodsService = new FruitShopPeriodsService(this, periodBasePrice, fruitKGLimit);
     }
 
     public FruitShopPeriodsService getPeriodsService() {

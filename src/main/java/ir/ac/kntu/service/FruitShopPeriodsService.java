@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FruitShopPeriodsService extends PeriodsService{
+public class FruitShopPeriodsService extends PeriodsService {
 
     private static final int PERIOD_LENGTH_IN_MINUTE = 120;
 
@@ -32,18 +32,18 @@ public class FruitShopPeriodsService extends PeriodsService{
 
     @Override
     public List<TimePeriod> getActivePeriods(Order order) {
-        if (order.getCustomer()==null){
+        if (order.getCustomer() == null) {
             return new ArrayList<>();
         }
         return super.getActivePeriods(order).stream().filter(
-                timePeriod -> getTotalCountOfFruits(timePeriod,order.getCustomer()) +
-                        order.getCountOfFoods() <=fruitKGLimit).collect(Collectors.toList());
+                timePeriod -> getTotalCountOfFruits(timePeriod, order.getCustomer()) +
+                        order.getCountOfFoods() <= fruitKGLimit).collect(Collectors.toList());
     }
 
 
-    private int getTotalCountOfFruits(TimePeriod timePeriod, Customer customer){
+    private int getTotalCountOfFruits(TimePeriod timePeriod, Customer customer) {
         return getShop().getOrdersService().getActiveOrders(timePeriod).stream().filter(
                 periodicalOrder -> periodicalOrder.getCustomer().equals(customer))
-                .map(Order::getCountOfFoods).reduce(0,Integer::sum);
+                .map(Order::getCountOfFoods).reduce(0, Integer::sum);
     }
 }

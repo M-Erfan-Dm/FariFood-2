@@ -1,6 +1,9 @@
 package ir.ac.kntu.db;
 
-import ir.ac.kntu.models.*;
+import ir.ac.kntu.models.Customer;
+import ir.ac.kntu.models.Feedback;
+import ir.ac.kntu.models.Order;
+import ir.ac.kntu.models.OrdersService;
 
 import java.util.*;
 
@@ -32,8 +35,8 @@ public class CustomersDB {
         return customers.contains(customer);
     }
 
-    public boolean isCustomerValid(String phoneNumber , String password){
-        return customers.stream().anyMatch(existingCustomer->existingCustomer.getPhoneNumber().equals(phoneNumber) &&
+    public boolean isCustomerValid(String phoneNumber, String password) {
+        return customers.stream().anyMatch(existingCustomer -> existingCustomer.getPhoneNumber().equals(phoneNumber) &&
                 existingCustomer.getPassword().equals(password));
     }
 

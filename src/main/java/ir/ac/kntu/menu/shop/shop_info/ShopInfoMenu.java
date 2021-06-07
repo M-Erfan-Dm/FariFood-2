@@ -4,18 +4,21 @@ import ir.ac.kntu.db.CouriersDB;
 import ir.ac.kntu.db.OwnersDB;
 import ir.ac.kntu.menu.Menu;
 import ir.ac.kntu.menu.shop.ShopCourierMenu;
-import ir.ac.kntu.models.*;
+import ir.ac.kntu.models.Feedback;
+import ir.ac.kntu.models.Order;
+import ir.ac.kntu.models.OrdersService;
+import ir.ac.kntu.models.Shop;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ShopInfoMenu<T extends Shop<? extends OrdersService<? extends Order>>> extends Menu {
 
-    private T shop;
+    private final T shop;
 
-    private CouriersDB couriersDB;
+    private final CouriersDB couriersDB;
 
-    private OwnersDB ownersDB;
+    private final OwnersDB ownersDB;
 
     public ShopInfoMenu(T shop, CouriersDB couriersDB, OwnersDB ownersDB) {
         this.shop = shop;
@@ -35,22 +38,22 @@ public abstract class ShopInfoMenu<T extends Shop<? extends OrdersService<? exte
         return ownersDB;
     }
 
-    public void showShopGeneralInfo(){
+    public void showShopGeneralInfo() {
         System.out.println(shop);
     }
 
-    public void showShopCouriers(){
-        ShopCourierMenu shopCourierMenu = new ShopCourierMenu(couriersDB,shop);
+    public void showShopCouriers() {
+        ShopCourierMenu shopCourierMenu = new ShopCourierMenu(couriersDB, shop);
         shopCourierMenu.show();
     }
 
-    public void showOrders(){
-        printList(new ArrayList<>(shop.getOrdersService().getOrders()),"orders");
+    public void showOrders() {
+        printList(new ArrayList<>(shop.getOrdersService().getOrders()), "orders");
     }
 
-    public void showFeedbacks(){
+    public void showFeedbacks() {
         List<Feedback> feedbacks = shop.getOrdersService().getAllFeedbacks();
-        printList(feedbacks,"feedbacks");
+        printList(feedbacks, "feedbacks");
     }
 
     abstract public void showShopFoodMenu();

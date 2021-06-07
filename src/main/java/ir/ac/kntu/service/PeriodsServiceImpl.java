@@ -7,7 +7,10 @@ import java.util.List;
 
 public interface PeriodsServiceImpl {
     List<TimePeriod> getActivePeriods(Order order);
+
     int getPriceOfPeriod(TimePeriod timePeriod);
+
     int getPeriodCapacity(TimePeriod timePeriod);
+
     List<TimePeriod> getBestActivePeriods(Order order);
 }

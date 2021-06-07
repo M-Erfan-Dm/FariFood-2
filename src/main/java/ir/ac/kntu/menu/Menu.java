@@ -131,7 +131,6 @@ public abstract class Menu {
     }
 
 
-
     public Feedback getFeedback() {
         System.out.println("Enter rating :");
         Rating.printOptions();
@@ -153,11 +152,11 @@ public abstract class Menu {
         return null;
     }
 
-    private Owner getOwner(OwnersDB ownersDB){
+    private Owner getOwner(OwnersDB ownersDB) {
         System.out.println("Owner :");
-        String phoneNumber= getPhoneNumber();
+        String phoneNumber = getPhoneNumber();
         Owner owner = ownersDB.getOwnerByPhoneNumber(phoneNumber);
-        if (owner==null){
+        if (owner == null) {
             System.out.println("Owner not found");
             return null;
         }
@@ -166,7 +165,7 @@ public abstract class Menu {
 
     public Restaurant getRestaurantGeneralInfo(OwnersDB ownersDB) {
         Owner owner = getOwner(ownersDB);
-        if (owner==null){
+        if (owner == null) {
             return null;
         }
         String name = getName();
@@ -180,11 +179,11 @@ public abstract class Menu {
             return null;
         }
         System.out.println("Delivery price :");
-        Integer deliveryPrice=  getPrice();
-        if (deliveryPrice==null){
+        Integer deliveryPrice = getPrice();
+        if (deliveryPrice == null) {
             return null;
         }
-        return new Restaurant(owner,name, address, schedule, restaurantPriceType,deliveryPrice);
+        return new Restaurant(owner, name, address, schedule, restaurantPriceType, deliveryPrice);
     }
 
     public Supermarket getSupermarketGeneralInfo(OwnersDB ownersDB) {
@@ -264,17 +263,17 @@ public abstract class Menu {
         return getOption(tEnum);
     }
 
-    public  <T extends Enum<T>> void printEnumOptions(Class<T> tEnum) {
+    public <T extends Enum<T>> void printEnumOptions(Class<T> tEnum) {
         T[] constants = tEnum.getEnumConstants();
         for (int i = 0; i < constants.length; i++) {
             String constant = constants[i].name();
-            String capitalizedConstant = constant.substring(0,1).toUpperCase() + constant.substring(1).toLowerCase();
-            capitalizedConstant = capitalizedConstant.replace("_"," ");
-            System.out.println((i+1)+  "." + capitalizedConstant);
+            String capitalizedConstant = constant.substring(0, 1).toUpperCase() + constant.substring(1).toLowerCase();
+            capitalizedConstant = capitalizedConstant.replace("_", " ");
+            System.out.println((i + 1) + "." + capitalizedConstant);
         }
     }
 
-    public <T> void printList(List<T> list, String objectsName){
+    public <T> void printList(List<T> list, String objectsName) {
         for (int i = 0; i < list.size(); i++) {
             T t = list.get(i);
             System.out.println("No." + (i + 1) + " " + t);

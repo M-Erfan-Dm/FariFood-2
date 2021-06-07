@@ -9,7 +9,7 @@ import ir.ac.kntu.models.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ShopsMenu  <T extends Shop<? extends OrdersService<? extends Order>>,
+public abstract class ShopsMenu<T extends Shop<? extends OrdersService<? extends Order>>,
         D extends ShopsDB<T>> extends Menu {
 
     private final D shopsDB;
@@ -82,7 +82,7 @@ public abstract class ShopsMenu  <T extends Shop<? extends OrdersService<? exten
     public void findByName() {
         String name = getName();
         List<T> shops = new ArrayList<>(shopsDB.getShopsByName(name));
-        printList(shops,"shops");
+        printList(shops, "shops");
     }
 
     public void findByPriceType() {
@@ -91,12 +91,12 @@ public abstract class ShopsMenu  <T extends Shop<? extends OrdersService<? exten
             return;
         }
         List<T> shops = new ArrayList<>(shopsDB.getShopsByPriceType(shopPriceType));
-        printList(shops,"shops");
+        printList(shops, "shops");
     }
 
     public void showAll() {
         List<T> shops = shopsDB.getOrderedListOfShops(settings);
-        printList(shops,"shops");
+        printList(shops, "shops");
     }
 
     public void removeShop() {

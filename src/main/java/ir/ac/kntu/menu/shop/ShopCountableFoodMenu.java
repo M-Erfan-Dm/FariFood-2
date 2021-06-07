@@ -7,7 +7,7 @@ import ir.ac.kntu.utils.ScannerWrapper;
 
 public class ShopCountableFoodMenu extends Menu {
 
-    private CountableFoodMenu foodMenu;
+    private final CountableFoodMenu foodMenu;
 
     public ShopCountableFoodMenu(CountableFoodMenu foodMenu) {
         this.foodMenu = foodMenu;
@@ -54,9 +54,9 @@ public class ShopCountableFoodMenu extends Menu {
             return;
         }
         boolean bought = foodMenu.buyFood(food, amount);
-        if (bought){
+        if (bought) {
             System.out.println("You have bought the food");
-        }else {
+        } else {
             System.out.println("Couldn't buy the food");
         }
     }
@@ -70,17 +70,17 @@ public class ShopCountableFoodMenu extends Menu {
         }
         food.setPrice(price);
         boolean isUpdated = foodMenu.updateFood(food);
-        if (isUpdated){
+        if (isUpdated) {
             System.out.println("Food updated");
-        }else {
+        } else {
             System.out.println("Food not found");
         }
     }
 
-    private void showFood(){
+    private void showFood() {
         String name = getName();
         Food food = foodMenu.getFoodByName(name);
-        if (food==null){
+        if (food == null) {
             System.out.println("Food not found");
             return;
         }
@@ -88,7 +88,7 @@ public class ShopCountableFoodMenu extends Menu {
         System.out.println(food + " ," + amount + " in stock");
     }
 
-    private void showAll(){
+    private void showAll() {
         foodMenu.printAllFoods();
     }
 

@@ -1,9 +1,7 @@
 package ir.ac.kntu.models;
 
-import java.time.Period;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class PeriodicalOrdersService extends OrdersService<PeriodicalOrder> {
@@ -16,9 +14,9 @@ public class PeriodicalOrdersService extends OrdersService<PeriodicalOrder> {
                 timePeriod)).collect(Collectors.toList());
     }
 
-    public List<PeriodicalOrder> getActiveOrders(TimePeriod timePeriod){
+    public List<PeriodicalOrder> getActiveOrders(TimePeriod timePeriod) {
         return getOrdersByTimePeriod(timePeriod).stream().filter(
-                periodicalOrder -> periodicalOrder.getOrderState()!=OrderState.DELIVERED)
+                periodicalOrder -> periodicalOrder.getOrderState() != OrderState.DELIVERED)
                 .collect(Collectors.toList());
     }
 }

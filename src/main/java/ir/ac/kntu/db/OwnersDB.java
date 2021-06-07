@@ -1,6 +1,5 @@
 package ir.ac.kntu.db;
 
-import ir.ac.kntu.menu.owner.OwnersMenu;
 import ir.ac.kntu.models.Owner;
 
 import java.util.Objects;
@@ -26,11 +25,11 @@ public class OwnersDB {
         return owners.remove(owner);
     }
 
-    public boolean containsOwner(Owner owner){
+    public boolean containsOwner(Owner owner) {
         return owners.contains(owner);
     }
 
-    public Owner getOwnerByPhoneNumber(String phoneNumber){
+    public Owner getOwnerByPhoneNumber(String phoneNumber) {
         return owners.stream().filter(owner -> owner.getPhoneNumber().equals(phoneNumber)).findFirst().orElse(null);
     }
 

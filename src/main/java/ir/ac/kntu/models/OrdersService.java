@@ -30,7 +30,7 @@ public class OrdersService<T extends Order> {
 
     public int getTotalPriceForOrder(T order, Shop<? extends OrdersService<T>> shop) {
         int sum = 0;
-        for (Map.Entry<Food,Integer> food : order.getFoods().entrySet()){
+        for (Map.Entry<Food, Integer> food : order.getFoods().entrySet()) {
             sum += food.getKey().getPrice() * food.getValue();
         }
         return sum + shop.getAdditionalPrices(order);

@@ -4,7 +4,8 @@ import ir.ac.kntu.db.FruitShopsDB;
 import ir.ac.kntu.db.RestaurantsDB;
 import ir.ac.kntu.db.SupermarketsDB;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ShopsDBReference {
     private final RestaurantsDB restaurantsDB;
@@ -31,7 +32,7 @@ public class ShopsDBReference {
         return fruitShopsDB;
     }
 
-    public Set<Order> getAllOrders(){
+    public Set<Order> getAllOrders() {
         Set<Order> orders = new HashSet<>();
         orders.addAll(restaurantsDB.getAllOrders());
         orders.addAll(supermarketsDB.getAllOrders());

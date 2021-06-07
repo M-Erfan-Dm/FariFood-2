@@ -35,7 +35,7 @@ public class AdminsDB {
                 .equals(phoneNumber) && admin.getPassword().equals(password));
     }
 
-    public Admin getAdminByPhoneNumber(String phoneNumber){
+    public Admin getAdminByPhoneNumber(String phoneNumber) {
         return admins.stream().filter(admin -> admin.getPhoneNumber().equals(phoneNumber))
                 .findFirst().orElse(null);
     }

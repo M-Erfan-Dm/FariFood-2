@@ -5,11 +5,14 @@ import ir.ac.kntu.db.OwnersDB;
 import ir.ac.kntu.db.RestaurantsDB;
 import ir.ac.kntu.menu.shop.ShopsMenu;
 import ir.ac.kntu.menu.shop.shop_info.RestaurantInfoMenu;
-import ir.ac.kntu.models.*;
+import ir.ac.kntu.models.FoodMenu;
+import ir.ac.kntu.models.OrdersService;
+import ir.ac.kntu.models.Restaurant;
+import ir.ac.kntu.models.Settings;
 
 import java.util.HashSet;
 
-public class RestaurantsMenu extends ShopsMenu<Restaurant,RestaurantsDB> {
+public class RestaurantsMenu extends ShopsMenu<Restaurant, RestaurantsDB> {
 
 
     public RestaurantsMenu(RestaurantsDB shopsDB, Settings settings, CouriersDB couriersDB, OwnersDB ownersDB) {
@@ -41,11 +44,9 @@ public class RestaurantsMenu extends ShopsMenu<Restaurant,RestaurantsDB> {
             System.out.println("Restaurant not found");
             return;
         }
-        RestaurantInfoMenu restaurantInfoMenu = new RestaurantInfoMenu(restaurant,getCouriersDB(),getOwnersDB());
+        RestaurantInfoMenu restaurantInfoMenu = new RestaurantInfoMenu(restaurant, getCouriersDB(), getOwnersDB());
         restaurantInfoMenu.show();
     }
-
-
 
 
 }

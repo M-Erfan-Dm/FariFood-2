@@ -16,7 +16,7 @@ public class RestaurantFoodMenu extends Menu {
     @Override
     public void show() {
         RestaurantFoodMenuOption option;
-        while ((option = printMenuOptions("Restaurant Food Menu",RestaurantFoodMenuOption.class))
+        while ((option = printMenuOptions("Restaurant Food Menu", RestaurantFoodMenuOption.class))
                 != RestaurantFoodMenuOption.BACK) {
             if (option != null) {
                 switch (option) {
@@ -41,7 +41,6 @@ public class RestaurantFoodMenu extends Menu {
             }
         }
     }
-
 
 
     private void addFood() {

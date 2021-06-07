@@ -1,6 +1,9 @@
 package ir.ac.kntu.service;
 
-import ir.ac.kntu.models.*;
+import ir.ac.kntu.models.Order;
+import ir.ac.kntu.models.PeriodicalOrdersService;
+import ir.ac.kntu.models.Shop;
+import ir.ac.kntu.models.TimePeriod;
 import ir.ac.kntu.utils.ListSorting;
 import ir.ac.kntu.utils.TimeUtils;
 
@@ -70,8 +73,8 @@ public abstract class PeriodsService implements PeriodsServiceImpl {
     @Override
     public List<TimePeriod> getBestActivePeriods(Order order) {
         List<TimePeriod> timePeriods = getActivePeriods(order);
-        return ListSorting.sortList(timePeriods,timePeriods.size(),false
-                ,timePeriod -> Double.valueOf(getShop().getOrdersService().
+        return ListSorting.sortList(timePeriods, timePeriods.size(), false,
+                timePeriod -> Double.valueOf(getShop().getOrdersService().
                         getOrdersByTimePeriod(timePeriod).size()));
     }
 

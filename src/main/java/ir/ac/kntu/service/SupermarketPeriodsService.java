@@ -1,11 +1,8 @@
 package ir.ac.kntu.service;
 
-import ir.ac.kntu.models.*;
+import ir.ac.kntu.models.Supermarket;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-public class SupermarketPeriodsService extends PeriodsService{
+public class SupermarketPeriodsService extends PeriodsService {
 
     private static final int PERIOD_LENGTH_IN_MINUTE = 60;
 

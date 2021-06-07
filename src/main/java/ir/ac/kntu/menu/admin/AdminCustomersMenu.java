@@ -26,8 +26,8 @@ public class AdminCustomersMenu extends Menu {
         AdminCustomerMenuOption option;
         while ((option = printMenuOptions("Customer Menu", AdminCustomerMenuOption.class))
                 != AdminCustomerMenuOption.BACK) {
-            if (option!=null){
-                switch (option){
+            if (option != null) {
+                switch (option) {
                     case FIND_BY_PHONE_NUMBER:
                         findByPhoneNumber();
                         break;

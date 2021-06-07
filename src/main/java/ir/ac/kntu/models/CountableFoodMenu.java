@@ -44,7 +44,7 @@ public class CountableFoodMenu {
 
     public boolean updateFood(Food food) {
         Food existingFood = getFoodByName(food.getName());
-        if (existingFood!=null){
+        if (existingFood != null) {
             existingFood.setPrice(food.getPrice());
             return true;
         }
@@ -60,7 +60,7 @@ public class CountableFoodMenu {
         return entry.getKey();
     }
 
-    public Integer getAmountOfFood(Food food){
+    public Integer getAmountOfFood(Food food) {
         return foods.get(food);
     }
 

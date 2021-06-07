@@ -1,7 +1,6 @@
 package ir.ac.kntu.models;
 
 import java.util.*;
-import java.util.function.Predicate;
 
 public class FoodMenu {
     private Set<Food> foods;

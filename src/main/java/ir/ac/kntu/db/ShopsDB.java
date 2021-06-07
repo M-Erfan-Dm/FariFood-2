@@ -7,7 +7,7 @@ import ir.ac.kntu.utils.ListSorting;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class ShopsDB<T extends Shop<? extends OrdersService< ? extends Order>>> {
+public class ShopsDB<T extends Shop<? extends OrdersService<? extends Order>>> {
     private Set<T> shops;
 
     public ShopsDB(Set<T> shops) {
@@ -40,7 +40,7 @@ public class ShopsDB<T extends Shop<? extends OrdersService< ? extends Order>>> 
     }
 
     public boolean contains(String name, String address) {
-        return shops.stream().anyMatch(shop->shop.getName().equals(name)
+        return shops.stream().anyMatch(shop -> shop.getName().equals(name)
                 && shop.getAddress().equals(address));
     }
 
@@ -48,8 +48,8 @@ public class ShopsDB<T extends Shop<? extends OrdersService< ? extends Order>>> 
         return shops.stream().filter(shop -> shop.getName().equals(name)).collect(Collectors.toSet());
     }
 
-    public Set<T> getShopsByOwner(Owner owner){
-        return shops.stream().filter(shop->shop.getOwner().equals(owner)).collect(Collectors.toSet());
+    public Set<T> getShopsByOwner(Owner owner) {
+        return shops.stream().filter(shop -> shop.getOwner().equals(owner)).collect(Collectors.toSet());
     }
 
     public Set<T> getActiveShops() {
@@ -73,7 +73,7 @@ public class ShopsDB<T extends Shop<? extends OrdersService< ? extends Order>>> 
     }
 
     public Set<T> getShopsByPriceType(ShopPriceType priceType) {
-        return getShops().stream().filter(shop->shop.getPriceType().equals(priceType)).collect(Collectors.toSet());
+        return getShops().stream().filter(shop -> shop.getPriceType().equals(priceType)).collect(Collectors.toSet());
     }
 
     public List<T> getBestShops(int count) {
@@ -81,24 +81,24 @@ public class ShopsDB<T extends Shop<? extends OrdersService< ? extends Order>>> 
                 shop -> shop.getRating());
     }
 
-    public T getShopByOrderId(int id){
-        return shops.stream().filter(shop->shop.getOrdersService().containsOrder(id))
+    public T getShopByOrderId(int id) {
+        return shops.stream().filter(shop -> shop.getOrdersService().containsOrder(id))
                 .findFirst().orElse(null);
     }
 
-    private List<T> getOrderedListOfShopsByRating(boolean isAscending){
-        return ListSorting.sortList(new ArrayList<>(shops),shops.size(),
-                isAscending,shop->shop.getRating());
+    private List<T> getOrderedListOfShopsByRating(boolean isAscending) {
+        return ListSorting.sortList(new ArrayList<>(shops), shops.size(),
+                isAscending, shop -> shop.getRating());
     }
 
     private List<T> getOrderedListOfShopsByFeedbacksCount(boolean isAscending) {
-        return ListSorting.sortList(new ArrayList<>(shops),shops.size(), isAscending,
-                shop-> Double.valueOf(shop.getOrdersService().getCountOfAllFeedbacks()));
+        return ListSorting.sortList(new ArrayList<>(shops), shops.size(), isAscending,
+                shop -> Double.valueOf(shop.getOrdersService().getCountOfAllFeedbacks()));
     }
 
-    private List<T> getWeakerShops(){
-        return ListSorting.sortList(new ArrayList<>(shops),shops.size(),false,
-                shop->shop.getAlphaScore());
+    private List<T> getWeakerShops() {
+        return ListSorting.sortList(new ArrayList<>(shops), shops.size(), false,
+                shop -> shop.getAlphaScore());
     }
 
     public List<T> getOrderedListOfShops(Settings settings) {
@@ -121,10 +121,10 @@ public class ShopsDB<T extends Shop<? extends OrdersService< ? extends Order>>> 
 
     @Override
     public boolean equals(Object o) {
-        if (this == o){
+        if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()){
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
         ShopsDB<?> shopsDB = (ShopsDB<?>) o;

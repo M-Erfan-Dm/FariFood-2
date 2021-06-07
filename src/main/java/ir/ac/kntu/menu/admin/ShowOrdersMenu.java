@@ -1,9 +1,11 @@
 package ir.ac.kntu.menu.admin;
 
-import ir.ac.kntu.db.RestaurantsDB;
 import ir.ac.kntu.db.ShopsDB;
 import ir.ac.kntu.menu.Menu;
-import ir.ac.kntu.models.*;
+import ir.ac.kntu.models.Order;
+import ir.ac.kntu.models.OrderState;
+import ir.ac.kntu.models.OrdersService;
+import ir.ac.kntu.models.Shop;
 
 import java.util.ArrayList;
 
@@ -17,9 +19,9 @@ public class ShowOrdersMenu extends Menu {
 
     @Override
     public void show() {
-        ShowOrdersOption option ;
+        ShowOrdersOption option;
         while ((option = printShowOrderOptions())
-        != ShowOrdersOption.BACK) {
+                != ShowOrdersOption.BACK) {
             if (option != null) {
                 switch (option) {
                     case SHOW_ALL:
@@ -45,7 +47,7 @@ public class ShowOrdersMenu extends Menu {
     }
 
     private void showAllOrders() {
-        printList(new ArrayList<>(shopsDB.getAllOrders()),"orders");
+        printList(new ArrayList<>(shopsDB.getAllOrders()), "orders");
     }
 
     private void showOrderById() {
@@ -64,8 +66,8 @@ public class ShowOrdersMenu extends Menu {
         if (orderState == null) {
             return;
         }
-        printList(new ArrayList<>( new OrdersService<>(shopsDB.getAllOrders()).getOrdersByState(orderState))
-                ,"orders");
+        printList(new ArrayList<>(new OrdersService<>(
+                shopsDB.getAllOrders()).getOrdersByState(orderState)), "orders");
     }
 
     private OrderState getOrderState() {

@@ -49,7 +49,7 @@ public class PremiumCustomersMenu extends Menu {
             System.out.println("Customer not found");
             return;
         }
-        if (premiumCustomersService.containsCustomer(customer)){
+        if (premiumCustomersService.containsCustomer(customer)) {
             System.out.println("Customer is already added");
             return;
         }
@@ -57,7 +57,7 @@ public class PremiumCustomersMenu extends Menu {
         System.out.println("Customer is added");
     }
 
-    private void removeCustomer(){
+    private void removeCustomer() {
         System.out.println("Customer phone number");
         String phoneNumber = getPhoneNumber();
         Customer customer = customersDB.getCustomerByPhoneNumber(phoneNumber);
@@ -66,15 +66,15 @@ public class PremiumCustomersMenu extends Menu {
             return;
         }
         boolean isRemoved = premiumCustomersService.removePremiumCustomer(customer);
-        if (isRemoved){
+        if (isRemoved) {
             System.out.println("Customer is removed");
-        }else {
+        } else {
             System.out.println("Customer not found");
         }
     }
 
-    private void showAll(){
-        printList(new ArrayList<>(premiumCustomersService.getPremiumCustomers()),"premium customers");
+    private void showAll() {
+        printList(new ArrayList<>(premiumCustomersService.getPremiumCustomers()), "premium customers");
     }
 
 }

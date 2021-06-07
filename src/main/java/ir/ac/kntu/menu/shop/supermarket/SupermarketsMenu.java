@@ -6,13 +6,16 @@ import ir.ac.kntu.db.OwnersDB;
 import ir.ac.kntu.db.SupermarketsDB;
 import ir.ac.kntu.menu.shop.ShopsMenu;
 import ir.ac.kntu.menu.shop.shop_info.SupermarketInfoMenu;
-import ir.ac.kntu.models.*;
+import ir.ac.kntu.models.CountableFoodMenu;
+import ir.ac.kntu.models.PeriodicalOrdersService;
+import ir.ac.kntu.models.Settings;
+import ir.ac.kntu.models.Supermarket;
 import ir.ac.kntu.service.PremiumCustomersService;
 
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class SupermarketsMenu extends ShopsMenu<Supermarket,SupermarketsDB> {
+public class SupermarketsMenu extends ShopsMenu<Supermarket, SupermarketsDB> {
 
     private final CustomersDB customersDB;
 
@@ -49,7 +52,7 @@ public class SupermarketsMenu extends ShopsMenu<Supermarket,SupermarketsDB> {
             return;
         }
         SupermarketInfoMenu supermarketInfoMenu = new SupermarketInfoMenu(supermarket,
-                getCouriersDB(),getOwnersDB(),customersDB);
+                getCouriersDB(), getOwnersDB(), customersDB);
         supermarketInfoMenu.show();
     }
 

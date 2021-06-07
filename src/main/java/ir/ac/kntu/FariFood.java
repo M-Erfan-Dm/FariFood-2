@@ -23,10 +23,10 @@ public class FariFood {
         SupermarketsDB supermarketsDB = new SupermarketsDB(new HashSet<>());
         FruitShopsDB fruitShopsDB = new FruitShopsDB(new HashSet<>());
         CustomersDB customersDB = new CustomersDB(new HashSet<>());
-        ShopsDBReference shopsDBReference = new ShopsDBReference(restaurantsDB,supermarketsDB,fruitShopsDB);
+        ShopsDBReference shopsDBReference = new ShopsDBReference(restaurantsDB, supermarketsDB, fruitShopsDB);
 
 //        MainMenu mainMenu = new MainMenu(ordersMenu, couriersMenu, restaurantsMenu, customersMenu, settingsMenu);
-        authenticationMenu = new AuthenticationMenu(adminsDB,ownersDB,customersDB, couriersDB, shopsDBReference);
+        authenticationMenu = new AuthenticationMenu(adminsDB, ownersDB, customersDB, couriersDB, shopsDBReference);
     }
 
 }

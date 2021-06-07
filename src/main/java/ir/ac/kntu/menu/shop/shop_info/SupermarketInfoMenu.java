@@ -73,9 +73,9 @@ public class SupermarketInfoMenu extends ShopInfoMenu<Supermarket> {
         System.out.println("Supermarket is updated");
     }
 
-    private void showPremiumCustomers(){
+    private void showPremiumCustomers() {
         PremiumCustomersMenu premiumCustomersMenu = new PremiumCustomersMenu(
-                getShop().getPremiumCustomersService(),customersDB);
+                getShop().getPremiumCustomersService(), customersDB);
         premiumCustomersMenu.show();
     }
 }

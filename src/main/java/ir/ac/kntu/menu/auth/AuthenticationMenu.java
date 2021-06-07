@@ -1,6 +1,9 @@
 package ir.ac.kntu.menu.auth;
 
-import ir.ac.kntu.db.*;
+import ir.ac.kntu.db.AdminsDB;
+import ir.ac.kntu.db.CouriersDB;
+import ir.ac.kntu.db.CustomersDB;
+import ir.ac.kntu.db.OwnersDB;
 import ir.ac.kntu.menu.Menu;
 import ir.ac.kntu.menu.admin.AdminMenu;
 import ir.ac.kntu.menu.customer.CustomersMenu;
@@ -20,7 +23,7 @@ public class AuthenticationMenu extends Menu {
     private final ShopsDBReference shopsDBReference;
 
     public AuthenticationMenu(AdminsDB adminsDB, OwnersDB ownersDB, CustomersDB customersDB,
-                              CouriersDB couriersDB,ShopsDBReference shopsDBReference) {
+                              CouriersDB couriersDB, ShopsDBReference shopsDBReference) {
         this.adminsDB = adminsDB;
         this.ownersDB = ownersDB;
         this.customersDB = customersDB;
@@ -58,15 +61,15 @@ public class AuthenticationMenu extends Menu {
         if (roll == null) {
             return;
         }
-        switch (roll){
+        switch (roll) {
             case ADMIN:
-                loginAdmin(phoneNumber,password);
+                loginAdmin(phoneNumber, password);
                 break;
             case OWNER:
-                loginOwner(phoneNumber,password);
+                loginOwner(phoneNumber, password);
                 break;
             case CUSTOMER:
-                loginCustomer(phoneNumber,password);
+                loginCustomer(phoneNumber, password);
                 break;
             default:
                 break;
@@ -98,35 +101,35 @@ public class AuthenticationMenu extends Menu {
         }
     }
 
-    private void loginAdmin(String phoneNumber, String password){
+    private void loginAdmin(String phoneNumber, String password) {
         boolean isAdminValid = adminsDB.isAdminValid(phoneNumber, password);
         if (isAdminValid) {
             Admin admin = adminsDB.getAdminByPhoneNumber(phoneNumber);
-            AdminMenu adminMenu = new AdminMenu(admin,shopsDBReference, couriersDB, ownersDB, customersDB);
+            AdminMenu adminMenu = new AdminMenu(admin, shopsDBReference, couriersDB, ownersDB, customersDB);
             adminMenu.show();
-        }else {
+        } else {
             System.out.println("Admin not found");
         }
     }
 
-    private void loginOwner(String phoneNumber, String password){
+    private void loginOwner(String phoneNumber, String password) {
         boolean isOwnerValid = ownersDB.isOwnerValid(phoneNumber, password);
         if (isOwnerValid) {
             Owner owner = ownersDB.getOwnerByPhoneNumber(phoneNumber);
             OwnersMenu ownersMenu = new OwnersMenu(owner, shopsDBReference);
             ownersMenu.show();
-        }else {
+        } else {
             System.out.println("Owner not found");
         }
     }
 
-    private void loginCustomer(String phoneNumber, String password){
+    private void loginCustomer(String phoneNumber, String password) {
         boolean isCustomerValid = customersDB.isCustomerValid(phoneNumber, password);
         if (isCustomerValid) {
             Customer customer = customersDB.getCustomerByPhoneNumber(phoneNumber);
-            CustomersMenu customersMenu = new CustomersMenu(customer,shopsDBReference);
+            CustomersMenu customersMenu = new CustomersMenu(customer, shopsDBReference);
             customersMenu.show();
-        }else {
+        } else {
             System.out.println("Customer not found");
         }
     }
