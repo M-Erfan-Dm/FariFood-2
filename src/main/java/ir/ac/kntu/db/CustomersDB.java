@@ -1,20 +1,18 @@
 package ir.ac.kntu.db;
 
-import ir.ac.kntu.models.Customer;
-import ir.ac.kntu.models.Feedback;
-import ir.ac.kntu.models.Order;
-import ir.ac.kntu.models.OrdersService;
+import ir.ac.kntu.models.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class CustomersDB {
     private Set<Customer> customers;
 
     public CustomersDB(Set<Customer> customers) {
         this.customers = customers;
+    }
+
+    public Set<Customer> getCustomers() {
+        return new HashSet<>(customers);
     }
 
     public void setCustomers(Set<Customer> customers) {
@@ -48,18 +46,17 @@ public class CustomersDB {
         return null;
     }
 
-    public Set<Order> getOrdersOfCustomer(String customerPhoneNumber, RestaurantsDB restaurantsDB) {
+    public Set<Order> getOrdersOfCustomer(String customerPhoneNumber, ShopsDB<? extends Shop<? extends OrdersService<Order>>> shopsDB) {
         Customer customer = getCustomerByPhoneNumber(customerPhoneNumber);
         if (customer != null) {
-            OrdersService ordersService = new OrdersService(restaurantsDB.getAllOrders());
-            return ordersService.getOrdersByCustomer(customer);
+            return new OrdersService<>(shopsDB.getAllOrders()).getOrdersByCustomer(customer);
         }
         return null;
     }
 
-    public List<Feedback> getFeedbacksOfCustomer(String customerPhoneNumber, RestaurantsDB restaurantsDB) {
+    public List<Feedback> getFeedbacksOfCustomer(String customerPhoneNumber, ShopsDB<? extends Shop<? extends OrdersService<Order>>> shopsDB) {
         List<Feedback> feedbacks = new ArrayList<>();
-        Set<Order> orders = getOrdersOfCustomer(customerPhoneNumber, restaurantsDB);
+        Set<Order> orders = getOrdersOfCustomer(customerPhoneNumber, shopsDB);
         for (Order order : orders) {
             Feedback feedback = order.getFeedback();
             if (feedback != null) {
@@ -67,15 +64,6 @@ public class CustomersDB {
             }
         }
         return feedbacks;
-    }
-
-    public void printAllCustomers() {
-        List<Customer> customersList = new ArrayList<>(customers);
-        for (int i = 0; i < customersList.size(); i++) {
-            Customer customer = customersList.get(i);
-            System.out.println("No." + (i + 1) + " " + customer);
-        }
-        System.out.println(customersList.size() + " customers found");
     }
 
     @Override
