@@ -128,7 +128,7 @@ public class CouriersMenu extends Menu {
         }
         for (CourierJobInfo courierJobInfo : courier.getJobsInfo()) {
             if (courierJobInfo != null) {
-                courierJobInfo.getRestaurant().dismissCourier(phoneNumber);
+                courierJobInfo.getShop().dismissCourier(phoneNumber);
             }
         }
         couriersDB.removeCourier(courier);

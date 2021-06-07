@@ -50,7 +50,7 @@ public class Courier {
 
     public CourierJobInfo getJobInfoByRestaurantId(int id) {
         for (CourierJobInfo courierJobInfo : jobsInfo) {
-            if (courierJobInfo.getRestaurant().getId() == id) {
+            if (courierJobInfo.getShop().getId() == id) {
                 return courierJobInfo;
             }
         }
@@ -58,7 +58,7 @@ public class Courier {
     }
 
     public boolean updateJobInfo(CourierJobInfo newJobInfo) {
-        CourierJobInfo jobInfo = getJobInfoByRestaurantId(newJobInfo.getRestaurant().getId());
+        CourierJobInfo jobInfo = getJobInfoByRestaurantId(newJobInfo.getShop().getId());
         if (jobInfo == null) {
             return false;
         }
@@ -81,7 +81,7 @@ public class Courier {
     public void quitJob(int restaurantId) {
         for (int i = 0; i < jobsInfo.length; i++) {
             CourierJobInfo courierJobInfo = jobsInfo[i];
-            if (courierJobInfo != null && courierJobInfo.getRestaurant().getId() == restaurantId) {
+            if (courierJobInfo != null && courierJobInfo.getShop().getId() == restaurantId) {
                 jobsInfo[i] = null;
                 break;
             }
