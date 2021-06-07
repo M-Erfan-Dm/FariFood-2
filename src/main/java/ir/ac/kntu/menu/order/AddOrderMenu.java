@@ -68,10 +68,12 @@ public abstract class AddOrderMenu<T extends Shop<? extends OrdersService<? exte
                 boolean shouldContinueSubmittingFoods = false;
                 switch (option) {
                     case SHOW_ALL:
-                        shouldContinueSubmittingFoods = showAllFoods(shop);
+                        showAllFoods(shop);
+                        shouldContinueSubmittingFoods = continueSubmittingFood();
                         break;
                     case SHOW_THREE_BEST:
-                        shouldContinueSubmittingFoods = showThreeBestFoods(shop);
+                        showThreeBestFoods(shop);
+                        shouldContinueSubmittingFoods = continueSubmittingFood();
                         break;
                     default:
                         break;
@@ -151,60 +153,17 @@ public abstract class AddOrderMenu<T extends Shop<? extends OrdersService<? exte
         return shop;
     }
 
-    private boolean showAllFoods(T shop) {
-        List<Food> foods = getAllFoods(shop);
-        printList(foods,"foods");
-        if (foods.size() == 0) {
-            return false;
-        }
-        return continueSubmittingFood();
-    }
-
-    private boolean showThreeBestFoods(T shop) {
-        List<Food> foods = getThreeBestFoods(shop);
-        printList(foods,"foods");
-        if (foods.size() == 0) {
-            return false;
-        }
-        return continueSubmittingFood();
-    }
-
     private boolean continueSubmittingFood() {
         System.out.println("Continue ?\n1.Yes 2.No");
         int choice = Integer.parseInt(ScannerWrapper.nextLine()) - 1;
         return choice == 0;
     }
 
-    public Map<Food, Integer> chooseFoods(T shop) {
-        Map<Food, Integer> foods = new HashMap<>();
-        System.out.println("Enter foods you want (or blank to stop adding)");
-        String name;
-        while (!(name = getName()).isBlank()) {
-            Food food = getFoodByName(shop,name);
-            if (food == null) {
-                System.out.println("Food not found");
-                continue;
-            }
-            Integer count = getCount(1);
-            if (count == null) {
-                System.out.println("Invalid count");
-                continue;
-            }
-            if (foods.containsKey(food)){
-                foods.put(food,foods.get(food) + count);
-            }else {
-                foods.put(food,count);
-            }
-            System.out.println("Food is added");
-        }
-        return foods;
-    }
+    abstract public Map<Food, Integer> chooseFoods(T shop) ;
 
-    abstract public List<Food> getAllFoods(T shop);
+    abstract public void showAllFoods(T shop) ;
 
-    abstract public List<Food> getThreeBestFoods(T shop);
-
-    abstract public Food getFoodByName(T shop,String name);
+    abstract public void showThreeBestFoods(T shop);
 
     abstract public List<T> getFiveBestShopsByFood(Food food);
 }

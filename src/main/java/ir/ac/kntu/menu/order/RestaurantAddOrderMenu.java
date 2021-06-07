@@ -4,6 +4,7 @@ import ir.ac.kntu.db.RestaurantsDB;
 import ir.ac.kntu.models.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,19 +37,43 @@ public class RestaurantAddOrderMenu extends AddOrderMenu<Restaurant, Restaurants
     }
 
     @Override
-    public List<Food> getAllFoods(Restaurant shop) {
-        return new ArrayList<>(shop.getFoodMenu().getFoods());
+    public Map<Food, Integer> chooseFoods(Restaurant shop) {
+        Map<Food, Integer> foods = new HashMap<>();
+        System.out.println("Enter foods you want (or blank to stop adding)");
+        String name;
+        while (!(name = getName()).isBlank()) {
+            Food food = shop.getFoodMenu().getFoodByName(name);
+            if (food == null) {
+                System.out.println("Food not found");
+                continue;
+            }
+            Integer count = getCount(1);
+            if (count == null) {
+                System.out.println("Invalid count");
+                continue;
+            }
+            if (foods.containsKey(food)){
+                foods.put(food,foods.get(food) + count);
+            }else {
+                foods.put(food,count);
+            }
+            System.out.println("Food is added");
+        }
+        return foods;
     }
 
     @Override
-    public List<Food> getThreeBestFoods(Restaurant shop) {
-        return shop.getOrdersService().getBestFoods(3);
+    public void showAllFoods(Restaurant shop) {
+        List<Food> foods = new ArrayList<>(shop.getFoodMenu().getFoods());
+        printList(foods,"foods");
     }
 
     @Override
-    public Food getFoodByName(Restaurant shop, String name) {
-        return shop.getFoodMenu().getFoodByName(name);
+    public void showThreeBestFoods(Restaurant shop) {
+        List<Food> foods = shop.getOrdersService().getBestFoods(3);
+        printList(foods,"foods");
     }
+
 
     @Override
     public List<Restaurant> getFiveBestShopsByFood(Food food) {
