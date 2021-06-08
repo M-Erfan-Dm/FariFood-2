@@ -2,13 +2,8 @@ package ir.ac.kntu;
 
 import ir.ac.kntu.db.*;
 import ir.ac.kntu.menu.auth.AuthenticationMenu;
-import ir.ac.kntu.models.*;
-import ir.ac.kntu.service.PeriodicalOrdersService;
-import ir.ac.kntu.service.PremiumCustomersService;
+import ir.ac.kntu.models.ShopsDBReference;
 
-import java.time.LocalTime;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
 
 public class FariFood {
@@ -29,19 +24,6 @@ public class FariFood {
         FruitShopsDB fruitShopsDB = new FruitShopsDB(new HashSet<>());
         CustomersDB customersDB = new CustomersDB(new HashSet<>());
         ShopsDBReference shopsDBReference = new ShopsDBReference(restaurantsDB, supermarketsDB, fruitShopsDB);
-
-
-        adminsDB.addAdmin(new Admin("1", "1", new Settings()));
-        Owner owner = new Owner("2", "erfan", "2", new Settings());
-        ownersDB.addOwner(owner);
-        customersDB.addCustomer(new Customer("3", "3", "semnan", new Settings()));
-
-        CountableFoodMenu foodMenu = new CountableFoodMenu(new HashMap<>());
-        foodMenu.buyFood(new Food("mac", 5), 3);
-        supermarketsDB.add(new Supermarket(owner, "restaurant", "semnan", new Schedule(
-                LocalTime.of(5, 30), LocalTime.of(23, 0), new HashSet<>(Arrays.asList(Day.values()))),
-                new CouriersDB(new HashSet<>()), new PeriodicalOrdersService(new HashSet<>()), 50, 20,
-                new PremiumCustomersService(new HashSet<>()), ShopPriceType.LUXURIOUS, foodMenu));
 
         authenticationMenu = new AuthenticationMenu(adminsDB, ownersDB, customersDB, couriersDB, shopsDBReference);
     }

@@ -3,7 +3,7 @@ package ir.ac.kntu.utils;
 import java.util.List;
 
 public class ListPagePrinting {
-    private static final int ITEM_LIMIT = 2;
+    private static final int ITEM_LIMIT = 3;
 
     public static <T> void printList(List<T> list, ItemPrinter<T> printer) {
         if (list.size() == 0) {
