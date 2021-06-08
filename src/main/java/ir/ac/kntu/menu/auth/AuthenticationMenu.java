@@ -146,7 +146,7 @@ public class AuthenticationMenu extends Menu {
 
     private void registerOwner(String phoneNumber, String password) {
         String name = getName();
-        Owner owner = new Owner(phoneNumber, name, password, new Settings(ShopsFilteringStrategy.BY_RATING_DESCENDING));
+        Owner owner = new Owner(phoneNumber, name, password, new Settings());
         if (ownersDB.containsOwner(owner)) {
             System.out.println("Owner already exists");
             return;
@@ -157,7 +157,7 @@ public class AuthenticationMenu extends Menu {
 
     private void registerCustomer(String phoneNumber, String password) {
         String address = getAddress();
-        Customer customer = new Customer(phoneNumber, password, address);
+        Customer customer = new Customer(phoneNumber, password, address, new Settings());
         if (customersDB.containsCustomer(customer)) {
             System.out.println("Customer already exists");
             return;
