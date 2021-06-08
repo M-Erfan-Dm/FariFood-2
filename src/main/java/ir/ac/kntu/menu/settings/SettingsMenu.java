@@ -14,12 +14,12 @@ public class SettingsMenu extends Menu {
 
     @Override
     public void show() {
-        SettingsOption settingsOption;
-        while ((settingsOption = printMenuOptions("Settings Menu", SettingsOption.class))
+        SettingsOption option;
+        while ((option = printMenuOptions("Settings Menu", SettingsOption.class))
                 != SettingsOption.BACK) {
-            if (settingsOption != null) {
-                switch (settingsOption) {
-                    case RESTAURANTS_FILTERING:
+            if (option != null) {
+                switch (option) {
+                    case SHOPS_FILTERING:
                         filterRestaurants();
                         break;
                     case SHOW_SETTINGS:

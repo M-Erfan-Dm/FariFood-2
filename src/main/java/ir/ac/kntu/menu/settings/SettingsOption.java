@@ -1,7 +1,7 @@
 package ir.ac.kntu.menu.settings;
 
 public enum SettingsOption {
-    RESTAURANTS_FILTERING,
+    SHOPS_FILTERING,
     SHOW_SETTINGS,
     BACK
 }
