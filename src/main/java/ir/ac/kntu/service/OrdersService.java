@@ -117,14 +117,15 @@ public class OrdersService<T extends Order> {
         if (allOrders.size() > count) {
             allOrders = allOrders.subList(0, count);
         }
-        List<Food> bestFoods = new ArrayList<>();
+        Set<Food> bestFoods = new HashSet<>();
         for (T order : allOrders) {
             bestFoods.addAll(order.getFoods().keySet());
         }
-        if (bestFoods.size() > count) {
-            bestFoods = bestFoods.subList(0, count);
+        List<Food> finalBestFoods = new ArrayList<>(bestFoods);
+        if (finalBestFoods.size() > count) {
+            finalBestFoods = finalBestFoods.subList(0, count);
         }
-        return bestFoods;
+        return finalBestFoods;
     }
 
     public double getRatingAverageOfFood(String foodName) {
