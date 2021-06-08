@@ -61,7 +61,7 @@ public class Supermarket extends Shop<PeriodicalOrdersService> {
     public String toString() {
         String parentString = super.toString().substring(0, super.toString().lastIndexOf("}"));
         return parentString +
-                ", period base price=" + periodsService.getPeriodBasePrice()+
+                ", period base price=" + periodsService.getPeriodBasePrice() +
                 "}";
     }
 }

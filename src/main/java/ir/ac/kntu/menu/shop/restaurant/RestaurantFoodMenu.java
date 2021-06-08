@@ -86,7 +86,7 @@ public class RestaurantFoodMenu extends Menu {
 
     private void showAll() {
         FoodMenu foodMenu = restaurant.getFoodMenu();
-        printList(new ArrayList<>(foodMenu.getFoods()),"foods",(food, count) -> "No." + count + " " + food);
+        printList(new ArrayList<>(foodMenu.getFoods()), "foods", (food, count) -> "No." + count + " " + food);
     }
 
     private void removeFood() {

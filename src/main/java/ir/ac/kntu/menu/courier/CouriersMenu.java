@@ -23,7 +23,7 @@ public class CouriersMenu extends Menu {
     @Override
     public void show() {
         CouriersOption option;
-        while ((option= printMenuOptions("Couriers Menu",CouriersOption.class))
+        while ((option = printMenuOptions("Couriers Menu", CouriersOption.class))
                 != CouriersOption.BACK) {
             if (option != null) {
                 switch (option) {

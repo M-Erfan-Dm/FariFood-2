@@ -1,6 +1,9 @@
 package ir.ac.kntu.service;
 
-import ir.ac.kntu.models.*;
+import ir.ac.kntu.models.Customer;
+import ir.ac.kntu.models.Order;
+import ir.ac.kntu.models.Shop;
+import ir.ac.kntu.models.TimePeriod;
 
 import java.util.ArrayList;
 import java.util.List;

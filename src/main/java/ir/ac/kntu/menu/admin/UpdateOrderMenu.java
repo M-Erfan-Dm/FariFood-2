@@ -27,7 +27,7 @@ public class UpdateOrderMenu extends Menu {
         }
         Order order = shop.getOrdersService().getOrderById(id);
         UpdateOrderOption option;
-        while ((option = printMenuOptions("Update Order Menu",UpdateOrderOption.class))
+        while ((option = printMenuOptions("Update Order Menu", UpdateOrderOption.class))
                 != UpdateOrderOption.BACK) {
             if (option != null) {
                 switch (option) {
@@ -56,10 +56,10 @@ public class UpdateOrderMenu extends Menu {
             OrderState nextOrderState = order.getNextOrderState();
             switch (nextOrderState) {
                 case SENDING:
-                    handleSendingOrderState(shop,order,nextOrderState);
+                    handleSendingOrderState(shop, order, nextOrderState);
                     break;
                 case DELIVERED:
-                    handleDeliveredOrderState(shop,order,nextOrderState);
+                    handleDeliveredOrderState(shop, order, nextOrderState);
                     break;
                 default:
                     break;
@@ -87,7 +87,7 @@ public class UpdateOrderMenu extends Menu {
         return couriers.get(randomIndex);
     }
 
-    private void handleSendingOrderState(Shop<?> shop,Order order,OrderState orderState){
+    private void handleSendingOrderState(Shop<?> shop, Order order, OrderState orderState) {
         Courier courier = getRandomCourier(shop);
         if (courier != null) {
             System.out.println("Courier of order : phone number : " +
@@ -97,7 +97,7 @@ public class UpdateOrderMenu extends Menu {
         }
     }
 
-    private void handleDeliveredOrderState(Shop<?> shop,Order order,OrderState orderState){
+    private void handleDeliveredOrderState(Shop<?> shop, Order order, OrderState orderState) {
         Feedback feedback = getFeedback();
         order.setFeedback(feedback);
         order.setOrderState(orderState);

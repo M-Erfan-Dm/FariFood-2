@@ -276,11 +276,11 @@ public abstract class Menu {
     }
 
     public <T> void printList(List<T> list, String objectsName) {
-        printList(list,objectsName,(t, count) -> "No." + count + " " + t);
+        printList(list, objectsName, (t, count) -> "No." + count + " " + t);
     }
 
-    public <T> void printList(List<T> list, String objectsName, ItemPrinter<T> printer){
+    public <T> void printList(List<T> list, String objectsName, ItemPrinter<T> printer) {
         System.out.println("---" + list.size() + " " + objectsName + " found---");
-        ListPagePrinting.printList(list,printer);
+        ListPagePrinting.printList(list, printer);
     }
 }

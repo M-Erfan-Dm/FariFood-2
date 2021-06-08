@@ -46,8 +46,8 @@ public class FruitShop extends Shop<PeriodicalOrdersService> {
     public String toString() {
         String parentString = super.toString().substring(0, super.toString().lastIndexOf("}"));
         return parentString +
-                ", period base price=" + periodsService.getPeriodBasePrice()+
-                ", fruit kg limit=" + periodsService.getFruitKGLimit()+
+                ", period base price=" + periodsService.getPeriodBasePrice() +
+                ", fruit kg limit=" + periodsService.getFruitKGLimit() +
                 "}";
     }
 }

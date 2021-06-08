@@ -4,8 +4,8 @@ import ir.ac.kntu.db.ShopsDB;
 import ir.ac.kntu.menu.Menu;
 import ir.ac.kntu.models.Order;
 import ir.ac.kntu.models.OrderState;
-import ir.ac.kntu.service.OrdersService;
 import ir.ac.kntu.models.Shop;
+import ir.ac.kntu.service.OrdersService;
 
 import java.util.ArrayList;
 
@@ -20,7 +20,7 @@ public class ShowOrdersMenu extends Menu {
     @Override
     public void show() {
         ShowOrdersOption option;
-        while ((option = printMenuOptions("Show Orders Menu",ShowOrdersOption.class))
+        while ((option = printMenuOptions("Show Orders Menu", ShowOrdersOption.class))
                 != ShowOrdersOption.BACK) {
             if (option != null) {
                 switch (option) {

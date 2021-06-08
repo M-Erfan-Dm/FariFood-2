@@ -6,7 +6,7 @@ public class ListPagePrinting {
     private static final int ITEM_LIMIT = 2;
 
     public static <T> void printList(List<T> list, ItemPrinter<T> printer) {
-        if (list.size()==0){
+        if (list.size() == 0) {
             return;
         }
         int page = 0;
@@ -15,7 +15,7 @@ public class ListPagePrinting {
             int firstIndex = page * ITEM_LIMIT;
             int lastIndex = Math.min(firstIndex + ITEM_LIMIT, list.size());
             for (int i = firstIndex; i < lastIndex; i++) {
-                System.out.println(printer.getText(list.get(i),i+1));
+                System.out.println(printer.getText(list.get(i), i + 1));
             }
             page = movePage(page, maxPage);
         }
@@ -24,7 +24,7 @@ public class ListPagePrinting {
     private static Integer getChoice() {
         System.out.print("1.Next    2.Previous    3.Exit: ");
         int choice = Integer.parseInt(ScannerWrapper.nextLine()) - 1;
-        if (choice >= 0 && choice<3) {
+        if (choice >= 0 && choice < 3) {
             return choice;
         }
         return null;
@@ -41,7 +41,7 @@ public class ListPagePrinting {
         if (choice == 1) {
             return page - 1;
         }
-        if (choice==2){
+        if (choice == 2) {
             return -1;
         }
         return page;

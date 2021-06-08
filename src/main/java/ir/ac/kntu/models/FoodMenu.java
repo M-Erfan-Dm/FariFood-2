@@ -1,6 +1,8 @@
 package ir.ac.kntu.models;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 public class FoodMenu {
     private Set<Food> foods;

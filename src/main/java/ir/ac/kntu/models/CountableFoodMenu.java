@@ -1,6 +1,8 @@
 package ir.ac.kntu.models;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class CountableFoodMenu {
 
@@ -31,7 +33,7 @@ public class CountableFoodMenu {
     }
 
     public boolean sellFood(Food food, int amountToSell) {
-        if (canSellFood(food,amountToSell)){
+        if (canSellFood(food, amountToSell)) {
             int currentAmount = foods.get(food) - amountToSell;
             foods.put(food, currentAmount);
             return true;
@@ -57,7 +59,7 @@ public class CountableFoodMenu {
         return entry.getKey();
     }
 
-    public boolean canSellFood(Food food, int amountToSell){
+    public boolean canSellFood(Food food, int amountToSell) {
         if (amountToSell < 1 || !foods.containsKey(food)) {
             return false;
         }
@@ -73,7 +75,7 @@ public class CountableFoodMenu {
         return foods.containsKey(food) && foods.get(food) > 0;
     }
 
-    public boolean containsFoodName(Food food){
+    public boolean containsFoodName(Food food) {
         return foods.containsKey(food);
     }
 
