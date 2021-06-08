@@ -31,15 +31,12 @@ public class CountableFoodMenu {
     }
 
     public boolean sellFood(Food food, int amountToSell) {
-        if (amountToSell < 1 || !foods.containsKey(food)) {
-            return false;
+        if (canSellFood(food,amountToSell)){
+            int currentAmount = foods.get(food) - amountToSell;
+            foods.put(food, currentAmount);
+            return true;
         }
-        int currentAmount = foods.get(food) - amountToSell;
-        if (currentAmount < 0) {
-            return false;
-        }
-        foods.put(food, currentAmount);
-        return true;
+        return false;
     }
 
     public boolean updateFood(Food food) {
@@ -58,6 +55,14 @@ public class CountableFoodMenu {
             return null;
         }
         return entry.getKey();
+    }
+
+    public boolean canSellFood(Food food, int amountToSell){
+        if (amountToSell < 1 || !foods.containsKey(food)) {
+            return false;
+        }
+        int currentAmount = foods.get(food) - amountToSell;
+        return currentAmount >= 0;
     }
 
     public Integer getAmountOfFood(Food food) {

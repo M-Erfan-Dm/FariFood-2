@@ -4,6 +4,7 @@ import ir.ac.kntu.db.SupermarketsDB;
 import ir.ac.kntu.models.*;
 import ir.ac.kntu.utils.ScannerWrapper;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +41,7 @@ public class SupermarketAddOrderMenu extends AddOrderMenu<Supermarket, Supermark
         if (timePeriod == null) {
             return;
         }
+        sellFoods(foods, supermarket);
         PeriodicalOrder order = new PeriodicalOrder(foods, null, getCustomer(),
                 null, OrderState.PROCESSING, timePeriod);
         supermarket.getOrdersService().addOrder(order);
@@ -64,7 +66,7 @@ public class SupermarketAddOrderMenu extends AddOrderMenu<Supermarket, Supermark
                 System.out.println("Invalid count");
                 continue;
             }
-            boolean isSold = shop.getFoodMenu().sellFood(food, count);
+            boolean isSold = shop.getFoodMenu().canSellFood(food, count);
             if (!isSold) {
                 System.out.println("Not having enough food");
                 continue;
@@ -82,18 +84,17 @@ public class SupermarketAddOrderMenu extends AddOrderMenu<Supermarket, Supermark
     @Override
     public void showAllFoods(Supermarket shop) {
         Map<Food, Integer> foods = shop.getFoodMenu().getFoods();
-        for (Map.Entry<Food, Integer> food : foods.entrySet()) {
-            System.out.println(food.getKey() + " , " + food.getValue() + " in stock");
-        }
+        printList(new ArrayList<>(foods.entrySet()), "foods",
+                (food, count) -> food.getKey() + " , " + food.getValue() + " in stock");
     }
 
     @Override
     public void showThreeBestFoods(Supermarket shop) {
         List<Food> foods = shop.getOrdersService().getBestFoods(3);
-        for (Food food : foods) {
+        printList(new ArrayList<>(foods), "foods", (food, count) -> {
             int amount = shop.getFoodMenu().getAmountOfFood(food);
-            System.out.println(food + " , " + amount + " in stock");
-        }
+            return "No." + count + " " + food + " , " + amount + " in stock";
+        });
     }
 
     @Override
@@ -145,5 +146,11 @@ public class SupermarketAddOrderMenu extends AddOrderMenu<Supermarket, Supermark
         }
         System.out.println("Wrong choice");
         return null;
+    }
+
+    private void sellFoods(Map<Food, Integer> foods, Supermarket supermarket) {
+        for (Map.Entry<Food, Integer> food : foods.entrySet()) {
+            supermarket.getFoodMenu().sellFood(food.getKey(), food.getValue());
+        }
     }
 }
