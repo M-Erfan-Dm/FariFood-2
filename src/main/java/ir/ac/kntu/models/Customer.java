@@ -9,10 +9,13 @@ public class Customer {
 
     private String address;
 
-    public Customer(String phoneNumber, String password, String address) {
+    private Settings settings;
+
+    public Customer(String phoneNumber, String password, String address, Settings settings) {
         this.phoneNumber = phoneNumber;
         this.password = password;
         this.address = address;
+        this.settings = settings;
     }
 
     public String getPhoneNumber() {
@@ -37,6 +40,14 @@ public class Customer {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Settings getSettings() {
+        return settings;
+    }
+
+    public void setSettings(Settings settings) {
+        this.settings = settings;
     }
 
     @Override
