@@ -2,6 +2,7 @@ package ir.ac.kntu.menu;
 
 import ir.ac.kntu.db.OwnersDB;
 import ir.ac.kntu.models.*;
+import ir.ac.kntu.utils.ListPagePrinting;
 import ir.ac.kntu.utils.ScannerWrapper;
 
 import java.time.LocalTime;
@@ -274,10 +275,7 @@ public abstract class Menu {
     }
 
     public <T> void printList(List<T> list, String objectsName) {
-        for (int i = 0; i < list.size(); i++) {
-            T t = list.get(i);
-            System.out.println("No." + (i + 1) + " " + t);
-        }
+        ListPagePrinting.printList(list,(t, count) ->"No." + count + " " + t);
         System.out.println(list.size() + " " + objectsName + " found");
     }
 }

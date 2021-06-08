@@ -6,14 +6,14 @@ import java.util.function.Function;
 public class ListPagePrinting {
     private static final int PAGE_LIMIT = 2;
 
-    public static <T> void printList(List<T> list, Function<T, String> function) {
+    public static <T> void printList(List<T> list, ItemPrinter<T> function) {
         int pageCount = 0;
         int maxPageCount = (int) Math.ceil(((double) list.size()) / ((double) PAGE_LIMIT));
         while (pageCount >= 0) {
             int firstIndex = pageCount * PAGE_LIMIT;
             int lastIndex = Math.min(firstIndex + PAGE_LIMIT, list.size());
             for (int i = firstIndex; i < lastIndex; i++) {
-                System.out.println(function.apply(list.get(i)));
+                System.out.println(function.print(list.get(i),i+1));
             }
             pageCount = movePage(pageCount, maxPageCount);
         }
