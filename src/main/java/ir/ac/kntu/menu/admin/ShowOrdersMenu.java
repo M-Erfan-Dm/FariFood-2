@@ -20,7 +20,7 @@ public class ShowOrdersMenu extends Menu {
     @Override
     public void show() {
         ShowOrdersOption option;
-        while ((option = printShowOrderOptions())
+        while ((option = printMenuOptions("Show Orders Menu",ShowOrdersOption.class))
                 != ShowOrdersOption.BACK) {
             if (option != null) {
                 switch (option) {
@@ -38,12 +38,6 @@ public class ShowOrdersMenu extends Menu {
                 }
             }
         }
-    }
-
-    private ShowOrdersOption printShowOrderOptions() {
-        printEnumOptions(ShowOrdersOption.class);
-        System.out.println("Enter your choice");
-        return getOption(ShowOrdersOption.class);
     }
 
     private void showAllOrders() {

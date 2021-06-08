@@ -22,10 +22,11 @@ public class CouriersMenu extends Menu {
 
     @Override
     public void show() {
-        CouriersOption couriersOption = printMenuOptions();
-        while (couriersOption != CouriersOption.BACK) {
-            if (couriersOption != null) {
-                switch (couriersOption) {
+        CouriersOption option;
+        while ((option= printMenuOptions("Couriers Menu",CouriersOption.class))
+                != CouriersOption.BACK) {
+            if (option != null) {
+                switch (option) {
                     case REGISTER:
                         registerCourier();
                         break;
@@ -46,17 +47,9 @@ public class CouriersMenu extends Menu {
                 }
 
             }
-            couriersOption = printMenuOptions();
         }
     }
 
-
-    private CouriersOption printMenuOptions() {
-        System.out.println("----------Couriers Menu----------");
-        printEnumOptions(CouriersOption.class);
-        System.out.print("Enter your choice : ");
-        return getOption(CouriersOption.class);
-    }
 
     private void registerCourier() {
         Courier courier = getCourierInfo();
