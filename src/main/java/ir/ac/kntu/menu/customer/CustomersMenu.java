@@ -1,7 +1,6 @@
 package ir.ac.kntu.menu.customer;
 
 import ir.ac.kntu.menu.Menu;
-import ir.ac.kntu.menu.admin.OrdersMenu;
 import ir.ac.kntu.menu.order.FruitShopAddOrderMenu;
 import ir.ac.kntu.menu.order.RestaurantAddOrderMenu;
 import ir.ac.kntu.menu.order.SupermarketAddOrderMenu;
@@ -10,9 +9,7 @@ import ir.ac.kntu.models.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class CustomersMenu extends Menu {
     private final Customer customer;
@@ -54,7 +51,7 @@ public class CustomersMenu extends Menu {
         }
     }
 
-    private void addOrder(){
+    private void addOrder() {
         printEnumOptions(ShopType.class);
         ShopType shopType = getOption(ShopType.class);
         if (shopType != null) {
@@ -79,11 +76,11 @@ public class CustomersMenu extends Menu {
         }
     }
 
-    private void updateOrderFeedback(){
+    private void updateOrderFeedback() {
         System.out.println("Order id :");
         int id = getId();
         Order order = new OrdersService<>(shopsDBReference.getAllOrders()).getOrderById(id);
-        if (order==null){
+        if (order == null) {
             System.out.println("Order not found");
             return;
         }
@@ -96,21 +93,21 @@ public class CustomersMenu extends Menu {
         shopsDBReference.getShopByOrderId(order.getId()).updateRating();
     }
 
-    private void showFeedbacksHistory(){
+    private void showFeedbacksHistory() {
         List<Feedback> feedbacks = new ArrayList<>();
         Set<Order> orders = new OrdersService<>(shopsDBReference.getAllOrders()).getOrdersByCustomer(customer);
-        for (Order order : orders){
+        for (Order order : orders) {
             Feedback feedback = order.getFeedback();
-            if (feedback!=null){
+            if (feedback != null) {
                 feedbacks.add(feedback);
             }
         }
         printList(feedbacks, "feedbacks");
     }
 
-    private void showOrdersHistory(){
+    private void showOrdersHistory() {
         List<Order> orders = new ArrayList<>(new OrdersService<>(
                 shopsDBReference.getAllOrders()).getOrdersByCustomer(customer));
-        printList(orders,"orders");
+        printList(orders, "orders");
     }
 }

@@ -40,14 +40,14 @@ public class ShopsDBReference {
         return orders;
     }
 
-    public Shop<?> getShopByOrderId(int id){
+    public Shop<?> getShopByOrderId(int id) {
         Shop<?> shop;
         shop = restaurantsDB.getShopByOrderId(id);
-        if (shop!=null){
+        if (shop != null) {
             return shop;
         }
         shop = supermarketsDB.getShopByOrderId(id);
-        if (shop!=null){
+        if (shop != null) {
             return shop;
         }
         return fruitShopsDB.getShopByOrderId(id);

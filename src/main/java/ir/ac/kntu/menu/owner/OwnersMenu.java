@@ -37,10 +37,10 @@ public class OwnersMenu extends Menu {
     @Override
     public void show() {
         OwnersMenuOption option;
-        while ((option = printMenuOptions("Owner Menu",OwnersMenuOption.class))
-        !=OwnersMenuOption.LOGOUT){
-            if (option!=null){
-                switch (option){
+        while ((option = printMenuOptions("Owner Menu", OwnersMenuOption.class))
+                != OwnersMenuOption.LOGOUT) {
+            if (option != null) {
+                switch (option) {
                     case SHOP_INFO:
                         showShopInfo();
                         break;
@@ -50,6 +50,8 @@ public class OwnersMenu extends Menu {
                     case SETTINGS:
                         SettingsMenu settingsMenu = new SettingsMenu(owner.getSettings());
                         settingsMenu.show();
+                        break;
+                    default:
                         break;
                 }
             }
@@ -64,20 +66,20 @@ public class OwnersMenu extends Menu {
             switch (shopType) {
                 case RESTAURANT:
                     Restaurant restaurant = getRestaurant();
-                    if (restaurant!=null){
-                        new RestaurantInfoMenu(restaurant,couriersDB,ownersDB).show();
+                    if (restaurant != null) {
+                        new RestaurantInfoMenu(restaurant, couriersDB, ownersDB).show();
                     }
                     break;
                 case SUPERMARKET:
                     Supermarket supermarket = getSupermarket();
-                    if (supermarket!=null){
-                        new SupermarketInfoMenu(supermarket,couriersDB,ownersDB,customersDB).show();
+                    if (supermarket != null) {
+                        new SupermarketInfoMenu(supermarket, couriersDB, ownersDB, customersDB).show();
                     }
                     break;
                 case FRUIT_SHOP:
                     FruitShop fruitShop = getFruitShop();
-                    if (fruitShop!=null){
-                        new FruitShopInfoMenu(fruitShop,couriersDB,ownersDB).show();
+                    if (fruitShop != null) {
+                        new FruitShopInfoMenu(fruitShop, couriersDB, ownersDB).show();
                     }
                     break;
                 default:
@@ -87,45 +89,46 @@ public class OwnersMenu extends Menu {
     }
 
 
-    private Restaurant getRestaurant () {
+    private Restaurant getRestaurant() {
         int id = getId();
         Restaurant restaurant = shopsDBReference.getRestaurantsDB().getShopById(id);
-        if (restaurant==null){
+        if (restaurant == null) {
             return null;
         }
-        if (restaurant.getOwner().equals(owner)){
+        if (restaurant.getOwner().equals(owner)) {
             return restaurant;
         }
         System.out.println("Restaurant not found");
         return null;
     }
 
-    private Supermarket getSupermarket(){
+    private Supermarket getSupermarket() {
         int id = getId();
         Supermarket supermarket = shopsDBReference.getSupermarketsDB().getShopById(id);
-        if (supermarket==null){
+        if (supermarket == null) {
             return null;
         }
-        if (supermarket.getOwner().equals(owner)){
+        if (supermarket.getOwner().equals(owner)) {
             return supermarket;
         }
         System.out.println("Supermarket not found");
         return null;
     }
 
-    private FruitShop getFruitShop(){
+    private FruitShop getFruitShop() {
         int id = getId();
         FruitShop fruitShop = shopsDBReference.getFruitShopsDB().getShopById(id);
-        if (fruitShop==null){
+        if (fruitShop == null) {
             return null;
         }
-        if (fruitShop.getOwner().equals(owner)){
+        if (fruitShop.getOwner().equals(owner)) {
             return fruitShop;
         }
         System.out.println("Fruit shop not found");
         return null;
     }
-    private void showAll(){
+
+    private void showAll() {
         printEnumOptions(ShopType.class);
         ShopType shopType = getOption(ShopType.class);
         if (shopType != null) {
@@ -148,18 +151,18 @@ public class OwnersMenu extends Menu {
     private void showAllRestaurants() {
         List<Restaurant> restaurants = shopsDBReference.getRestaurantsDB().getShops().stream().
                 filter(restaurant -> restaurant.getOwner().equals(owner)).collect(Collectors.toList());
-        printList(restaurants,"restaurants");
+        printList(restaurants, "restaurants");
     }
 
-    private void showAllSupermarkets(){
+    private void showAllSupermarkets() {
         List<Supermarket> supermarkets = shopsDBReference.getSupermarketsDB().getShops().stream().
                 filter(supermarket -> supermarket.getOwner().equals(owner)).collect(Collectors.toList());
-        printList(supermarkets,"supermarkets");
+        printList(supermarkets, "supermarkets");
     }
 
-    private void showAllFruitShops(){
+    private void showAllFruitShops() {
         List<FruitShop> fruitShops = shopsDBReference.getFruitShopsDB().getShops().stream().
                 filter(fruitShop -> fruitShop.getOwner().equals(owner)).collect(Collectors.toList());
-        printList(fruitShops,"fruit shops");
+        printList(fruitShops, "fruit shops");
     }
 }
