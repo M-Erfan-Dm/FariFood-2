@@ -36,10 +36,10 @@ public class RestaurantAddOrderMenu extends AddOrderMenu<Restaurant, Restaurants
             return;
         }
         Order order = new Order(foods, null, getCustomer(), null, OrderState.PROCESSING);
-        restaurant.getOrdersService().addOrder(order);
-        System.out.println("Your order is in process");
         int totalPrice = restaurant.getOrdersService().getTotalPriceForOrder(order, restaurant);
         System.out.println("Total price : " + totalPrice);
+        restaurant.getOrdersService().addOrder(order);
+        System.out.println("Your order is in process");
     }
 
     @Override

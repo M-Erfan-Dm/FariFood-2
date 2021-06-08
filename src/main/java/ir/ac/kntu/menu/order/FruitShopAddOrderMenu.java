@@ -44,10 +44,10 @@ public class FruitShopAddOrderMenu extends AddOrderMenu<FruitShop, FruitShopsDB>
         sellFoods(foods, fruitShop);
         PeriodicalOrder order = new PeriodicalOrder(foods, null, getCustomer(),
                 null, OrderState.PROCESSING, timePeriod);
-        fruitShop.getOrdersService().addOrder(order);
-        System.out.println("Your order is in process");
         int totalPrice = fruitShop.getOrdersService().getTotalPriceForOrder(order, fruitShop);
         System.out.println("Total price : " + totalPrice);
+        fruitShop.getOrdersService().addOrder(order);
+        System.out.println("Your order is in process");
     }
 
     @Override

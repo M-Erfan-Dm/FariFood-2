@@ -44,10 +44,10 @@ public class SupermarketAddOrderMenu extends AddOrderMenu<Supermarket, Supermark
         sellFoods(foods, supermarket);
         PeriodicalOrder order = new PeriodicalOrder(foods, null, getCustomer(),
                 null, OrderState.PROCESSING, timePeriod);
-        supermarket.getOrdersService().addOrder(order);
-        System.out.println("Your order is in process");
         int totalPrice = supermarket.getOrdersService().getTotalPriceForOrder(order, supermarket);
         System.out.println("Total price : " + totalPrice);
+        supermarket.getOrdersService().addOrder(order);
+        System.out.println("Your order is in process");
     }
 
     @Override
