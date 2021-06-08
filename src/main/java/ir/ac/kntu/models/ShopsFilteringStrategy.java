@@ -6,6 +6,4 @@ public enum ShopsFilteringStrategy {
     BY_FEEDBACKS_COUNT_ASCENDING,
     BY_FEEDBACKS_COUNT_DESCENDING,
     BY_ALPHA_SCORE
-
-
 }

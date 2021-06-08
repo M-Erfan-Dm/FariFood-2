@@ -35,15 +35,6 @@ public class FoodMenu {
         return foods.contains(food);
     }
 
-    public void printAllFoods() {
-        List<Food> foodsList = new ArrayList<>(foods);
-        for (int i = 0; i < foodsList.size(); i++) {
-            Food food = foodsList.get(i);
-            System.out.println("No." + (i + 1) + " " + food);
-        }
-        System.out.println(foodsList.size() + " foods found");
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {

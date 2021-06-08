@@ -2,6 +2,7 @@ package ir.ac.kntu.menu;
 
 import ir.ac.kntu.db.OwnersDB;
 import ir.ac.kntu.models.*;
+import ir.ac.kntu.utils.ItemPrinter;
 import ir.ac.kntu.utils.ListPagePrinting;
 import ir.ac.kntu.utils.ScannerWrapper;
 
@@ -82,7 +83,7 @@ public abstract class Menu {
     }
 
     public Set<Day> getDays() {
-        Day.printOptions();
+        printEnumOptions(Day.class);
         System.out.println("Enter the days (or 0 to stop) :");
         Set<Day> days = new HashSet<>();
         int day = Integer.parseInt(ScannerWrapper.nextLine()) - 1;
@@ -126,7 +127,7 @@ public abstract class Menu {
     }
 
     public ShopPriceType getShopPriceType() {
-        ShopPriceType.printOptions();
+        printEnumOptions(ShopPriceType.class);
         System.out.println("Enter restaurant price type : ");
         return getOption(ShopPriceType.class);
     }
@@ -275,7 +276,11 @@ public abstract class Menu {
     }
 
     public <T> void printList(List<T> list, String objectsName) {
-        ListPagePrinting.printList(list,(t, count) ->"No." + count + " " + t);
-        System.out.println(list.size() + " " + objectsName + " found");
+        printList(list,objectsName,(t, count) -> "No." + count + " " + t);
+    }
+
+    public <T> void printList(List<T> list, String objectsName, ItemPrinter<T> printer){
+        System.out.println("---" + list.size() + " " + objectsName + " found---");
+        ListPagePrinting.printList(list,printer);
     }
 }

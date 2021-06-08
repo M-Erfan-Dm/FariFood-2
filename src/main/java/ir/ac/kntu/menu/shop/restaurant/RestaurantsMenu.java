@@ -6,7 +6,7 @@ import ir.ac.kntu.db.RestaurantsDB;
 import ir.ac.kntu.menu.shop.ShopsMenu;
 import ir.ac.kntu.menu.shop.shop_info.RestaurantInfoMenu;
 import ir.ac.kntu.models.FoodMenu;
-import ir.ac.kntu.models.OrdersService;
+import ir.ac.kntu.service.OrdersService;
 import ir.ac.kntu.models.Restaurant;
 import ir.ac.kntu.models.Settings;
 

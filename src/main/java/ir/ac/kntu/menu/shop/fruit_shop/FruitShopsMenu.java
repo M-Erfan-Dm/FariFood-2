@@ -7,7 +7,7 @@ import ir.ac.kntu.menu.shop.ShopsMenu;
 import ir.ac.kntu.menu.shop.shop_info.FruitShopInfoMenu;
 import ir.ac.kntu.models.CountableFoodMenu;
 import ir.ac.kntu.models.FruitShop;
-import ir.ac.kntu.models.PeriodicalOrdersService;
+import ir.ac.kntu.service.PeriodicalOrdersService;
 import ir.ac.kntu.models.Settings;
 
 import java.util.HashMap;

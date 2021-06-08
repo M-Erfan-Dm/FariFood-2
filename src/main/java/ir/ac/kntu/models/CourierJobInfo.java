@@ -1,5 +1,7 @@
 package ir.ac.kntu.models;
 
+import ir.ac.kntu.service.OrdersService;
+
 import java.util.Objects;
 
 public class CourierJobInfo {

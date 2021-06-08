@@ -3,6 +3,7 @@ package ir.ac.kntu.menu.order;
 import ir.ac.kntu.db.ShopsDB;
 import ir.ac.kntu.menu.Menu;
 import ir.ac.kntu.models.*;
+import ir.ac.kntu.service.OrdersService;
 import ir.ac.kntu.utils.ScannerWrapper;
 
 import java.util.List;
@@ -48,15 +49,15 @@ public abstract class AddOrderMenu<T extends Shop<? extends OrdersService<? exte
             return null;
         }
         switch (option) {
-            case SHOW_ACTIVE_RESTAURANTS:
+            case SHOW_ACTIVE_SHOPS:
                 return showActiveRestaurants();
-            case SHOW_THREE_BEST_RESTAURANTS:
+            case SHOW_THREE_BEST_SHOPS:
                 return showThreeBestShops();
-            case SHOW_RESTAURANTS_BY_NAME:
+            case SHOW_SHOPS_BY_NAME:
                 return showShopsByName();
-            case SHOW_RESTAURANTS_BY_PRICE_TYPE:
+            case SHOW_SHOPS_BY_PRICE_TYPE:
                 return showShopsByPriceType();
-            case SHOW_FIVE_BEST_RESTAURANTS_BY_FOOD:
+            case SHOW_FIVE_BEST_SHOPS_BY_FOOD:
                 return showFiveBestShopsByFood();
             default:
                 break;

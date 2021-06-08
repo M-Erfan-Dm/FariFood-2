@@ -68,16 +68,6 @@ public class CountableFoodMenu {
         return foods.containsKey(food) && foods.get(food) > 0;
     }
 
-    public void printAllFoods() {
-        List<Map.Entry<Food, Integer>> foodsList = new ArrayList<>(foods.entrySet());
-        for (int i = 0; i < foodsList.size(); i++) {
-            Food food = foodsList.get(i).getKey();
-            int amount = foodsList.get(i).getValue();
-            System.out.println("No." + (i + 1) + " " + food + " ," + amount + " in stock");
-        }
-        System.out.println(foodsList.size() + " foods found");
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {

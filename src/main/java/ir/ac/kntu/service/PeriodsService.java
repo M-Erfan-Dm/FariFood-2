@@ -1,7 +1,6 @@
 package ir.ac.kntu.service;
 
 import ir.ac.kntu.models.Order;
-import ir.ac.kntu.models.PeriodicalOrdersService;
 import ir.ac.kntu.models.Shop;
 import ir.ac.kntu.models.TimePeriod;
 import ir.ac.kntu.utils.ListSorting;

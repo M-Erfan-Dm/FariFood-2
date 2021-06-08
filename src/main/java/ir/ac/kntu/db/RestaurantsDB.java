@@ -24,12 +24,4 @@ public class RestaurantsDB extends ShopsDB<Restaurant> {
         return ListSorting.sortList(getRestaurantsByFood(food), count, false,
                 restaurant -> restaurant.getOrdersService().getRatingAverageOfFood(food.getName()));
     }
-
-    public void printRestaurants(List<Restaurant> restaurants) {
-        for (int i = 0; i < restaurants.size(); i++) {
-            Restaurant restaurant = restaurants.get(i);
-            System.out.println("No." + (i + 1) + " " + restaurant);
-        }
-        System.out.println(restaurants.size() + " restaurants found");
-    }
 }

@@ -2,6 +2,7 @@ package ir.ac.kntu.models;
 
 import ir.ac.kntu.db.CouriersDB;
 import ir.ac.kntu.service.FruitShopPeriodsService;
+import ir.ac.kntu.service.PeriodicalOrdersService;
 
 public class FruitShop extends Shop<PeriodicalOrdersService> {
 
@@ -9,10 +10,10 @@ public class FruitShop extends Shop<PeriodicalOrdersService> {
 
     private CountableFoodMenu foodMenu;
 
-    public FruitShop(int id, Owner owner, String name, String address, Schedule schedule,
+    public FruitShop(Owner owner, String name, String address, Schedule schedule,
                      CouriersDB hiredCouriers, PeriodicalOrdersService ordersService,
                      int deliveryPrice, int periodBasePrice, int fruitKGLimit, ShopPriceType priceType, CountableFoodMenu foodMenu) {
-        super(id, owner, name, address, schedule, hiredCouriers, ordersService, deliveryPrice, priceType);
+        super(owner, name, address, schedule, hiredCouriers, ordersService, deliveryPrice, priceType);
         this.foodMenu = foodMenu;
         periodsService = new FruitShopPeriodsService(this, periodBasePrice, fruitKGLimit);
     }

@@ -7,7 +7,7 @@ import ir.ac.kntu.db.SupermarketsDB;
 import ir.ac.kntu.menu.shop.ShopsMenu;
 import ir.ac.kntu.menu.shop.shop_info.SupermarketInfoMenu;
 import ir.ac.kntu.models.CountableFoodMenu;
-import ir.ac.kntu.models.PeriodicalOrdersService;
+import ir.ac.kntu.service.PeriodicalOrdersService;
 import ir.ac.kntu.models.Settings;
 import ir.ac.kntu.models.Supermarket;
 import ir.ac.kntu.service.PremiumCustomersService;

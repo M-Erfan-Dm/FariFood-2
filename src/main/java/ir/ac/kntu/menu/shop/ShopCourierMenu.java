@@ -3,6 +3,7 @@ package ir.ac.kntu.menu.shop;
 import ir.ac.kntu.db.CouriersDB;
 import ir.ac.kntu.menu.Menu;
 import ir.ac.kntu.models.*;
+import ir.ac.kntu.service.OrdersService;
 import ir.ac.kntu.utils.ScannerWrapper;
 
 import java.util.ArrayList;
@@ -131,7 +132,7 @@ public class ShopCourierMenu extends Menu {
     }
 
     private Salary getSalaryInfo() {
-        SalaryType.printOptions();
+        printEnumOptions(SalaryType.class);
         System.out.println("Choose salary type :");
         SalaryType salaryType = getOption(SalaryType.class);
         if (salaryType == null) {

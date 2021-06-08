@@ -5,6 +5,8 @@ import ir.ac.kntu.models.CountableFoodMenu;
 import ir.ac.kntu.models.Food;
 import ir.ac.kntu.utils.ScannerWrapper;
 
+import java.util.ArrayList;
+
 public class ShopCountableFoodMenu extends Menu {
 
     private final CountableFoodMenu foodMenu;
@@ -89,7 +91,10 @@ public class ShopCountableFoodMenu extends Menu {
     }
 
     private void showAll() {
-        foodMenu.printAllFoods();
+        printList(new ArrayList<>(foodMenu.getFoods().entrySet()),
+                "foods", (foodIntegerEntry, count) ->
+                        "No." + count + " " + foodIntegerEntry.getKey() + " ," +
+                                foodIntegerEntry.getValue() + " in stock");
     }
 
     private Integer getAmount() {

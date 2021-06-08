@@ -5,6 +5,8 @@ import ir.ac.kntu.models.Food;
 import ir.ac.kntu.models.FoodMenu;
 import ir.ac.kntu.models.Restaurant;
 
+import java.util.ArrayList;
+
 public class RestaurantFoodMenu extends Menu {
 
     private final Restaurant restaurant;
@@ -84,7 +86,7 @@ public class RestaurantFoodMenu extends Menu {
 
     private void showAll() {
         FoodMenu foodMenu = restaurant.getFoodMenu();
-        foodMenu.printAllFoods();
+        printList(new ArrayList<>(foodMenu.getFoods()),"foods",(food, count) -> "No." + count + " " + food);
     }
 
     private void removeFood() {

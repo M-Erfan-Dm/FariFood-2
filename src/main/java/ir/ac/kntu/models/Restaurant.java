@@ -1,15 +1,16 @@
 package ir.ac.kntu.models;
 
 import ir.ac.kntu.db.CouriersDB;
+import ir.ac.kntu.service.OrdersService;
 
 public class Restaurant extends Shop<OrdersService<Order>> {
 
     private FoodMenu foodMenu;
 
-    public Restaurant(int id, Owner owner, String name, String address, Schedule schedule,
+    public Restaurant(Owner owner, String name, String address, Schedule schedule,
                       CouriersDB hiredCouriers, OrdersService<Order> ordersService, int deliveryPrice,
                       FoodMenu foodMenu, ShopPriceType priceType) {
-        super(id, owner, name, address, schedule, hiredCouriers, ordersService, deliveryPrice, priceType);
+        super(owner, name, address, schedule, hiredCouriers, ordersService, deliveryPrice, priceType);
         this.foodMenu = foodMenu;
     }
 

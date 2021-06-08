@@ -1,6 +1,7 @@
 package ir.ac.kntu.models;
 
 import ir.ac.kntu.db.CouriersDB;
+import ir.ac.kntu.service.PeriodicalOrdersService;
 import ir.ac.kntu.service.PremiumCustomersService;
 import ir.ac.kntu.service.SupermarketPeriodsService;
 
@@ -13,10 +14,10 @@ public class Supermarket extends Shop<PeriodicalOrdersService> {
 
     private CountableFoodMenu foodMenu;
 
-    public Supermarket(int id, Owner owner, String name, String address, Schedule schedule,
+    public Supermarket(Owner owner, String name, String address, Schedule schedule,
                        CouriersDB hiredCouriers, PeriodicalOrdersService ordersService,
                        int deliveryPrice, int periodBasePrice, PremiumCustomersService premiumCustomersService, ShopPriceType priceType, CountableFoodMenu foodMenu) {
-        super(id, owner, name, address, schedule, hiredCouriers, ordersService, deliveryPrice, priceType);
+        super(owner, name, address, schedule, hiredCouriers, ordersService, deliveryPrice, priceType);
         periodsService = new SupermarketPeriodsService(this, periodBasePrice);
         this.premiumCustomersService = premiumCustomersService;
         this.foodMenu = foodMenu;

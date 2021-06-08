@@ -2,7 +2,7 @@ package ir.ac.kntu.db;
 
 import ir.ac.kntu.models.Courier;
 import ir.ac.kntu.models.Order;
-import ir.ac.kntu.models.OrdersService;
+import ir.ac.kntu.service.OrdersService;
 import ir.ac.kntu.models.ShopsDBReference;
 
 import java.util.*;

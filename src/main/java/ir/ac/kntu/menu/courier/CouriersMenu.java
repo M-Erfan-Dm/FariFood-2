@@ -3,6 +3,7 @@ package ir.ac.kntu.menu.courier;
 import ir.ac.kntu.db.CouriersDB;
 import ir.ac.kntu.menu.Menu;
 import ir.ac.kntu.models.*;
+import ir.ac.kntu.service.OrdersService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +53,7 @@ public class CouriersMenu extends Menu {
 
     private CouriersOption printMenuOptions() {
         System.out.println("----------Couriers Menu----------");
-        CouriersOption.printOptions();
+        printEnumOptions(CouriersOption.class);
         System.out.print("Enter your choice : ");
         return getOption(CouriersOption.class);
     }
@@ -90,7 +91,7 @@ public class CouriersMenu extends Menu {
             System.out.println("Courier not found");
             return;
         }
-        CourierInfoOption.printOptions();
+        printEnumOptions(CourierInfoOption.class);
         System.out.println("Enter your choice :");
         CourierInfoOption courierInfoOption = getOption(CourierInfoOption.class);
         if (courierInfoOption == null) {
@@ -136,7 +137,7 @@ public class CouriersMenu extends Menu {
     private Courier getCourierInfo() {
         String phoneNumber = getPhoneNumber();
         String name = getName();
-        VehicleType.printOptions();
+        printEnumOptions(VehicleType.class);
         System.out.println("Enter your vehicle type :");
         VehicleType vehicleType = getOption(VehicleType.class);
         if (vehicleType == null) {

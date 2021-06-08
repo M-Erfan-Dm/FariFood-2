@@ -4,7 +4,7 @@ import ir.ac.kntu.db.ShopsDB;
 import ir.ac.kntu.menu.Menu;
 import ir.ac.kntu.models.Order;
 import ir.ac.kntu.models.OrderState;
-import ir.ac.kntu.models.OrdersService;
+import ir.ac.kntu.service.OrdersService;
 import ir.ac.kntu.models.Shop;
 
 import java.util.ArrayList;
@@ -71,7 +71,7 @@ public class ShowOrdersMenu extends Menu {
     }
 
     private OrderState getOrderState() {
-        OrderState.printOptions();
+        printEnumOptions(OrderState.class);
         System.out.println("Enter your choice :");
         return getOption(OrderState.class);
     }

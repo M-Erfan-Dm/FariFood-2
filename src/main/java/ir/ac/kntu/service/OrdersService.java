@@ -1,5 +1,6 @@
-package ir.ac.kntu.models;
+package ir.ac.kntu.service;
 
+import ir.ac.kntu.models.*;
 import ir.ac.kntu.utils.IdGenerator;
 
 import java.util.*;
