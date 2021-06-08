@@ -73,6 +73,10 @@ public class CountableFoodMenu {
         return foods.containsKey(food) && foods.get(food) > 0;
     }
 
+    public boolean containsFoodName(Food food){
+        return foods.containsKey(food);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

@@ -37,10 +37,12 @@ public class FariFood {
         ownersDB.addOwner(owner);
         customersDB.addCustomer(new Customer("3","3","semnan",new Settings()));
 
+        CountableFoodMenu foodMenu = new CountableFoodMenu(new HashMap<>());
+        foodMenu.buyFood(new Food("mac",5),3);
         supermarketsDB.add(new Supermarket(owner,"restaurant","semnan",new Schedule(
                 LocalTime.of(5, 30), LocalTime.of(23, 0), new HashSet<>(Arrays.asList(Day.values()))),
                 new CouriersDB(new HashSet<>()),new PeriodicalOrdersService(new HashSet<>()),50,20,
-                new PremiumCustomersService(new HashSet<>()),ShopPriceType.LUXURIOUS,new CountableFoodMenu(new HashMap<>())));
+                new PremiumCustomersService(new HashSet<>()),ShopPriceType.LUXURIOUS,foodMenu));
 
         authenticationMenu = new AuthenticationMenu(adminsDB, ownersDB, customersDB, couriersDB, shopsDBReference);
     }

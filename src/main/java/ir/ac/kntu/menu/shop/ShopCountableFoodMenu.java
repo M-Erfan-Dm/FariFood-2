@@ -44,7 +44,7 @@ public class ShopCountableFoodMenu extends Menu {
     private void buy() {
         String name = getName();
         Food food = new Food(name);
-        if (!foodMenu.containsFood(food)) {
+        if (!foodMenu.containsFoodName(food)) {
             Integer price = getPrice();
             if (price == null) {
                 return;
