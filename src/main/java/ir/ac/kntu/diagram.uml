@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="5097.454770861834" y="284.0">ir.ac.kntu.models.Restaurant</node>
+    <node x="2031.0179263565892" y="540.0">ir.ac.kntu.menu.shop.fruit_shop.FruitShopsMenu</node>
+    <node x="294.25" y="284.0">ir.ac.kntu.db.ShopsDB</node>
+    <node x="4914.704770861834" y="540.0">ir.ac.kntu.menu.shop.shop_info.FruitShopInfoMenu</node>
+    <node x="3264.2047708618334" y="452.0">ir.ac.kntu.menu.shop.ShopCountableFoodMenu</node>
+    <node x="2598.0" y="623.0">ir.ac.kntu.menu.admin.AdminCustomerInfoOption</node>
+    <node x="2018.0" y="882.0">ir.ac.kntu.menu.order.OrdersFoodOption</node>
+    <node x="4729.204770861834" y="452.0">ir.ac.kntu.menu.settings.SettingsMenu</node>
+    <node x="3679.0" y="965.0">ir.ac.kntu.models.Salary</node>
+    <node x="2300.0" y="882.0">ir.ac.kntu.menu.owner.OwnersMenuOption</node>
+    <node x="2706.2047708618334" y="452.0">ir.ac.kntu.menu.shop.restaurant.RestaurantFoodMenu</node>
+    <node x="3135.0" y="882.0">ir.ac.kntu.utils.ScannerWrapper</node>
+    <node x="0.0" y="799.0">ir.ac.kntu.service.SupermarketPeriodsService</node>
+    <node x="4495.0" y="965.0">ir.ac.kntu.models.Roll</node>
+    <node x="2239.0" y="623.0">ir.ac.kntu.service.PremiumCustomersService</node>
+    <node x="1499.0" y="623.0">ir.ac.kntu.menu.shop.shop_info.RestaurantInfoMenuOption</node>
+    <node x="3062.2047708618334" y="284.0">ir.ac.kntu.menu.Menu</node>
+    <node x="4237.204770861834" y="452.0">ir.ac.kntu.menu.shop.premium_customers.PremiumCustomersMenu</node>
+    <node x="4175.0" y="882.0">ir.ac.kntu.models.ShopPriceType</node>
+    <node x="1373.7047708618334" y="88.0">ir.ac.kntu.service.OrdersService</node>
+    <node x="4697.0" y="623.0">ir.ac.kntu.menu.customer.CustomersMenuOption</node>
+    <node x="224.0" y="452.0">ir.ac.kntu.db.SupermarketsDB</node>
+    <node x="0.0" y="452.0">ir.ac.kntu.db.RestaurantsDB</node>
+    <node x="951.2047708618334" y="540.0">ir.ac.kntu.menu.order.RestaurantAddOrderMenu</node>
+    <node x="586.0" y="882.0">ir.ac.kntu.menu.courier.CourierInfoOption</node>
+    <node x="897.0" y="965.0">ir.ac.kntu.models.TimePeriod</node>
+    <node x="4645.0" y="965.0">ir.ac.kntu.models.Food</node>
+    <node x="4201.629816461469" y="540.0">ir.ac.kntu.menu.shop.shop_info.RestaurantInfoMenu</node>
+    <node x="879.0" y="882.0">ir.ac.kntu.menu.shop.ShopCourierOption</node>
+    <node x="4942.204770861834" y="452.0">ir.ac.kntu.menu.shop.shop_info.ShopInfoMenu</node>
+    <node x="2236.2047708618334" y="452.0">ir.ac.kntu.menu.shop.ShopCourierMenu</node>
+    <node x="1118.0" y="623.0">ir.ac.kntu.menu.shop.shop_info.SupermarketInfoMenuOption</node>
+    <node x="4023.0" y="623.0">ir.ac.kntu.menu.shop.premium_customers.PremiumCustomersOption</node>
+    <node x="617.2047708618334" y="540.0">ir.ac.kntu.menu.order.SupermarketAddOrderMenu</node>
+    <node x="2582.0" y="882.0">ir.ac.kntu.menu.order.OrdersShopOption</node>
+    <node x="3675.0" y="623.0">ir.ac.kntu.models.ShopsFilteringStrategy</node>
+    <node x="1329.0" y="965.0">ir.ac.kntu.models.OrderState</node>
+    <node x="2864.0" y="882.0">ir.ac.kntu.menu.admin.AdminMenuOption</node>
+    <node x="0.0" y="965.0">ir.ac.kntu.db.CustomersDB</node>
+    <node x="1454.0" y="882.0">ir.ac.kntu.utils.ListPagePrinting</node>
+    <node x="459.0000000000002" y="452.0">ir.ac.kntu.db.FruitShopsDB</node>
+    <node x="3302.0" y="965.0">ir.ac.kntu.models.FoodMenu</node>
+    <node x="1597.7047708618334" y="88.0">ir.ac.kntu.models.PeriodicalOrder</node>
+    <node x="715.0" y="623.0">ir.ac.kntu.menu.shop.ShopCountableFoodMenuOption</node>
+    <node x="305.20477086183337" y="540.0">ir.ac.kntu.menu.order.FruitShopAddOrderMenu</node>
+    <node x="227.0" y="965.0">ir.ac.kntu.models.VehicleType</node>
+    <node x="1744.2047708618334" y="452.0">ir.ac.kntu.menu.courier.CouriersMenu</node>
+    <node x="4345.0" y="965.0">ir.ac.kntu.Main</node>
+    <node x="4662.0" y="882.0">ir.ac.kntu.utils.ListSorting</node>
+    <node x="233.0" y="711.0">ir.ac.kntu.service.PeriodsService</node>
+    <node x="4889.0" y="882.0">ir.ac.kntu.utils.ItemPrinter</node>
+    <node x="3316.0" y="623.0">ir.ac.kntu.menu.shop.shop_info.FruitShopInfoMenuOption</node>
+    <node x="1957.2047708618334" y="452.0">ir.ac.kntu.menu.admin.AdminCustomersMenu</node>
+    <node x="1172.0" y="882.0">ir.ac.kntu.models.ShopsDBReference</node>
+    <node x="1564.2047708618334" y="452.0">ir.ac.kntu.menu.shop.ShopsMenu</node>
+    <node x="1433.4547708618334" y="176.0">ir.ac.kntu.service.PeriodicalOrdersService</node>
+    <node x="3496.0" y="965.0">ir.ac.kntu.models.Courier</node>
+    <node x="293.0" y="882.0">ir.ac.kntu.menu.admin.UpdateOrderOption</node>
+    <node x="4538.204770861834" y="452.0">ir.ac.kntu.menu.owner.OwnersMenu</node>
+    <node x="1531.2047708618334" y="540.0">ir.ac.kntu.menu.shop.restaurant.RestaurantsMenu</node>
+    <node x="1736.0" y="882.0">ir.ac.kntu.menu.admin.ShowOrdersOption</node>
+    <node x="1750.0" y="965.0">ir.ac.kntu.FariFood</node>
+    <node x="1944.0" y="965.0">ir.ac.kntu.db.AdminsDB</node>
+    <node x="3655.0" y="882.0">ir.ac.kntu.menu.settings.SettingsOption</node>
+    <node x="1015.184593023256" y="452.0">ir.ac.kntu.menu.admin.OrdersMenu</node>
+    <node x="3851.0" y="965.0">ir.ac.kntu.models.Rating</node>
+    <node x="3576.2047708618334" y="452.0">ir.ac.kntu.menu.admin.AdminMenu</node>
+    <node x="2293.0" y="284.0">ir.ac.kntu.models.FruitShop</node>
+    <node x="2138.0" y="965.0">ir.ac.kntu.models.ShopType</node>
+    <node x="1869.0" y="623.0">ir.ac.kntu.menu.shop.restaurant.RestaurantFoodMenuOption</node>
+    <node x="4795.0" y="965.0">ir.ac.kntu.models.Day</node>
+    <node x="2332.0" y="965.0">ir.ac.kntu.models.Feedback</node>
+    <node x="2526.0" y="965.0">ir.ac.kntu.models.Settings</node>
+    <node x="2957.0" y="623.0">ir.ac.kntu.menu.admin.AdminCustomerMenuOption</node>
+    <node x="2482.2047708618334" y="452.0">ir.ac.kntu.menu.customer.CustomersMenu</node>
+    <node x="4023.0" y="965.0">ir.ac.kntu.models.Owner</node>
+    <node x="1545.0" y="965.0">ir.ac.kntu.utils.TimeUtils</node>
+    <node x="5012.0" y="623.0">ir.ac.kntu.menu.order.OrdersPeriodOption</node>
+    <node x="1308.4547708618334" y="176.0">ir.ac.kntu.models.Shop</node>
+    <node x="2720.0" y="965.0">ir.ac.kntu.db.OwnersDB</node>
+    <node x="5182.704770861834" y="540.0">ir.ac.kntu.menu.shop.shop_info.SupermarketInfoMenu</node>
+    <node x="3756.2047708618334" y="452.0">ir.ac.kntu.menu.admin.UpdateOrderMenu</node>
+    <node x="2985.2047708618334" y="452.0">ir.ac.kntu.menu.auth.AuthenticationMenu</node>
+    <node x="681.0" y="965.0">ir.ac.kntu.models.SalaryType</node>
+    <node x="454.0" y="965.0">ir.ac.kntu.menu.shop.ShopsOption</node>
+    <node x="1535.2047708618334" y="0.0">ir.ac.kntu.models.Order</node>
+    <node x="3395.0" y="882.0">ir.ac.kntu.models.CourierJobInfo</node>
+    <node x="672.0000000000002" y="452.0">ir.ac.kntu.menu.order.AddOrderMenu</node>
+    <node x="1113.0" y="965.0">ir.ac.kntu.db.CouriersDB</node>
+    <node x="4424.0" y="882.0">ir.ac.kntu.menu.admin.OrdersOption</node>
+    <node x="5116.0" y="882.0">ir.ac.kntu.utils.IdGenerator</node>
+    <node x="356.0" y="799.0">ir.ac.kntu.service.FruitShopPeriodsService</node>
+    <node x="2914.0" y="965.0">ir.ac.kntu.models.Schedule</node>
+    <node x="3915.0" y="882.0">ir.ac.kntu.menu.courier.CouriersOption</node>
+    <node x="211.0" y="623.0">ir.ac.kntu.service.PeriodsServiceImpl</node>
+    <node x="3108.0" y="965.0">ir.ac.kntu.models.Customer</node>
+    <node x="1111.184593023256" y="284.0">ir.ac.kntu.models.Supermarket</node>
+    <node x="4002.2047708618334" y="452.0">ir.ac.kntu.menu.admin.ShowOrdersMenu</node>
+    <node x="0.0" y="882.0">ir.ac.kntu.models.CountableFoodMenu</node>
+    <node x="4184.0" y="965.0">ir.ac.kntu.models.Admin</node>
+    <node x="4371.0" y="623.0">ir.ac.kntu.menu.auth.AuthenticationOption</node>
+    <node x="1274.2047708618334" y="540.0">ir.ac.kntu.menu.shop.supermarket.SupermarketsMenu</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ir.ac.kntu.menu.shop.shop_info.RestaurantInfoMenu" target="ir.ac.kntu.menu.shop.shop_info.ShopInfoMenu">
+      <point x="0.0" y="-19.0" />
+      <point x="4331.129816461469" y="515.0" />
+      <point x="4974.3714375285" y="515.0" />
+      <point x="-64.33333333333303" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.order.AddOrderMenu" target="ir.ac.kntu.menu.Menu">
+      <point x="64.33333333333337" y="-19.0" />
+      <point x="832.8333333333335" y="362.0" />
+      <point x="3065.293006155951" y="362.0" />
+      <point x="-49.41176470588243" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.admin.OrdersMenu" target="ir.ac.kntu.models.Shop">
+      <point x="0.0" y="-19.0" />
+      <point x="1100.684593023256" y="254.0" />
+      <point x="1341.2672708618334" y="254.0" />
+      <point x="-19.6875" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.service.SupermarketPeriodsService" target="ir.ac.kntu.service.PeriodsService">
+      <point x="0.0" y="-19.0" />
+      <point x="168.0" y="774.0" />
+      <point x="286.75" y="774.0" />
+      <point x="-53.75" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.shop.fruit_shop.FruitShopsMenu" target="ir.ac.kntu.menu.shop.ShopsMenu">
+      <point x="0.0" y="-19.0" />
+      <point x="2138.517926356589" y="515.0" />
+      <point x="1697.5381041951666" y="515.0" />
+      <point x="53.33333333333326" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.owner.OwnersMenu" target="ir.ac.kntu.menu.Menu">
+      <point x="0.0" y="-19.0" />
+      <point x="4623.704770861834" y="382.0" />
+      <point x="3151.763594391245" y="382.0" />
+      <point x="37.05882352941171" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.admin.ShowOrdersMenu" target="ir.ac.kntu.menu.Menu">
+      <point x="0.0" y="-19.0" />
+      <point x="4109.704770861834" y="402.0" />
+      <point x="3139.4106532147744" y="402.0" />
+      <point x="24.70588235294099" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.models.Restaurant" target="ir.ac.kntu.models.Shop">
+      <point x="0.0" y="-19.0" />
+      <point x="5182.954770861834" y="234.0" />
+      <point x="1406.8922708618334" y="234.0" />
+      <point x="45.9375" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.shop.restaurant.RestaurantsMenu" target="ir.ac.kntu.menu.shop.ShopsMenu">
+      <point x="0.0" y="-19.0" />
+      <point x="0.0" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.service.PeriodicalOrdersService" target="ir.ac.kntu.service.OrdersService">
+      <point x="0.0" y="-19.0" />
+      <point x="1590.4547708618334" y="151.0" />
+      <point x="1526.7047708618334" y="151.0" />
+      <point x="51.0" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.order.AddOrderMenu" target="ir.ac.kntu.db.ShopsDB">
+      <point x="-64.33333333333326" y="-19.0" />
+      <point x="704.166666666667" y="422.0" />
+      <point x="374.75" y="422.0" />
+      <point x="11.5" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.service.FruitShopPeriodsService" target="ir.ac.kntu.service.PeriodsService">
+      <point x="0.0" y="-19.0" />
+      <point x="513.0" y="774.0" />
+      <point x="394.25" y="774.0" />
+      <point x="53.75" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.shop.restaurant.RestaurantFoodMenu" target="ir.ac.kntu.menu.Menu">
+      <point x="0.0" y="-19.0" />
+      <point x="2835.7047708618334" y="432.0" />
+      <point x="3108.5283002735982" y="432.0" />
+      <point x="-6.176470588235134" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.shop.ShopsMenu" target="ir.ac.kntu.models.Shop">
+      <point x="0.0" y="-19.0" />
+      <point x="1644.2047708618334" y="264.0" />
+      <point x="1367.5172708618334" y="264.0" />
+      <point x="6.5625" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.db.ShopsDB" target="ir.ac.kntu.models.Shop">
+      <point x="0.0" y="-19.0" />
+      <point x="363.25" y="234.0" />
+      <point x="1315.0172708618334" y="234.0" />
+      <point x="-45.9375" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.order.SupermarketAddOrderMenu" target="ir.ac.kntu.menu.order.AddOrderMenu">
+      <point x="0.0" y="-19.0" />
+      <point x="774.2047708618334" y="515.0" />
+      <point x="768.5000000000002" y="515.0" />
+      <point x="0.0" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.db.FruitShopsDB" target="ir.ac.kntu.db.ShopsDB">
+      <point x="0.0" y="-19.0" />
+      <point x="555.5000000000002" y="432.0" />
+      <point x="351.75" y="432.0" />
+      <point x="-11.5" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.shop.premium_customers.PremiumCustomersMenu" target="ir.ac.kntu.menu.Menu">
+      <point x="0.0" y="-19.0" />
+      <point x="4377.704770861834" y="392.0" />
+      <point x="3145.58712380301" y="392.0" />
+      <point x="30.882352941176578" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.admin.UpdateOrderMenu" target="ir.ac.kntu.menu.Menu">
+      <point x="0.0" y="-19.0" />
+      <point x="3869.2047708618334" y="412.0" />
+      <point x="3133.234182626539" y="412.0" />
+      <point x="18.529411764705856" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.courier.CouriersMenu" target="ir.ac.kntu.menu.Menu">
+      <point x="0.0" y="-19.0" />
+      <point x="1840.7047708618334" y="392.0" />
+      <point x="3083.822417920657" y="392.0" />
+      <point x="-30.882352941176578" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.models.PeriodicalOrder" target="ir.ac.kntu.models.Order">
+      <point x="0.0" y="-19.0" />
+      <point x="1710.7047708618334" y="63.0" />
+      <point x="1622.2047708618334" y="63.0" />
+      <point x="29.0" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.admin.OrdersMenu" target="ir.ac.kntu.db.ShopsDB">
+      <point x="-57.0" y="-19.0" />
+      <point x="1043.684593023256" y="352.0" />
+      <point x="397.75" y="352.0" />
+      <point x="34.5" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.shop.supermarket.SupermarketsMenu" target="ir.ac.kntu.menu.shop.ShopsMenu">
+      <point x="0.0" y="-19.0" />
+      <point x="1392.7047708618334" y="515.0" />
+      <point x="1590.8714375285" y="515.0" />
+      <point x="-53.33333333333326" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.order.AddOrderMenu" target="ir.ac.kntu.models.Shop">
+      <point x="0.0" y="-19.0" />
+      <point x="768.5000000000002" y="244.0" />
+      <point x="1328.1422708618334" y="244.0" />
+      <point x="-32.8125" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.shop.ShopsMenu" target="ir.ac.kntu.db.ShopsDB">
+      <point x="-53.33333333333326" y="-19.0" />
+      <point x="1590.8714375285" y="342.0" />
+      <point x="420.75" y="342.0" />
+      <point x="57.5" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.order.FruitShopAddOrderMenu" target="ir.ac.kntu.menu.order.AddOrderMenu">
+      <point x="0.0" y="-19.0" />
+      <point x="451.20477086183337" y="515.0" />
+      <point x="704.166666666667" y="515.0" />
+      <point x="-64.33333333333337" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.shop.ShopCourierMenu" target="ir.ac.kntu.menu.Menu">
+      <point x="0.0" y="-19.0" />
+      <point x="2349.2047708618334" y="412.0" />
+      <point x="3096.1753590971275" y="412.0" />
+      <point x="-18.529411764705856" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.admin.AdminMenu" target="ir.ac.kntu.menu.Menu">
+      <point x="0.0" y="-19.0" />
+      <point x="3656.2047708618334" y="422.0" />
+      <point x="3127.057712038304" y="422.0" />
+      <point x="12.352941176470722" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.shop.ShopCountableFoodMenu" target="ir.ac.kntu.menu.Menu">
+      <point x="0.0" y="-19.0" />
+      <point x="3410.2047708618334" y="432.0" />
+      <point x="3120.8812414500685" y="432.0" />
+      <point x="6.176470588235134" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.settings.SettingsMenu" target="ir.ac.kntu.menu.Menu">
+      <point x="0.0" y="-19.0" />
+      <point x="4825.704770861834" y="372.0" />
+      <point x="3157.94006497948" y="372.0" />
+      <point x="43.235294117646845" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.admin.AdminCustomersMenu" target="ir.ac.kntu.menu.Menu">
+      <point x="0.0" y="-19.0" />
+      <point x="2086.7047708618334" y="402.0" />
+      <point x="3089.9988885088924" y="402.0" />
+      <point x="-24.70588235294099" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.admin.OrdersMenu" target="ir.ac.kntu.menu.Menu">
+      <point x="57.0" y="-19.0" />
+      <point x="1157.684593023256" y="372.0" />
+      <point x="3071.4694767441865" y="372.0" />
+      <point x="-43.235294117646845" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.shop.ShopsMenu" target="ir.ac.kntu.menu.Menu">
+      <point x="53.33333333333326" y="-19.0" />
+      <point x="1697.5381041951666" y="382.0" />
+      <point x="3077.6459473324217" y="382.0" />
+      <point x="-37.05882352941171" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.order.RestaurantAddOrderMenu" target="ir.ac.kntu.menu.order.AddOrderMenu">
+      <point x="0.0" y="-19.0" />
+      <point x="1102.7047708618334" y="515.0" />
+      <point x="832.8333333333335" y="515.0" />
+      <point x="64.33333333333326" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.db.SupermarketsDB" target="ir.ac.kntu.db.ShopsDB">
+      <point x="0.0" y="-19.0" />
+      <point x="331.5" y="432.0" />
+      <point x="328.75" y="432.0" />
+      <point x="-34.5" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.service.PeriodsService" target="ir.ac.kntu.service.PeriodsServiceImpl">
+      <point x="0.0" y="-19.0" />
+      <point x="0.0" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.auth.AuthenticationMenu" target="ir.ac.kntu.menu.Menu">
+      <point x="0.0" y="-19.0" />
+      <point x="0.0" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.customer.CustomersMenu" target="ir.ac.kntu.menu.Menu">
+      <point x="0.0" y="-19.0" />
+      <point x="2584.2047708618334" y="422.0" />
+      <point x="3102.3518296853626" y="422.0" />
+      <point x="-12.352941176470722" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.service.OrdersService" target="ir.ac.kntu.models.Order">
+      <point x="0.0" y="-19.0" />
+      <point x="1475.7047708618334" y="63.0" />
+      <point x="1564.2047708618334" y="63.0" />
+      <point x="-29.0" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.models.FruitShop" target="ir.ac.kntu.models.Shop">
+      <point x="0.0" y="-19.0" />
+      <point x="2373.0" y="254.0" />
+      <point x="1380.6422708618334" y="254.0" />
+      <point x="19.6875" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.shop.shop_info.FruitShopInfoMenu" target="ir.ac.kntu.menu.shop.shop_info.ShopInfoMenu">
+      <point x="0.0" y="-19.0" />
+      <point x="0.0" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.shop.shop_info.ShopInfoMenu" target="ir.ac.kntu.menu.Menu">
+      <point x="-48.25" y="-19.0" />
+      <point x="4990.454770861834" y="362.0" />
+      <point x="3164.116535567716" y="362.0" />
+      <point x="49.41176470588243" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.models.Supermarket" target="ir.ac.kntu.models.Shop">
+      <point x="0.0" y="-19.0" />
+      <point x="1202.184593023256" y="264.0" />
+      <point x="1354.3922708618334" y="264.0" />
+      <point x="-6.5625" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.shop.shop_info.SupermarketInfoMenu" target="ir.ac.kntu.menu.shop.shop_info.ShopInfoMenu">
+      <point x="0.0" y="-19.0" />
+      <point x="5317.704770861834" y="515.0" />
+      <point x="5103.038104195166" y="515.0" />
+      <point x="64.33333333333303" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.db.RestaurantsDB" target="ir.ac.kntu.db.ShopsDB">
+      <point x="0.0" y="-19.0" />
+      <point x="102.0" y="432.0" />
+      <point x="305.75" y="432.0" />
+      <point x="-57.5" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.menu.shop.shop_info.ShopInfoMenu" target="ir.ac.kntu.models.Shop">
+      <point x="48.25" y="-19.0" />
+      <point x="5086.954770861834" y="244.0" />
+      <point x="1393.7672708618334" y="244.0" />
+      <point x="32.8125" y="19.0" />
+    </edge>
+    <edge source="ir.ac.kntu.models.Shop" target="ir.ac.kntu.service.OrdersService">
+      <point x="0.0" y="-19.0" />
+      <point x="1360.9547708618334" y="151.0" />
+      <point x="1424.7047708618334" y="151.0" />
+      <point x="-51.0" y="19.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.20000000000000007" x="4284.833333333332" y="1221.6666666666665" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
