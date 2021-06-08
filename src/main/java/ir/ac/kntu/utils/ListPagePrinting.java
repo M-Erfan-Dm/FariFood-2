@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.function.Function;
 
 public class ListPagePrinting {
-    private static final int PAGE_LIMIT = 2;
+    private static final int PAGE_LIMIT = 15;
 
     public static <T> void printList(List<T> list, ItemPrinter<T> function) {
         int pageCount = 0;
