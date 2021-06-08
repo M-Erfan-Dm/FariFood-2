@@ -116,7 +116,7 @@ public class AuthenticationMenu extends Menu {
         boolean isOwnerValid = ownersDB.isOwnerValid(phoneNumber, password);
         if (isOwnerValid) {
             Owner owner = ownersDB.getOwnerByPhoneNumber(phoneNumber);
-            OwnersMenu ownersMenu = new OwnersMenu(owner, shopsDBReference);
+            OwnersMenu ownersMenu = new OwnersMenu(owner, shopsDBReference, couriersDB, ownersDB, customersDB);
             ownersMenu.show();
         } else {
             System.out.println("Owner not found");
@@ -146,7 +146,7 @@ public class AuthenticationMenu extends Menu {
 
     private void registerOwner(String phoneNumber, String password) {
         String name = getName();
-        Owner owner = new Owner(phoneNumber, name, password);
+        Owner owner = new Owner(phoneNumber, name, password, new Settings(ShopsFilteringStrategy.BY_RATING_DESCENDING));
         if (ownersDB.containsOwner(owner)) {
             System.out.println("Owner already exists");
             return;
