@@ -9,10 +9,13 @@ public class Owner {
 
     private String password;
 
-    public Owner(String phoneNumber, String name, String password) {
+    private Settings settings;
+
+    public Owner(String phoneNumber, String name, String password, Settings settings) {
         this.phoneNumber = phoneNumber;
         this.name = name;
         this.password = password;
+        this.settings = settings;
     }
 
     public String getPhoneNumber() {
@@ -37,6 +40,14 @@ public class Owner {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Settings getSettings() {
+        return settings;
+    }
+
+    public void setSettings(Settings settings) {
+        this.settings = settings;
     }
 
     @Override
