@@ -163,7 +163,7 @@ public abstract class Shop<T extends OrdersService<? extends Order>> {
     }
 
     public double getAlphaScore() {
-        return 2 * rating + ordersService.getCount();
+        return 2 * rating +  ordersService.getCount();
     }
 
     abstract public int getAdditionalPrices(Order order);
