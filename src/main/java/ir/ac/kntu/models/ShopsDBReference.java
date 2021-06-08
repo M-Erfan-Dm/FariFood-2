@@ -39,4 +39,17 @@ public class ShopsDBReference {
         orders.addAll(fruitShopsDB.getAllOrders());
         return orders;
     }
+
+    public Shop<?> getShopByOrderId(int id){
+        Shop<?> shop;
+        shop = restaurantsDB.getShopByOrderId(id);
+        if (shop!=null){
+            return shop;
+        }
+        shop = supermarketsDB.getShopByOrderId(id);
+        if (shop!=null){
+            return shop;
+        }
+        return fruitShopsDB.getShopByOrderId(id);
+    }
 }
